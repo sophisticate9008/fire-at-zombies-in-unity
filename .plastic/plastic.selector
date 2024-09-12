@@ -1,0 +1,4 @@
+repository "fire at zombies@tj_catastrophe9008@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
