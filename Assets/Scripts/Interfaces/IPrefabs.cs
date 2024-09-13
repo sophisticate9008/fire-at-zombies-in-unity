@@ -2,5 +2,6 @@ using UnityEngine;
 
 public interface IPrefabs
 {
-    Collider2D ColliderVolume { get; set; }
+    bool IsInit { get; set;}
+    void Init();
 }

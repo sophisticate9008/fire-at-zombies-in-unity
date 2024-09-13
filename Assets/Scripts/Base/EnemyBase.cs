@@ -19,7 +19,8 @@ namespace MyBase
         private float derateElec;
         private float derateWind;
         private float derateEnergy;
-        private Collider2D colliderVolume;
+
+        private bool isInit;
         public int Life
         {
             get => life;
@@ -103,11 +104,26 @@ namespace MyBase
             get => derateEnergy;
             set => derateEnergy = value;
         }
-        public Collider2D ColliderVolume
+        public bool IsInit
         {
-            get => colliderVolume;
-            set => colliderVolume = value;
+            get => isInit;
+            set {
+                isInit = value;
+            }
         }
+
+        public void Init()
+        {
+            IsInit = true;
+        }
+        public void SetAngle()
+        {
+            
+        }
+        public void SetSpeed() {
+            
+        }
+
     }
 }
 

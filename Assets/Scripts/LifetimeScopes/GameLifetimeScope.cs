@@ -13,7 +13,7 @@ public class GameLifetimeScope : LifetimeScope
     {
 
         // 注册 PenetrableComponent
-        builder.Register<PenetrableComponent>(Lifetime.Transient);
+        // builder.Register<PenetrableComponent>(Lifetime.Transient);
         // 注册 Gun 组件中的依赖
         builder.RegisterComponentInHierarchy<Bullet>();
         builder.RegisterComponentInNewPrefab(bulletPrefab, Lifetime.Scoped);

@@ -5,4 +5,5 @@ public interface IArms {
     public float Speed{get;set;}
     
     public Transform TargetEnemy{get;set;}
+    public void FindTargetNearest();
 }
