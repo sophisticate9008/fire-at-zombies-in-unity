@@ -3,30 +3,32 @@ using MyComponents;
 using UnityEngine;
 using VContainer;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IPrefabs
 {
-    private PenetrableComponent _penetrableComponent;
+    private Collider2D colliderVolume;
+    private PenetrableComponent penetrableComponent;
     public PenetrableComponent PenetrableComponent
     {
-        get => _penetrableComponent;
-        set => _penetrableComponent = value;
+        get => penetrableComponent;
+        set
+        {
+            penetrableComponent = value;
+            penetrableComponent.TheGameObject = gameObject;
+        }
     }
+
+    public Collider2D ColliderVolume
+    {
+        get => colliderVolume;
+        set => colliderVolume = value;
+    }
+
     [Inject]
     public void Inject(PenetrableComponent penetrableComponent)
     {
         PenetrableComponent = penetrableComponent;
         penetrableComponent.PenetrationLevel = 10;
-
     }
-    private void Update()
-    {
-        // 检测按键输入并减少穿透等级
-        if (Input.GetKeyDown(KeyCode.Space)) // 这里以空格键为例
-        {
-            ReducePenetrationLevel();
-        }
-    }
-
     private void ReducePenetrationLevel()
     {
         if (PenetrableComponent != null)
@@ -36,6 +38,10 @@ public class Bullet : MonoBehaviour
             // 可选：打印当前穿透等级以便调试
             Debug.Log("Current Penetration Level: " + PenetrableComponent.PenetrationLevel);
         }
+    }
+    private void Start()
+    {
+        ColliderVolume = GetComponent<CircleCollider2D>();
     }
 }
 

@@ -7,15 +7,21 @@ namespace MyComponents
     public class PenetrableComponent : IPenetrable
     {
         private readonly ReactiveProperty<int> _penetrationLevel = new(1);
-        private readonly GameObject _gameObject;
-        public PenetrableComponent(GameObject gameObject)
+        private GameObject _gameObject;
+        public GameObject TheGameObject
         {
-            _gameObject = gameObject;
-            _penetrationLevel.Subscribe(level => {
-                if(level <= 0) {
-                    HandleDestruction();
-                }
-            });
+            get { return _gameObject; }
+            set
+            {
+                _gameObject = value;
+                _penetrationLevel.Subscribe(level =>
+                {
+                    if (level <= 0)
+                    {
+                        HandleDestruction();
+                    }
+                });
+            }
         }
         public int PenetrationLevel
         {

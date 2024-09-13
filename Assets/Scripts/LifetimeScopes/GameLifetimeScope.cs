@@ -5,8 +5,10 @@ using UnityEngine;
 using R3;
 public class GameLifetimeScope : LifetimeScope
 {
-    [SerializeField] // 在 Unity Inspector 中手动拖入 Gun 对象
-    private GameObject arms;
+
+
+    [SerializeField]
+    private Bullet bulletPrefab;
     protected override void Configure(IContainerBuilder builder)
     {
 
@@ -14,8 +16,9 @@ public class GameLifetimeScope : LifetimeScope
         builder.Register<PenetrableComponent>(Lifetime.Transient);
         // 注册 Gun 组件中的依赖
         builder.RegisterComponentInHierarchy<Bullet>();
-        builder.RegisterComponent(arms);
-        
+        builder.RegisterComponentInNewPrefab(bulletPrefab, Lifetime.Scoped);
+        // builder.RegisterComponentInNewPrefab(BulletPrefab, Lifetime.Scoped);
+        // builder.RegisterInstance(BulletPrefab.GetComponent<Bullet>()).As<Bullet>();
     }
 
 

@@ -1,3 +1,3 @@
-public interface Imultipleable {
+public interface IMultipleable {
     int MultipleLevel { get; set;}
 }
