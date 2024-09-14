@@ -61,7 +61,7 @@ public class Bullet : MonoBehaviour, IPrefabs, ISelf
         ISelf self = collision.GetComponent<ISelf>();
         if (self != null)
         {
-            return; // 如果碰撞的是 Bullet 类型对象，直接返回，不做任何处理
+            return; // 如果碰撞的是 自家 类型对象，直接返回，不做任何处理
         }
         // 减少穿透层数
         ReducePenetrationLevel();

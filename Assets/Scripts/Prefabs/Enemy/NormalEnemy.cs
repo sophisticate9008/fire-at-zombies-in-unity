@@ -1,8 +1,13 @@
 
 
+using System.Collections.Generic;
 using MyBase;
-using UnityEngine;
 
 public class NormalEnemy : EnemyBase
 {
+    public override void SetContorlImmunityList()
+    {
+        ControlImmunityList = new List<string>();
+
+    }
 }

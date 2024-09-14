@@ -1,10 +1,12 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MyBase
 {
-    public class EnemyBase : MonoBehaviour, IEnemy, IPrefabs
+    public abstract class EnemyBase : MonoBehaviour, IEnemy, IPrefabs
     {
+        private List<string> controlImmunity;
         private int life;
         private float speed;
         private int damage;
@@ -19,7 +21,17 @@ namespace MyBase
         private float derateElec;
         private float derateWind;
         private float derateEnergy;
-
+        private bool canAction;
+        public List<string> ControlImmunityList
+        {
+            get => controlImmunity;
+            set => controlImmunity = value;
+        }
+        public bool CanAction
+        {
+            get => canAction;
+            set => canAction = value;
+        }
         private bool isInit;
         public int Life
         {
@@ -107,7 +119,8 @@ namespace MyBase
         public bool IsInit
         {
             get => isInit;
-            set {
+            set
+            {
                 isInit = value;
             }
         }
@@ -116,14 +129,7 @@ namespace MyBase
         {
             IsInit = true;
         }
-        public void SetAngle()
-        {
-            
-        }
-        public void SetSpeed() {
-            
-        }
-
+        public abstract void SetContorlImmunityList();
     }
 }
 

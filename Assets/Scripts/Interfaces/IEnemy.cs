@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEnemy
+public interface IEnemy: IEditable
 {
+    bool CanAction { get; set; }
     int Life { get; set; }
     float Speed { get; set; }
     // 伤害
@@ -28,5 +30,5 @@ public interface IEnemy
     float DerateWind { get; set; }
     // 能量伤害减免/增加
     float DerateEnergy { get; set; }
-
+    List<string> ControlImmunityList { get; set; }
 }
