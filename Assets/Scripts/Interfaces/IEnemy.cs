@@ -3,6 +3,8 @@ using UnityEngine;
 
 public interface IEnemy: IEditable
 {
+    float EasyHurt { get; set; }
+    string Type { get; set; }
     bool CanAction { get; set; }
     int Life { get; set; }
     float Speed { get; set; }

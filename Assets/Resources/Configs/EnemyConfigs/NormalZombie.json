@@ -1,0 +1,18 @@
+{
+    "Life": 1500,
+    "Speed": 7,
+    "Damage": 20,
+    "ImmunityCount": 2,
+    "Blocks": 3,
+    "RangeFire": 10,
+    "AtkSpeed": 1.5,
+    "Weight": 15,
+    "DerateAd": 0.0,
+    "DerateIce": 0.0,
+    "DerateFire": 0.0,
+    "DerateElec": 0.0,
+    "DerateWind": 0.0,
+    "DerateEnergy": 0.0,
+    "CanAction": true,
+    "ControlImmunityList": []
+}

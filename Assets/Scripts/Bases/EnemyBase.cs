@@ -1,27 +1,41 @@
 
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace MyBase
 {
-    public abstract class EnemyBase : MonoBehaviour, IEnemy, IPrefabs
+    public class EnemyBase : MonoBehaviour, IEnemy, IPrefabs
     {
+        public readonly string pathPublic = "Configs/EnemyConfigs";
         private List<string> controlImmunity;
-        private int life;
-        private float speed;
-        private int damage;
-        private int immunityCount;
+        private int life = 1000;
+        private float speed = 5;
+        private int damage = 10;
+        private int immunityCount = 0;
         private int blocks = 1;
-        private float rangeFire;
-        private float atkSpeed;
-        private float weight;
-        private float derateAd;
-        private float derateIce;
-        private float derateFire;
-        private float derateElec;
-        private float derateWind;
-        private float derateEnergy;
+        private float rangeFire = 5;
+        private float atkSpeed = 1;
+        private float weight = 10;
+        private float derateAd = 0;
+        private float derateIce = 0;
+        private float derateFire = 0;
+        private float derateElec = 0;
+        private float derateWind = 0;
+        private float derateEnergy = 0;
         private bool canAction;
+        private string type;
+        private float easyHurt;
+        public float EasyHurt
+        {
+            get => easyHurt;
+            set => easyHurt = value;
+        }
+        public string Type
+        {
+            get => type;
+            set => type = value;
+        }
         public List<string> ControlImmunityList
         {
             get => controlImmunity;
@@ -124,13 +138,62 @@ namespace MyBase
                 isInit = value;
             }
         }
-
         public void Init()
         {
             IsInit = true;
         }
-        public abstract void SetContorlImmunityList();
+        protected virtual void Start()
+        {
+            LoadConfig();
+        }
+
+        private void LoadConfig()
+        {
+            // 获取子类的类名
+            string className = GetType().Name;
+
+            // 构造文件路径
+            string configFileName = Path.Combine(pathPublic, className);
+
+            // 从 Resources 文件夹加载 JSON 文件
+            TextAsset json = Resources.Load<TextAsset>(configFileName);
+
+            if (json != null)
+            {
+                // 解析 JSON 内容
+                EnemyConfig config = JsonUtility.FromJson<EnemyConfig>(json.text);
+
+                // 使用配置初始化字段
+                ApplyConfig(config);
+            }
+            else
+            {
+                Debug.LogError($"Config file not found: {configFileName}");
+            }
+        }
+
+        // 在基类中实现 ApplyConfig 方法
+        protected void ApplyConfig(EnemyConfig config)
+        {
+            Life = config.Life;
+            Speed = config.Speed;
+            Damage = config.Damage;
+            ImmunityCount = config.ImmunityCount;
+            Blocks = config.Blocks;
+            RangeFire = config.RangeFire;
+            AtkSpeed = config.AtkSpeed;
+            Weight = config.Weight;
+            DerateAd = config.DerateAd;
+            DerateIce = config.DerateIce;
+            DerateFire = config.DerateFire;
+            DerateElec = config.DerateElec;
+            DerateWind = config.DerateWind;
+            DerateEnergy = config.DerateEnergy;
+            CanAction = config.CanAction;
+            ControlImmunityList = config.ControlImmunityList;
+        }
     }
+
 }
 
 
