@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Factorys;
 using MyBase;
 using UnityEngine;
 using VContainer;
 
 public class Gun : ArmBase, IMultipleable, IRepeatable
 {
-
+    
 
     public Bullet bulletPrefab;
     private int multipleLevel = 4;
@@ -39,13 +40,16 @@ public class Gun : ArmBase, IMultipleable, IRepeatable
             fissionLevel = value;
         }
     }
-
-    [Inject]
-    public void Inject(Bullet bulletPrefab)
-    {
-        Debug.Log("Inject Bullet");
-        this.bulletPrefab = bulletPrefab;
+    private void Awake() {
+         bulletPrefab.GetComponent<Bullet>().InstalledComponents.Add(ComponentFactory.Creat("穿透", null, TargetEnemy));
     }
+
+    // [Inject]
+    // public void Inject(Bullet bulletPrefab)
+    // {
+    //     Debug.Log("Inject Bullet");
+    //     this.bulletPrefab = bulletPrefab;
+    // }
 
 
     void Update()
@@ -72,7 +76,7 @@ public class Gun : ArmBase, IMultipleable, IRepeatable
         if (TargetEnemy == null) return;
 
         // 计算从枪口指向敌人的方向向量
-        Vector3 directionToEnemy = (TargetEnemy.position - transform.position).normalized;
+        Vector3 directionToEnemy = (TargetEnemy.transform.position - transform.position).normalized;
         float baseAngle = Mathf.Atan2(directionToEnemy.y, directionToEnemy.x) * Mathf.Rad2Deg; // 计算基础角度
         if (MultipleLevel % 2 == 0)
         {
@@ -91,6 +95,7 @@ public class Gun : ArmBase, IMultipleable, IRepeatable
 
             // 生成子弹，并直接设置方向
             Bullet newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity); // 不需要设置旋转
+            CopyComponents<Bullet>(bulletPrefab, newBullet);
             newBullet.direction = bulletDirection.normalized; // 子弹的方向向量
             newBullet.speed = Speed;
             newBullet.Init(); // 初始化子弹

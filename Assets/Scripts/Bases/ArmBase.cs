@@ -1,4 +1,5 @@
 
+using Factorys;
 using UnityEngine;
 namespace MyBase
 {
@@ -8,7 +9,7 @@ namespace MyBase
     {
         private int rangeFire = 10;
         private float speed = 10;
-        private Transform targetEnemy;
+        private GameObject targetEnemy;
         public int RangeFire
         {
             get { return rangeFire; }
@@ -19,7 +20,7 @@ namespace MyBase
             get { return speed; }
             set { speed = value; }
         }
-        public Transform TargetEnemy
+        public GameObject TargetEnemy
         {
             get { return targetEnemy; }
             set { targetEnemy = value; }
@@ -28,7 +29,7 @@ namespace MyBase
         {
             EnemyBase[] enemies = FindObjectsOfType<EnemyBase>();
             float shortestDistance = Mathf.Infinity;
-            EnemyBase nearestEnemy = null;
+            GameObject nearestEnemy = null;
 
             foreach (EnemyBase enemy in enemies)
             {
@@ -36,17 +37,37 @@ namespace MyBase
                 if (distanceToEnemy < shortestDistance && distanceToEnemy <= RangeFire)
                 {
                     shortestDistance = distanceToEnemy;
-                    nearestEnemy = enemy;
+                    nearestEnemy = enemy.gameObject;
                 }
             }
 
             if (nearestEnemy != null)
             {
-                TargetEnemy = nearestEnemy.transform;
+                TargetEnemy = nearestEnemy;
             }
             else
             {
                 TargetEnemy = null;
+            }
+        }
+
+        public void CopyComponents<T>(T prefab, T newInstance) where T : MonoBehaviour
+        {
+            IArmChild prefabArmChild = prefab.GetComponent<IArmChild>();
+            IArmChild newInstanceArmChild = newInstance.GetComponent<IArmChild>();
+
+            if (prefabArmChild != null && newInstanceArmChild != null)
+            {
+                // 清空 newInstance 的组件列表，防止冲突
+                newInstanceArmChild.InstalledComponents.Clear();
+
+                // 遍历 prefab 的 InstallComponents 列表，并为 newInstance 创建新的组件实例
+                foreach (var component in prefabArmChild.InstalledComponents)
+                {
+                    // 假设有一个方式来复制组件，可以通过工厂或者直接实例化
+                    var newComponent = ComponentFactory.Creat(component.ComponentName,  newInstance.gameObject, component.EnemyObj);
+                    newInstanceArmChild.InstalledComponents.Add(newComponent);
+                }
             }
         }
     }

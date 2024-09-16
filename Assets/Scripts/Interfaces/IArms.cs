@@ -4,6 +4,6 @@ public interface IArms {
     public int RangeFire {get;set;}
     public float Speed{get;set;}
     
-    public Transform TargetEnemy{get;set;}
+    public GameObject TargetEnemy{get;set;}
     public void FindTargetNearest();
 }

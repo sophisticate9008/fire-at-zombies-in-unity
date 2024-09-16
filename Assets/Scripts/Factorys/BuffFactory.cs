@@ -1,8 +1,9 @@
 using System;
 using MyBase;
+using TheBuffs;
 using UnityEngine;
 
-namespace TheBuffs
+namespace Factorys
 {
     public class BuffFactory
     {
