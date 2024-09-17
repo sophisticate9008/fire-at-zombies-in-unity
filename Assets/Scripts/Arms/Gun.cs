@@ -41,7 +41,8 @@ public class Gun : ArmBase, IMultipleable, IRepeatable
         }
     }
     private void Awake() {
-         bulletPrefab.GetComponent<Bullet>().InstalledComponents.Add(ComponentFactory.Creat("穿透", null, TargetEnemy));
+         bulletPrefab.GetComponent<Bullet>().InstalledComponents.Add(ComponentFactory.Creat("穿透", null));
+         bulletPrefab.GetComponent<Bullet>().InstalledComponents.Add(ComponentFactory.Creat("反弹", null));
     }
 
     // [Inject]
@@ -96,8 +97,8 @@ public class Gun : ArmBase, IMultipleable, IRepeatable
             // 生成子弹，并直接设置方向
             Bullet newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity); // 不需要设置旋转
             CopyComponents<Bullet>(bulletPrefab, newBullet);
-            newBullet.direction = bulletDirection.normalized; // 子弹的方向向量
-            newBullet.speed = Speed;
+            newBullet.Direction = bulletDirection.normalized; // 子弹的方向向量
+            newBullet.Speed = Speed;
             newBullet.Init(); // 初始化子弹
         }
     }

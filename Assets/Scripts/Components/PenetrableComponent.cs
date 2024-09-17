@@ -7,7 +7,7 @@ namespace MyComponents
     public class PenetrableComponent : ComponentBase, IPenetrable
     {
         private readonly ReactiveProperty<int> _penetrationLevel = new(3);
-        public PenetrableComponent(string componentName, string type, GameObject selfObj, GameObject enemyObj) : base(componentName, type, selfObj, enemyObj)
+        public PenetrableComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
         {
             _penetrationLevel.Subscribe(level =>
             {
@@ -31,7 +31,7 @@ namespace MyComponents
             MonoBehaviour.Destroy(SelfObj);
         }
 
-        public override void TriggerExec(GameObject selfObj, GameObject enemyObj)
+        public override void TriggerExec(GameObject enemyObj)
         {
             Debug.Log("PenetrableComponent TriggerExec");
             PenetrationLevel -= enemyObj.GetComponent<EnemyBase>().Blocks;

@@ -65,10 +65,11 @@ namespace MyBase
                 foreach (var component in prefabArmChild.InstalledComponents)
                 {
                     // 假设有一个方式来复制组件，可以通过工厂或者直接实例化
-                    var newComponent = ComponentFactory.Creat(component.ComponentName,  newInstance.gameObject, component.EnemyObj);
+                    var newComponent = ComponentFactory.Creat(component.ComponentName, newInstance.gameObject);
                     newInstanceArmChild.InstalledComponents.Add(newComponent);
                 }
             }
         }
+        
     }
 }

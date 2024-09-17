@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public abstract class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
+public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
 {
     private List<IComponent> installComponents = new();
     public bool IsInit { get; set; }
     public List<IComponent> InstalledComponents { get => installComponents; set => installComponents = value; }
-
-    public abstract void Init();
+    public float Speed { get; set; }
+    public Vector2 Direction { get; set; }
 
     public bool IsOutOfBounds()
     {
@@ -21,18 +21,77 @@ public abstract class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IArmChild self = collision.GetComponent<IArmChild>();
-        if (self != null)
+        if (IsNotSelf(collision))
         {
-            return; // 如果碰撞的是 自家 类型对象，直接返回，不做任何处理
-        }
-        // 减少穿透层数
-        foreach (var component in InstalledComponents)
-        {
-            if (component.Type == "enter")
+            foreach (var component in InstalledComponents)
             {
-                component.TriggerExec(gameObject, collision.gameObject);
+                if (component.Type == "enter")
+                {
+                    component.TriggerExec(collision.gameObject);
+                }
             }
         }
     }
+    //排除自身
+    private bool IsNotSelf(Collider2D collision)
+    {
+        IArmChild self = collision.GetComponent<IArmChild>();
+        return self == null;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (IsNotSelf(collision))
+        {
+            foreach (var component in InstalledComponents)
+            {
+                if (component.Type == "exit")
+                {
+                    component.TriggerExec(collision.gameObject);
+                }
+            }
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (IsNotSelf(collision))
+        {
+            foreach (var component in InstalledComponents)
+            {
+                if (component.Type == "stay")
+                {
+                    component.TriggerExec( collision.gameObject);
+                }
+            }
+        }
+    }
+    public void OnTriggerUpdate()
+    {
+        foreach (var component in InstalledComponents)
+        {
+            if (component.Type == "update")
+            {
+                component.TriggerExec(null);
+            }
+        }
+    }
+    public virtual void Update()
+    {
+        
+        if (IsInit)
+        {
+            OnTriggerUpdate();
+            transform.Translate(Speed * Time.deltaTime * Direction);
+            // 超出屏幕范围时销毁
+            if (IsOutOfBounds())
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+    public virtual void Init()
+    {
+        IsInit = true;
+    }
+
 }
