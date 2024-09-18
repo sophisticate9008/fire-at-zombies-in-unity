@@ -5,12 +5,12 @@ using MyBase;
 using UnityEngine;
 using VContainer;
 
-public class Gun : ArmBase, IMultipleable, IRepeatable
+public class Gun : ArmBase, IRepeatable, IMultipleable
 {
 
 
     public Bullet bulletPrefab;
-    private int multipleLevel = 4;
+    private int multipleLevel = 2;
     private int repeatLevel = 1;
     private int fissionLevel;
     //锁定的敌人
@@ -80,33 +80,10 @@ public class Gun : ArmBase, IMultipleable, IRepeatable
         if (TargetEnemy == null) return;
 
         // 计算从枪口指向敌人的方向向量
-        Vector3 directionToEnemy = (TargetEnemy.transform.position - transform.position).normalized;
-        float baseAngle = Mathf.Atan2(directionToEnemy.y, directionToEnemy.x) * Mathf.Rad2Deg; // 计算基础角度
-        if (MultipleLevel % 2 == 0)
-        {
-            baseAngle -= AngleDifference / 2f; // 顺时针偏转一半的角度差
-        }
+        Vector3 baseDirection = (TargetEnemy.transform.position - transform.position).normalized;
 
         // 发射 MultipleLevel 数量的子弹
-        for (int i = 0; i < MultipleLevel; i++)
-        {
-            // 计算每个弹道的角度偏移
-            float angleOffset = (i - (MultipleLevel - 1) / 2f) * AngleDifference;
-            float finalAngle = baseAngle + angleOffset;
-
-            // 计算子弹的方向向量（根据最终角度）
-            Vector3 bulletDirection = new Vector3(Mathf.Cos(finalAngle * Mathf.Deg2Rad), Mathf.Sin(finalAngle * Mathf.Deg2Rad), 0);
-
-            // 生成子弹，并根据发射方向设置旋转
-            Bullet newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            newBullet.CopyComponents<Bullet>(bulletPrefab);
-
-
-            // 子弹的方向和速度设置
-            newBullet.Direction = bulletDirection.normalized;
-            newBullet.Speed = Speed;
-            newBullet.Init(); // 初始化子弹
-        }
+        IMultipleable.MutiInstantiate(bulletPrefab.gameObject, transform.position, Speed, baseDirection, MultipleLevel, angleDifference);
     }
 
 }

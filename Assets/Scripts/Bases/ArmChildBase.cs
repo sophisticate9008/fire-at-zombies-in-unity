@@ -11,7 +11,8 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
     public bool IsInit { get; set; }
     public List<IComponent> InstalledComponents { get => installComponents; set => installComponents = value; }
     public float Speed { get; set; }
-    public Vector2 Direction { get; set; }
+    public Vector3 Direction { get; set; }
+    public Vector3 EulerAngle { get; set; }
 
     public bool IsOutOfBounds()
     {
@@ -83,17 +84,59 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
 
         if (IsInit)
         {
+            Move();
             OnTriggerUpdate();
-            transform.Translate(Speed * Time.deltaTime * Direction);
-            // 超出屏幕范围时销毁
-            if (IsOutOfBounds())
-            {
-                Destroy(gameObject);
-            }
+
+
         }
+    }
+
+    public void Rotate()
+    {
+
+        float z;
+        if (Direction.x > 0)
+        {
+            //以Z轴为坐标 使用向量计算出来角度  
+            z = -Vector3.Angle(Vector3.up, Direction);
+        }
+        else
+        {
+            z = Vector3.Angle(Vector3.up, Direction);
+        }
+        transform.eulerAngles = new Vector3(0, 0, z);
+
+    }
+    public void Move()
+    {
+        float z;
+        if (Direction.x > 0)
+        {
+            //以Z轴为坐标 使用向量计算出来角度  
+            z = -Vector3.Angle(Vector3.up, Direction);
+        }
+        else
+        {
+            z = Vector3.Angle(Vector3.up, Direction);
+        }
+        transform.eulerAngles = new Vector3(0, 0, z);
+        float baseAngle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
+        float finalAngle = baseAngle - z;
+        Vector3 newDirection = new Vector3(Mathf.Cos(finalAngle * Mathf.Deg2Rad), Mathf.Sin(finalAngle * Mathf.Deg2Rad), 0);
+        // Rotate();
+        // 更新Direction使其符合旋转后的方向
+        transform.Translate(Speed * Time.deltaTime * newDirection);
+
+        // 超出屏幕范围时销毁
+        if (IsOutOfBounds())
+        {
+            Destroy(gameObject);
+        }
+
     }
     public virtual void Init()
     {
+
         IsInit = true;
     }
     public void CopyComponents<T>(T prefab) where T : MonoBehaviour

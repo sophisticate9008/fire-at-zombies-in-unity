@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using Factorys;
 using UnityEngine;
 
-public class BulletFissionableComponent : ComponentBase, IFissionable, IMultipleable
+public class BulletFissionableComponent : ComponentBase, IFissionable
 {
 
-    private float angleDifference = 10f;
+    private float angleDifference = 15f;
     public float AngleDifference
     {
         get => angleDifference; set => angleDifference = value;
@@ -36,28 +36,20 @@ public class BulletFissionableComponent : ComponentBase, IFissionable, IMultiple
         {
             return;
         }
-        Vector3 directionToEnemy = (TargetEnemy.transform.position - SelfObj.transform.position).normalized;
-        float baseAngle = Mathf.Atan2(directionToEnemy.y, directionToEnemy.x) * Mathf.Rad2Deg;
+        Vector3 baseDirection = (TargetEnemy.transform.position - SelfObj.transform.position).normalized;
+        IMultipleable.MutiInstantiate(bulletPrefab.gameObject, SelfObj.transform.position, SelfObj.GetComponent<ArmChildBase>().Speed, baseDirection, MultipleLevel, angleDifference);
         //第二弹道索敌
-        baseAngle -= AngleDifference / 2f;
-        for (int i = 0; i < MultipleLevel; i++)
-        {
-            // 计算每个弹道的角度偏移
-            float angleOffset = (i - (MultipleLevel - 1) / 2f) * AngleDifference;
-            float finalAngle = baseAngle + angleOffset;
-
-            // 计算子弹的方向向量（根据最终角度）
-            Vector3 bulletDirection = new Vector3(Mathf.Cos(finalAngle * Mathf.Deg2Rad), Mathf.Sin(finalAngle * Mathf.Deg2Rad), 0);
-
-            // 生成子弹，并根据发射方向设置旋转
-            ArmChildBase newBullet = GameObject.Instantiate(bulletPrefab, SelfObj.transform.position, Quaternion.identity);
-            newBullet.CopyComponents<ArmChildBase>(bulletPrefab);
-
-
-            // 子弹的方向和速度设置
-            newBullet.Direction = bulletDirection.normalized;
-            newBullet.Speed = SelfObj.GetComponent<ArmChildBase>().Speed;
-            newBullet.Init(); // 初始化子弹
-        }
+        // for (int i = 0; i < MultipleLevel; i++)
+        // {
+        //     // 计算每个弹道的角度偏移
+        //     Vector3 bulletDirection = IMultipleable.CalDirectionDifference(baseDirection, i, MultipleLevel, angleDifference);
+        //     // 生成子弹，并根据发射方向设置旋转
+        //     ArmChildBase newBullet = GameObject.Instantiate(bulletPrefab, SelfObj.transform.position, Quaternion.identity);
+        //     newBullet.CopyComponents<ArmChildBase>(bulletPrefab);
+        //     // 子弹的方向和速度设置
+        //     newBullet.Direction = bulletDirection.normalized;
+        //     newBullet.Speed = SelfObj.GetComponent<ArmChildBase>().Speed;
+        //     newBullet.Init(); // 初始化子弹
+        // }
     }
 }

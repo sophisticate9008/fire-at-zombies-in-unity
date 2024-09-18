@@ -6,7 +6,8 @@ public interface IArmChild
 {
     public List<IComponent> InstalledComponents { get; set; }
     public float Speed { get; set; }
-    public Vector2 Direction { get; set; }
+    public Vector3 Direction { get; set; }
+    public Vector3 EulerAngle {get;set;}
     public void CopyComponents<T>(T prefab) where T : MonoBehaviour
     {
 
