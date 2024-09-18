@@ -2,17 +2,18 @@ using UnityEngine;
 
 public class ReboundComponent : ComponentBase, IReboundable
 {
-    private int reboundCount = 3;
+    private int reboundCount = 0;
     private float edgeBuffer = 0.01f; //设置屏幕边缘的缓冲区，当接近该缓冲区时会反弹
     public ReboundComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
     {
+        ReboundCount = PlayerStateManager.Instance.reboundCount;
     }
 
     public int ReboundCount { get => reboundCount; set => reboundCount = value; }
 
     public void Rebound()
     {
-        if (reboundCount <= 0) return;  // 反弹次数用完则不再反弹
+        if (ReboundCount <= 0) return;  // 反弹次数用完则不再反弹
 
         Vector3 position = SelfObj.transform.position;
         Vector3 viewportPos = Camera.main.WorldToViewportPoint(position);
@@ -35,7 +36,7 @@ public class ReboundComponent : ComponentBase, IReboundable
         // 如果发生了反弹，则减少反弹次数
         if (rebounded)
         {
-            reboundCount--;
+            ReboundCount--;
         }
     }
 

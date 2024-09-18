@@ -6,9 +6,13 @@ namespace MyComponents
 {
     public class PenetrableComponent : ComponentBase, IPenetrable
     {
-        private readonly ReactiveProperty<int> _penetrationLevel = new(3);
+
+        private readonly ReactiveProperty<int> _penetrationLevel = new(PlayerStateManager.Instance.allPenetrationLevel);
         public PenetrableComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
         {
+            if(selfObj.GetComponent<Bullet>() != null) {
+                PenetrationLevel += PlayerStateManager.Instance.bulletPenetrationLevel;
+            }
             _penetrationLevel.Subscribe(level =>
             {
                 if (level <= 0)
@@ -33,7 +37,6 @@ namespace MyComponents
 
         public override void TriggerExec(GameObject enemyObj)
         {
-            Debug.Log("PenetrableComponent TriggerExec");
             PenetrationLevel -= enemyObj.GetComponent<EnemyBase>().Blocks;
         }
     }

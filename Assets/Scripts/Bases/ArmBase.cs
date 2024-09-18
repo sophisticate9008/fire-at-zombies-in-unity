@@ -51,25 +51,7 @@ namespace MyBase
             }
         }
 
-        public void CopyComponents<T>(T prefab, T newInstance) where T : MonoBehaviour
-        {
-            IArmChild prefabArmChild = prefab.GetComponent<IArmChild>();
-            IArmChild newInstanceArmChild = newInstance.GetComponent<IArmChild>();
 
-            if (prefabArmChild != null && newInstanceArmChild != null)
-            {
-                // 清空 newInstance 的组件列表，防止冲突
-                newInstanceArmChild.InstalledComponents.Clear();
-
-                // 遍历 prefab 的 InstallComponents 列表，并为 newInstance 创建新的组件实例
-                foreach (var component in prefabArmChild.InstalledComponents)
-                {
-                    // 假设有一个方式来复制组件，可以通过工厂或者直接实例化
-                    var newComponent = ComponentFactory.Creat(component.ComponentName, newInstance.gameObject);
-                    newInstanceArmChild.InstalledComponents.Add(newComponent);
-                }
-            }
-        }
         
     }
 }

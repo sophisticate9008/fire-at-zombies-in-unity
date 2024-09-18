@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using Factorys;
+using MyBase;
 using UnityEngine;
 
 
 public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
 {
+    public GameObject TargetEnemy { get; set; }
     private List<IComponent> installComponents = new();
     public bool IsInit { get; set; }
     public List<IComponent> InstalledComponents { get => installComponents; set => installComponents = value; }
@@ -60,7 +63,7 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
             {
                 if (component.Type == "stay")
                 {
-                    component.TriggerExec( collision.gameObject);
+                    component.TriggerExec(collision.gameObject);
                 }
             }
         }
@@ -77,7 +80,7 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
     }
     public virtual void Update()
     {
-        
+
         if (IsInit)
         {
             OnTriggerUpdate();
@@ -93,5 +96,52 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
     {
         IsInit = true;
     }
+    public void CopyComponents<T>(T prefab) where T : MonoBehaviour
+    {
+        IArmChild prefabArmChild = prefab.GetComponent<IArmChild>();
+        IArmChild newInstanceArmChild = gameObject.GetComponent<IArmChild>();
 
+        if (prefabArmChild != null && newInstanceArmChild != null)
+        {
+            // 清空 newInstance 的组件列表，防止冲突
+            newInstanceArmChild.InstalledComponents.Clear();
+
+            // 遍历 prefab 的 InstallComponents 列表，并为 newInstance 创建新的组件实例
+            foreach (var component in prefabArmChild.InstalledComponents)
+            {
+                // 假设有一个方式来复制组件，可以通过工厂或者直接实例化
+                var newComponent = ComponentFactory.Creat(component.ComponentName, gameObject.gameObject);
+                newInstanceArmChild.InstalledComponents.Add(newComponent);
+            }
+        }
+    }
+    public void FindTarget(GameObject nowEnemy)
+    {
+        EnemyBase[] enemies = FindObjectsOfType<EnemyBase>();
+
+        if (enemies.Length > 0)
+        {
+            // 将所有敌人添加到列表中，并移除当前敌人
+            List<EnemyBase> enemyList = new List<EnemyBase>(enemies);
+            enemyList.Remove(nowEnemy.GetComponent<EnemyBase>());  // 移除当前敌人
+
+            if (enemyList.Count > 0)
+            {
+                // 随机选择一个敌人
+                int randomIndex = Random.Range(0, enemyList.Count);
+                GameObject randomEnemy = enemyList[randomIndex].gameObject;
+                TargetEnemy = randomEnemy;
+            }
+            else
+            {
+                // 没有其他敌人，设置为null
+                TargetEnemy = null;
+            }
+        }
+        else
+        {
+            // 如果没有找到敌人，设置为null
+            TargetEnemy = null;
+        }
+    }
 }

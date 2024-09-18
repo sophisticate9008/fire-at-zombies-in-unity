@@ -7,7 +7,7 @@ using VContainer;
 
 public class Gun : ArmBase, IMultipleable, IRepeatable
 {
-    
+
 
     public Bullet bulletPrefab;
     private int multipleLevel = 4;
@@ -40,9 +40,12 @@ public class Gun : ArmBase, IMultipleable, IRepeatable
             fissionLevel = value;
         }
     }
-    private void Awake() {
-         bulletPrefab.GetComponent<Bullet>().InstalledComponents.Add(ComponentFactory.Creat("穿透", null));
-         bulletPrefab.GetComponent<Bullet>().InstalledComponents.Add(ComponentFactory.Creat("反弹", null));
+    private void Awake()
+    {
+        List<IComponent> installedComponents = bulletPrefab.GetComponent<Bullet>().InstalledComponents;
+        installedComponents.Add(ComponentFactory.Creat("穿透", gameObject));
+        installedComponents.Add(ComponentFactory.Creat("反弹", gameObject));
+        installedComponents.Add(ComponentFactory.Creat("子弹分裂", gameObject));
     }
 
     // [Inject]
@@ -88,16 +91,19 @@ public class Gun : ArmBase, IMultipleable, IRepeatable
         for (int i = 0; i < MultipleLevel; i++)
         {
             // 计算每个弹道的角度偏移
-            float angleOffset = (i - (MultipleLevel - 1) / 2f) * angleDifference;
+            float angleOffset = (i - (MultipleLevel - 1) / 2f) * AngleDifference;
             float finalAngle = baseAngle + angleOffset;
 
             // 计算子弹的方向向量（根据最终角度）
             Vector3 bulletDirection = new Vector3(Mathf.Cos(finalAngle * Mathf.Deg2Rad), Mathf.Sin(finalAngle * Mathf.Deg2Rad), 0);
 
-            // 生成子弹，并直接设置方向
-            Bullet newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity); // 不需要设置旋转
-            CopyComponents<Bullet>(bulletPrefab, newBullet);
-            newBullet.Direction = bulletDirection.normalized; // 子弹的方向向量
+            // 生成子弹，并根据发射方向设置旋转
+            Bullet newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            newBullet.CopyComponents<Bullet>(bulletPrefab);
+
+
+            // 子弹的方向和速度设置
+            newBullet.Direction = bulletDirection.normalized;
             newBullet.Speed = Speed;
             newBullet.Init(); // 初始化子弹
         }
