@@ -37,7 +37,7 @@ namespace MyComponents
 
         public override void TriggerExec(GameObject enemyObj)
         {
-            PenetrationLevel -= enemyObj.GetComponent<EnemyBase>().Blocks;
+            PenetrationLevel -= enemyObj.GetComponent<EnemyBase>().Config.Blocks;
         }
     }
 

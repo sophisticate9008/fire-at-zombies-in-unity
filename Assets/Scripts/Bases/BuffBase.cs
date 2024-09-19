@@ -47,14 +47,14 @@ namespace MyBase
         public void EffectControl()
         {
             EnemyBase enemyBase = TheObj.GetComponent<EnemyBase>();
-            if (enemyBase.ControlImmunityList.IndexOf(BuffName) == -1)
+            if (enemyBase.Config.ControlImmunityList.IndexOf(BuffName) == -1)
             {
-                enemyBase.CanAction = false;
+                enemyBase.Config.CanAction = false;
             }
         }
         public void RemoveControl() {
             EnemyBase enemyBase = TheObj.GetComponent<EnemyBase>();
-            enemyBase.CanAction = true;
+            enemyBase.Config.CanAction = true;
         }
 
     }

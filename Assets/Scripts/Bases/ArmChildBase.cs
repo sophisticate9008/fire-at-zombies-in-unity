@@ -91,22 +91,6 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
         }
     }
 
-    public void Rotate()
-    {
-
-        float z;
-        if (Direction.x > 0)
-        {
-            //以Z轴为坐标 使用向量计算出来角度  
-            z = -Vector3.Angle(Vector3.up, Direction);
-        }
-        else
-        {
-            z = Vector3.Angle(Vector3.up, Direction);
-        }
-        transform.eulerAngles = new Vector3(0, 0, z);
-
-    }
     public void Move()
     {
         float z;

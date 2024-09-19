@@ -18,6 +18,7 @@ public class BulletFissionableComponent : ComponentBase, IFissionable
     public BulletFissionableComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
     {
         bulletPrefab.InstalledComponents.Add(ComponentFactory.Creat("穿透", bulletPrefab.gameObject));
+        
     }
 
     public int FissionLevel { get => bulletFissionCount; set => bulletFissionCount = value; }
