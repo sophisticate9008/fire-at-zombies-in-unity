@@ -10,7 +10,6 @@ public abstract class ComponentBase : IComponent
     }
 
     public GameObject SelfObj { get; set; }
-    public GameObject EnemyObj { get; set; }
     public string ComponentName { get; set; }
     public string Type { get; set; }
 

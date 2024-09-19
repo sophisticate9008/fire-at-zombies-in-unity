@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -19,8 +20,10 @@ public interface IMultipleable
         // 计算子弹的方向向量（根据最终角度）
         return new Vector3(Mathf.Cos(finalAngle * Mathf.Deg2Rad), Mathf.Sin(finalAngle * Mathf.Deg2Rad), 0);
     }
-    public static void MutiInstantiate(GameObject prefab, Vector3 position, float speed, Vector3 baseDirection, int multipleLevel, float angleDifference)
+    public static List<GameObject> MutiInstantiate(GameObject prefab, Vector3 position, float speed, Vector3 baseDirection,
+     int multipleLevel, float angleDifference)
     {
+        List<GameObject> objs = new();
         for (int i = 0; i < multipleLevel; i++)
         {
             Vector3 bulletDirection = IMultipleable.CalDirectionDifference(baseDirection, i, multipleLevel, angleDifference);
@@ -31,7 +34,14 @@ public interface IMultipleable
             // 子弹的方向和速度设置
             newArmChild.Direction = bulletDirection.normalized;
             newArmChild.Speed = speed;
-            newArmChild.Init(); // 初始化子弹
+
+            objs.Add(newObj);
+        }
+        return objs;
+    }
+    public static void InitObjs(List<GameObject> objs) {
+        foreach (GameObject obj in objs) {
+            obj.GetComponent<ArmChildBase>().Init();
         }
     }
 }

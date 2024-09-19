@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
 {
+    private List<GameObject> firstExceptList = new();
     public GameObject TargetEnemy { get; set; }
     private List<IComponent> installComponents = new();
     public bool IsInit { get; set; }
@@ -13,7 +14,7 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
     public float Speed { get; set; }
     public Vector3 Direction { get; set; }
     public Vector3 EulerAngle { get; set; }
-
+    public List<GameObject> FirstExceptList => firstExceptList;
     public bool IsOutOfBounds()
     {
         // 获取子弹在屏幕上的位置
@@ -27,13 +28,15 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
     {
         if (IsNotSelf(collision))
         {
-            foreach (var component in InstalledComponents)
-            {
-                if (component.Type == "enter")
-                {
-                    component.TriggerExec(collision.gameObject);
+            foreach(var obj in FirstExceptList) {
+
+                if(obj == collision.gameObject) {
+                    FirstExceptList.Remove(obj);
+
+                    return;
                 }
             }
+            TriggerByType("enter", collision.gameObject);
         }
     }
     //排除自身
@@ -47,37 +50,29 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
     {
         if (IsNotSelf(collision))
         {
-            foreach (var component in InstalledComponents)
-            {
-                if (component.Type == "exit")
-                {
-                    component.TriggerExec(collision.gameObject);
-                }
-            }
+            TriggerByType("exit", collision.gameObject);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (IsNotSelf(collision))
         {
-            foreach (var component in InstalledComponents)
+            TriggerByType("stay", collision.gameObject);
+        }
+    }
+    public void TriggerByType(string type, GameObject obj)
+    {
+        foreach (var component in InstalledComponents)
+        {
+            if (component.Type == type)
             {
-                if (component.Type == "stay")
-                {
-                    component.TriggerExec(collision.gameObject);
-                }
+                component.TriggerExec(obj);
             }
         }
     }
     public void OnTriggerUpdate()
     {
-        foreach (var component in InstalledComponents)
-        {
-            if (component.Type == "update")
-            {
-                component.TriggerExec(null);
-            }
-        }
+        TriggerByType("update", null);
     }
     public virtual void Update()
     {

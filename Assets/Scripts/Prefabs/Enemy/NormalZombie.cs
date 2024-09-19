@@ -8,9 +8,6 @@ namespace Prefabs.Enemy
     public class NormalZombie : EnemyBase
     {
 
-        void Update()
-        {
 
-        }
     }
 }

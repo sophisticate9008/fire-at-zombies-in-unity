@@ -6,11 +6,13 @@ namespace MyBase
 {
     public class BuffBase : IBuff
     {
+        EnemyBase enemyBase;
         public BuffBase(string buffName, float duration, GameObject obj)
         {
             BuffName = buffName;
             Duration = duration;
             TheObj = obj;
+            enemyBase = obj.GetComponent<EnemyBase>();
         }
         private GameObject obj;
         public GameObject TheObj
@@ -32,11 +34,11 @@ namespace MyBase
         }
         public void Effect()
         {
-
+            enemyBase.Buffs.Add(this);
         }
         public void Remove()
         {
-
+            enemyBase.Buffs.Remove(this);
         }
         public void ApplyAndAutoRemove()
         {
@@ -46,14 +48,20 @@ namespace MyBase
         }
         public void EffectControl()
         {
-            EnemyBase enemyBase = TheObj.GetComponent<EnemyBase>();
-            if (enemyBase.Config.ControlImmunityList.IndexOf(BuffName) == -1)
-            {
-                enemyBase.Config.CanAction = false;
-            }
+            float _elapsedTime = 0f;
+            var subscription = Observable.Interval(TimeSpan.FromSeconds(1f / 60f))
+                .TakeUntil(Observable.Timer(TimeSpan.FromSeconds(Duration)))
+                .Subscribe(_ =>
+                {
+                    _elapsedTime += 1f / 60f;
+                    if (enemyBase.Config.ControlImmunityList.IndexOf(BuffName) == -1)
+                    {
+                        enemyBase.Config.CanAction = false;
+                    }
+                });
         }
-        public void RemoveControl() {
-            EnemyBase enemyBase = TheObj.GetComponent<EnemyBase>();
+        public void RemoveControl()
+        {
             enemyBase.Config.CanAction = true;
         }
 

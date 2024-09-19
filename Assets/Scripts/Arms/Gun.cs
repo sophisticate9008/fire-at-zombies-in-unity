@@ -83,7 +83,8 @@ public class Gun : ArmBase, IRepeatable, IMultipleable
         Vector3 baseDirection = (TargetEnemy.transform.position - transform.position).normalized;
 
         // 发射 MultipleLevel 数量的子弹
-        IMultipleable.MutiInstantiate(bulletPrefab.gameObject, transform.position, Speed, baseDirection, MultipleLevel, angleDifference);
+        var objs = IMultipleable.MutiInstantiate(bulletPrefab.gameObject, transform.position, Speed, baseDirection, MultipleLevel, angleDifference);
+        IMultipleable.InitObjs(objs);
     }
 
 }

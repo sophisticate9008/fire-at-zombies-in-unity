@@ -13,11 +13,14 @@ namespace TheBuffs
         public new void Effect()
         {
             EffectControl();
+            base.Effect();
         }
 
         public new void Remove()
         {
             RemoveControl();
+            base.Remove();
+            
         }
     }
 }
