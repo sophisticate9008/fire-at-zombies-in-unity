@@ -1,0 +1,21 @@
+using Factorys;
+using MyBase;
+using UnityEngine;
+
+namespace MyComponents
+{
+    public class FreezeComponent : ComponentBase
+    {
+        public float Duration{get;set;}
+        public FreezeComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
+        {
+        }
+
+        public override void TriggerExec(GameObject enemyObj)
+        {
+            EnemyBase enemyBase = enemyObj.GetComponent<EnemyBase>();
+            enemyBase.Buffs.Add(BuffFactory.Create("冰冻", 2f, enemyObj));
+            
+        }
+    }
+}

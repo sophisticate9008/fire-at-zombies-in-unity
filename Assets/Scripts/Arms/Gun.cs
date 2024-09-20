@@ -46,6 +46,7 @@ public class Gun : ArmBase, IRepeatable, IMultipleable
         installedComponents.Add(ComponentFactory.Creat("穿透", gameObject));
         installedComponents.Add(ComponentFactory.Creat("反弹", gameObject));
         installedComponents.Add(ComponentFactory.Creat("子弹分裂", gameObject));
+        installedComponents.Add(ComponentFactory.Creat("冰冻", gameObject, 2.0f));
     }
 
     // [Inject]

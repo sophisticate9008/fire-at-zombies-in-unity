@@ -12,7 +12,6 @@ public interface IEnemyConfig: IEditable
     //类型，normal, elite, boss
     string CharacterType { get; set; }
     //能否行动
-    bool CanAction { get; set; }
     int Life { get; set; }
     float Speed { get; set; }
     // 伤害

@@ -10,14 +10,18 @@ namespace TheBuffs
         {
             enemyBase = obj.GetComponent<EnemyBase>();
         }
-        public new void Effect()
+        public override void Effect()
         {
+            
             EffectControl();
+            base.Effect();
         }
 
-        public new void Remove()
+        public override void Remove()
         {
+            
             RemoveControl();
+            base.Remove();
         }
     }
 }

@@ -1,12 +1,16 @@
 
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace MyBase
 {
     public class EnemyBase : MonoBehaviour, IEnemy, IPrefabs
     {
+
+        private bool canAction = true;
+        public bool CanAction { get => canAction; set => canAction = value; }
         private IEnemyConfig config;
         public readonly string pathPublic = "Configs/EnemyConfigs";
         public IEnemyConfig Config
@@ -39,7 +43,13 @@ namespace MyBase
         }
         public void Update()
         {
-            Move();
+            BuffEffect();
+            if (canAction)
+            {
+
+                Move();
+            }
+
         }
         public void LoadConfig()
         {
@@ -69,6 +79,8 @@ namespace MyBase
         public virtual void Move()
         {
 
+
+
             Vector3 position = gameObject.transform.position;
             Vector3 viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
             // 计算下边缘的Y值
@@ -84,6 +96,7 @@ namespace MyBase
             {
                 // 物体超出范围时停止移动
             }
+
         }
 
         public virtual void Attack()
@@ -113,6 +126,14 @@ namespace MyBase
                 {
                     component.Value.TriggerExec(null);
                 }
+            }
+        }
+
+        public void BuffEffect()
+        {
+            foreach (var buff in buffs.ToList())
+            {
+                buff.ApplyAndAutoRemove();
             }
         }
     }

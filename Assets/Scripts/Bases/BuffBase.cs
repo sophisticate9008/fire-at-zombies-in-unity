@@ -32,17 +32,17 @@ namespace MyBase
             get { return duration; }
             set { duration = value; }
         }
-        public void Effect()
+        public virtual void Effect()
         {
-            enemyBase.Buffs.Add(this);
         }
-        public void Remove()
+        public virtual void Remove()
         {
-            enemyBase.Buffs.Remove(this);
+
         }
         public void ApplyAndAutoRemove()
         {
             Effect();
+            enemyBase.Buffs.Remove(this);
             Observable.Timer(TimeSpan.FromSeconds(Duration))
                 .Subscribe(_ => Remove());
         }
@@ -56,14 +56,15 @@ namespace MyBase
                     _elapsedTime += 1f / 60f;
                     if (enemyBase.Config.ControlImmunityList.IndexOf(BuffName) == -1)
                     {
-                        enemyBase.Config.CanAction = false;
+                        enemyBase.CanAction = false;
                     }
                 });
         }
         public void RemoveControl()
         {
-            enemyBase.Config.CanAction = true;
-        }
 
+            enemyBase.CanAction = true;
+            
+        }
     }
 }

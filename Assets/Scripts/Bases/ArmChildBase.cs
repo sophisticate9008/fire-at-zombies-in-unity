@@ -24,7 +24,7 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
         return viewportPosition.x < 0 || viewportPosition.x > 1 || viewportPosition.y < 0 || viewportPosition.y > 1;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (IsNotSelf(collision))
         {
