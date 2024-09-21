@@ -40,7 +40,7 @@ public class BulletFissionableComponent : ComponentBase, IFissionable
         Vector3 baseDirection = (TargetEnemy.transform.position - SelfObj.transform.position).normalized;
         var objs = IMultipleable.MutiInstantiate(bulletPrefab.gameObject, SelfObj.transform.position, SelfObj.GetComponent<ArmChildBase>().Speed, baseDirection, MultipleLevel, angleDifference);
         foreach(var obj in objs) {
-            obj.GetComponent<ArmChildBase>().FirstExceptList.Add(enemyObj);
+            obj.GetComponent<ArmChildBase>().FirstExceptQueue.Enqueue(enemyObj);
         }
         IMultipleable.InitObjs(objs);
     }

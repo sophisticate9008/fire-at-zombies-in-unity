@@ -5,7 +5,7 @@ namespace TheBuffs
 {
     public class DebuffFreeze : BuffBase
     {
-        private EnemyBase enemyBase;
+
         public DebuffFreeze(string buffName, float duration, GameObject obj) : base(buffName, duration, obj)
         {
             enemyBase = obj.GetComponent<EnemyBase>();
@@ -14,6 +14,7 @@ namespace TheBuffs
         {
             
             EffectControl();
+
             base.Effect();
         }
 
@@ -21,7 +22,9 @@ namespace TheBuffs
         {
             
             RemoveControl();
+
             base.Remove();
+            
         }
     }
 }

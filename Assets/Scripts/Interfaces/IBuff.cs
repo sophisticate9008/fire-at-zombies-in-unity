@@ -6,7 +6,7 @@ public interface IBuff {
     float Duration { get; set; }
     string BuffName { get; set;}
     void Effect();
-    void ApplyAndAutoRemove();
+    void EffectAndAutoRemove();
 
     void Remove();
 }

@@ -11,7 +11,7 @@ public class Gun : ArmBase, IRepeatable, IMultipleable
 
     public Bullet bulletPrefab;
     private int multipleLevel = 2;
-    private int repeatLevel = 1;
+    private int repeatLevel = 3;
     private int fissionLevel;
     //锁定的敌人
     private float fireCooldown = 1f; // 射击间隔时间

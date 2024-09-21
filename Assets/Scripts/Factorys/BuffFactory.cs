@@ -18,9 +18,7 @@ namespace Factorys
                 "麻痹" => new DebuffPalsy(buffName, duration, obj),
 
                 // 需要自定义参数的 Buffs
-                "减速" => args.Length == 1 && args[0] is float slowRate
-                    ? new DebuffSlow(buffName, duration, obj, slowRate)
-                    : throw new ArgumentException($"Invalid argument for BuffSlow: expected float, got {string.Join(", ", args.Select(a => a?.GetType().Name ?? "null"))}"),
+                "减速" => new DebuffSlow(buffName, duration, obj),
 
                 // 处理未知的 Buff 类型
                 _ => throw new ArgumentException($"Unknown debuff: {buffName}"),

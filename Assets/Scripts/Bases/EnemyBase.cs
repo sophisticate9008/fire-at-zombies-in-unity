@@ -8,7 +8,8 @@ namespace MyBase
 {
     public class EnemyBase : MonoBehaviour, IEnemy, IPrefabs
     {
-
+        public AnimatorManager animatorManager;
+        public Animator animator;
         private bool canAction = true;
         public bool CanAction { get => canAction; set => canAction = value; }
         private IEnemyConfig config;
@@ -27,10 +28,11 @@ namespace MyBase
                 isInit = value;
             }
         }
-        private readonly List<IBuff> buffs = new();
-        public List<IBuff> Buffs { get => buffs; }
+        private readonly Queue<IBuff> buffs = new();
+        public Queue<IBuff> Buffs { get => buffs; }
         private readonly Dictionary<string, IComponent> components = new();
         public Dictionary<string, IComponent> InstalledComponents => components;
+
 
         public virtual void Init()
         {
@@ -40,6 +42,15 @@ namespace MyBase
         protected virtual void Start()
         {
             LoadConfig();
+            animatorManager = AnimatorManager.Instance;
+            animator = GetComponent<Animator>();
+        }
+        public void  FixedUpdate() {
+            if(!canAction) {
+                animatorManager.StopAnim(animator);
+            }else {
+                animatorManager.PlayAnim(animator,1f);
+            }
         }
         public void Update()
         {
@@ -131,9 +142,9 @@ namespace MyBase
 
         public void BuffEffect()
         {
-            foreach (var buff in buffs.ToList())
-            {
-                buff.ApplyAndAutoRemove();
+            while(Buffs.Count > 0) {
+                var buff = Buffs.Dequeue();
+                buff.EffectAndAutoRemove();
             }
         }
     }

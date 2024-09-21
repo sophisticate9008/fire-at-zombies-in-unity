@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
 {
-    private List<GameObject> firstExceptList = new();
+    private Queue<GameObject> firstExceptQueue = new();
     public GameObject TargetEnemy { get; set; }
     private List<IComponent> installComponents = new();
     public bool IsInit { get; set; }
@@ -14,7 +14,14 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
     public float Speed { get; set; }
     public Vector3 Direction { get; set; }
     public Vector3 EulerAngle { get; set; }
-    public List<GameObject> FirstExceptList => firstExceptList;
+    public Queue<GameObject> FirstExceptQueue => firstExceptQueue;
+    private readonly Dictionary<string, Queue<GameObject>> collideObjs = new() {
+        {"enter", new()},
+        {"stay", new()},
+        {"exit", new()}
+    };
+    public Dictionary<string, Queue<GameObject>> CollideObjs => collideObjs;
+
     public bool IsOutOfBounds()
     {
         // 获取子弹在屏幕上的位置
@@ -28,15 +35,16 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
     {
         if (IsNotSelf(collision))
         {
-            foreach(var obj in FirstExceptList) {
-
-                if(obj == collision.gameObject) {
-                    FirstExceptList.Remove(obj);
-
+            while (FirstExceptQueue.Count > 0)
+            {
+                var obj = FirstExceptQueue.Dequeue();
+                if (obj == collision.gameObject)
+                {
                     return;
                 }
             }
-            TriggerByType("enter", collision.gameObject);
+            CollideObjs["enter"].Enqueue(collision.gameObject);
+
         }
     }
     //排除自身
@@ -50,14 +58,15 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
     {
         if (IsNotSelf(collision))
         {
-            TriggerByType("exit", collision.gameObject);
+            CollideObjs["exit"].Enqueue(collision.gameObject);
+
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (IsNotSelf(collision))
         {
-            TriggerByType("stay", collision.gameObject);
+            CollideObjs["stay"].Enqueue(collision.gameObject);
         }
     }
     public void TriggerByType(string type, GameObject obj)
@@ -70,19 +79,26 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
             }
         }
     }
-    public void OnTriggerUpdate()
+
+    private void OnTriggerByQueue()
     {
         TriggerByType("update", null);
+        foreach (var temp in collideObjs)
+        {
+            Queue<GameObject> queue = temp.Value;
+            if (queue.Count > 0)
+            {
+                var obj = queue.Dequeue();
+                TriggerByType(temp.Key, obj);
+            }
+        }
     }
     public virtual void Update()
     {
-
         if (IsInit)
         {
             Move();
-            OnTriggerUpdate();
-
-
+            OnTriggerByQueue();
         }
     }
 

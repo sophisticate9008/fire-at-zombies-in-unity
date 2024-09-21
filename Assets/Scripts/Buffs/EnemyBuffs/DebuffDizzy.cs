@@ -5,7 +5,6 @@ namespace TheBuffs
 {
     public class DebuffDizzy : BuffBase
     {
-        private EnemyBase enemyBase;
         public DebuffDizzy(string buffName, float duration, GameObject obj) : base(buffName, duration, obj)
         {
             enemyBase = obj.GetComponent<EnemyBase>();
