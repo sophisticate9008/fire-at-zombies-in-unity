@@ -53,7 +53,7 @@ namespace MyBase
                 .Subscribe(_ =>
                 {
                     _elapsedTime += 1f / 60f;
-                    if (enemyBase.Config.ControlImmunityList.IndexOf(BuffName) == -1)
+                    if (enemyBase.Config.controlImmunityList.IndexOf(BuffName) == -1)
                     {
                         enemyBase.CanAction = false;
                         

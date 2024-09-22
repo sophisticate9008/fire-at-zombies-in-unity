@@ -14,13 +14,13 @@ namespace TheBuffs
         }
         public new void Effect()
         {
-            originSpeed = enemyBase.Config.Speed;
-            enemyBase.Config.Speed = originSpeed * slowRate;
+            originSpeed = enemyBase.Config.speed;
+            enemyBase.Config.speed = originSpeed * slowRate;
         }
 
         public new void Remove()
         {
-            enemyBase.Config.Speed = originSpeed;
+            enemyBase.Config.speed = originSpeed;
         }
     }
 }

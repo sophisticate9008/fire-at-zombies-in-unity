@@ -13,6 +13,5 @@
     "derateElec": 0.0,
     "derateWind": 0.0,
     "derateEnergy": 0.0,
-    "canAction": true,
     "controlImmunityList": []
 }

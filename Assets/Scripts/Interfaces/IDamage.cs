@@ -3,4 +3,5 @@ public interface IDamage {
     public float Harm{get;set;}
 
     public string Name{get;set;}
+    public string Master{get;set;}
 }

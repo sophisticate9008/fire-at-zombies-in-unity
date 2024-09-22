@@ -1,148 +1,62 @@
 using System.Collections.Generic;
 
 [System.Serializable]
-public class EnemyConfig : IEnemyConfig
+public class EnemyConfig
 {
     // Fields for internal storage
     public int life;
     public float speed;
     public int damage;
+    //免疫次数
     public int immunityCount;
+    //阻挡数
     public int blocks;
+    //攻击范围
     public float rangeFire;
+    //攻击速度
     public float atkSpeed;
+    //体重
     public float weight;
+    //全减伤
+    public float derateAll;
+    //物理减伤
     public float derateAd;
+    //冰减伤
     public float derateIce;
+    //火减伤
     public float derateFire;
+    //电减伤
     public float derateElec;
+    //风减伤
     public float derateWind;
+    //能量减伤
     public float derateEnergy;
-    public bool canAction;
+    //控制免疫类型
     public List<string> controlImmunityList;
-    private float easyHurt;
-    private string attackType;
-    private string actionType;
-    private string characterType;
-
+    //易伤
+    public float easyHurt;
+    //攻击类型
+    public string attackType;
+    //行动类型 sky/land
+    public string actionType;
+    //角色类型 normal elite boss
+    public string characterType;
+    //攻击次数
+    public int attackCount;
     // Properties for external access, mapped to fields
-    public float EasyHurt
+    public Dictionary<string, float> GetDamageReduction()
     {
-        get => easyHurt;
-        set => easyHurt = value;
-    }
+        var damageReduction = new Dictionary<string, float>
+        {
+            { "all", derateAll },
+            { "ad", derateAd },
+            { "ice", derateIce },
+            { "fire", derateFire },
+            { "electric", derateElec },
+            { "wind", derateWind },
+            { "energy", derateEnergy }
+        };
 
-    public string AttackType
-    {
-        get => attackType;
-        set => attackType = value;
-    }
-
-    public string ActionType
-    {
-        get => actionType;
-        set => actionType = value;
-    }
-
-    public string CharacterType
-    {
-        get => characterType;
-        set => characterType = value;
-    }
-
-    public int Life
-    {
-        get => life;
-        set => life = value;
-    }
-
-    public float Speed
-    {
-        get => speed;
-        set => speed = value;
-    }
-
-    public int Damage
-    {
-        get => damage;
-        set => damage = value;
-    }
-
-    public int ImmunityCount
-    {
-        get => immunityCount;
-        set => immunityCount = value;
-    }
-
-    public int Blocks
-    {
-        get => blocks;
-        set => blocks = value;
-    }
-
-    public float RangeFire
-    {
-        get => rangeFire;
-        set => rangeFire = value;
-    }
-
-    public float AtkSpeed
-    {
-        get => atkSpeed;
-        set => atkSpeed = value;
-    }
-
-    public float Weight
-    {
-        get => weight;
-        set => weight = value;
-    }
-
-    public float DerateAd
-    {
-        get => derateAd;
-        set => derateAd = value;
-    }
-
-    public float DerateIce
-    {
-        get => derateIce;
-        set => derateIce = value;
-    }
-
-    public float DerateFire
-    {
-        get => derateFire;
-        set => derateFire = value;
-    }
-
-    public float DerateElec
-    {
-        get => derateElec;
-        set => derateElec = value;
-    }
-
-    public float DerateWind
-    {
-        get => derateWind;
-        set => derateWind = value;
-    }
-
-    public float DerateEnergy
-    {
-        get => derateEnergy;
-        set => derateEnergy = value;
-    }
-
-    public bool CanAction
-    {
-        get => canAction;
-        set => canAction = value;
-    }
-
-    public List<string> ControlImmunityList
-    {
-        get => controlImmunityList;
-        set => controlImmunityList = value;
+        return damageReduction;
     }
 }

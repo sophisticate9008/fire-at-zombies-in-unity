@@ -12,9 +12,9 @@ namespace MyBase
         public Animator animator;
         private bool canAction = true;
         public bool CanAction { get => canAction; set => canAction = value; }
-        private IEnemyConfig config;
+        private EnemyConfig config;
         public readonly string pathPublic = "Configs/EnemyConfigs";
-        public IEnemyConfig Config
+        public EnemyConfig Config
         {
             get { return config; }
             set { config = value; }
@@ -76,7 +76,7 @@ namespace MyBase
             if (json != null)
             {
                 // 解析 JSON 内容
-                IEnemyConfig theConfig = JsonUtility.FromJson<EnemyConfig>(json.text);
+                EnemyConfig theConfig = JsonUtility.FromJson<EnemyConfig>(json.text);
 
                 // 使用配置初始化字段
                 Config = theConfig;
@@ -98,10 +98,10 @@ namespace MyBase
             float bottomEdge = -Camera.main.orthographicSize;
 
             // 检查物体是否在屏幕范围内
-            if (position.y > bottomEdge + Config.RangeFire)
+            if (position.y > bottomEdge + Config.rangeFire)
             {
                 // 物体在范围内时移动
-                gameObject.transform.Translate(Config.Speed * Time.deltaTime * new Vector3(0, -1, 0));
+                gameObject.transform.Translate(Config.speed * Time.deltaTime * new Vector3(0, -1, 0));
             }
             else
             {

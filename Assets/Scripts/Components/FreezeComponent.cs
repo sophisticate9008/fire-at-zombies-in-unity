@@ -15,7 +15,6 @@ namespace MyComponents
         {
             EnemyBase enemyBase = enemyObj.GetComponent<EnemyBase>();
             enemyBase.Buffs.Enqueue(BuffFactory.Create("冰冻", 2f, enemyObj));
-            
         }
     }
 }

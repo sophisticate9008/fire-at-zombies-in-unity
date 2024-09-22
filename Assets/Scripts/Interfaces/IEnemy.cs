@@ -4,7 +4,7 @@ using UnityEngine;
 public interface IEnemy {
 
     public bool CanAction{get;set;}
-    IEnemyConfig Config { get; set;}
+    EnemyConfig Config { get; set;}
     void LoadConfig();
     Dictionary <string, IComponent> InstalledComponents{get;}
     Queue<IBuff> Buffs{ get;}
