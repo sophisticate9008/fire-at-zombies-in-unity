@@ -1,18 +1,31 @@
 using UnityEngine;
 
-public abstract class ComponentBase : IComponent
+namespace MyBase
 {
-    public ComponentBase(string componentName, string type, GameObject selfObj)
+
+
+    public abstract class ComponentBase : IComponent
     {
-        Type = type;
-        ComponentName = componentName;
-        SelfObj = selfObj;
+        public ArmConfigBase Config { get; set; }
+
+        public ComponentBase(string componentName, string type, GameObject selfObj)
+        {
+            Type = type;
+            ComponentName = componentName;
+            SelfObj = selfObj;
+
+        }
+
+        public GameObject SelfObj { get; set; }
+        public string ComponentName { get; set; }
+        public string Type { get; set; }
+
+        public virtual void Init()
+        {
+
+        }
+
+        public abstract void TriggerExec(GameObject enemyObj);
+
     }
-
-    public GameObject SelfObj { get; set; }
-    public string ComponentName { get; set; }
-    public string Type { get; set; }
-
-    public abstract void TriggerExec(GameObject enemyObj);
-
 }

@@ -1,8 +1,14 @@
+using MyBase;
 using UnityEngine;
 
 public interface IArms {
 
-    public ArmConfigBase TheConfig{get;set;}
+    public ArmConfigBase TheConfig {get;set;}
     public GameObject TargetEnemy{get;set;}
-    public void FindTargetNearest();
+    public void FindTargetNearestOrElite();
+    public void FindRandomTarget();
+    public void FisrtFindTarget();
+    public void OtherFindTarget();
+
+
 }

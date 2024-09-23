@@ -1,6 +1,8 @@
+using MyBase;
+
 namespace ArmConfigs
 {
-    public class BulletFissionConfig : ArmConfigBase
+    public class BulletFissionConfig : ArmConfigBase, IMultipleable
     {
         public BulletConfig BulletConfig { get; set; }
 
@@ -9,7 +11,10 @@ namespace ArmConfigs
         {
             get => BulletConfig.Tlc * 0.25f;  // 使用 BulletConfig 的 tlc 属性
         }
-        public virtual int FissionLevel { get; set; } = 2;
+        public override float Speed => BulletConfig.Speed;
+        public int MultipleLevel { get; set; } = 2;
+        public float AngleDifference { get ; set ; } = 15f;
+
         // 构造函数
         public BulletFissionConfig()
         {

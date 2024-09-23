@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public interface IPrefabs
+public interface IClone
 {
     bool IsInit { get; set;}
     void Init();
+    void ReturnToPool();
+    void Create();
 }

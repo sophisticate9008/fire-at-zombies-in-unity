@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using ArmConfigs;
-using Unity.VisualScripting.FullSerializer;
+using MyBase;
 using UnityEngine;
 
 public class PlayerStateManager : MonoBehaviour
@@ -28,13 +28,15 @@ public class PlayerStateManager : MonoBehaviour
     // 其他管理逻辑可以在此添加
     void Start()
     {
-
+        ObjectPoolManager.Instance.CreatePool("BulletPool", bulletConfig.Prefab, 50, 100);
+        ObjectPoolManager.Instance.CreatePool("BulletFissionPool", bulletConfig.BulletFissionConfig.Prefab, 100, 200);
     }
     public ArmConfigBase GetArmConfigByClassName(string armName)
     {
         return armName switch
         {
-            "BulletArm" => bulletConfig,
+            "Bullet" => bulletConfig,
+            "BulletFission" => bulletConfig.BulletFissionConfig,
             _ => throw new System.NotImplementedException(),
         };
     }

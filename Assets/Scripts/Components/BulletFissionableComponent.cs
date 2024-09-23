@@ -1,31 +1,26 @@
 using System.Collections.Generic;
 using ArmConfigs;
 using Factorys;
+using MyBase;
 using UnityEngine;
 
-public class BulletFissionableComponent : ComponentBase, IFissionable
+public class FissionableComponent : ComponentBase
 {
-    public float AngleDifference { get; set; } = 15f;
-    private BulletFissionConfig concreteConfig;
-    public int FissionLevel { get; set; }
-    public int MultipleLevel { get; set; }
 
-    private ArmChildBase prefab;
 
-    public BulletFissionableComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
+    readonly GameObject prefab;
+    public FissionableComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
     {
-        concreteConfig = PlayerStateManager.Instance.bulletConfig.BulletFissionConfig;
-        prefab = concreteConfig.Prefab.GetComponent<ArmChildBase>();
-        prefab.InstalledComponents.Add(ComponentFactory.Create("穿透", prefab.gameObject));
-        MultipleLevel = concreteConfig.FissionLevel;
+        Config = selfObj.GetComponent<ArmChildBase>().TheConfig;
+        IFissionable FissionableConfig = Config as IFissionable;
+        prefab = FissionableConfig.ChildConfig.Prefab;
     }
 
     public override void TriggerExec(GameObject enemyObj)
     {
-        GameObject targetEnemy = null;
+        GameObject targetEnemy;
         IArmChild armChildPrefab = prefab.GetComponent<IArmChild>();
         armChildPrefab.FindTarget(enemyObj);
-        
         if (armChildPrefab.TargetEnemy != null)
         {
             targetEnemy = armChildPrefab.TargetEnemy;
@@ -36,7 +31,7 @@ public class BulletFissionableComponent : ComponentBase, IFissionable
         }
 
         Vector3 baseDirection = (targetEnemy.transform.position - SelfObj.transform.position).normalized;
-        var objs = IMultipleable.MutiInstantiate(prefab.gameObject, SelfObj.transform.position, SelfObj.GetComponent<ArmChildBase>().Speed, baseDirection, MultipleLevel, AngleDifference);
+        var objs = IMultipleable.MutiInstantiate(prefab, SelfObj.transform.position,  baseDirection);
         
         foreach (var obj in objs)
         {

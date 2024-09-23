@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using MyBase;
 using UnityEngine;
 
 public interface IMultipleable
@@ -20,21 +20,25 @@ public interface IMultipleable
         // 计算子弹的方向向量（根据最终角度）
         return new Vector3(Mathf.Cos(finalAngle * Mathf.Deg2Rad), Mathf.Sin(finalAngle * Mathf.Deg2Rad), 0);
     }
-    public static List<GameObject> MutiInstantiate(GameObject prefab, Vector3 position, float speed, Vector3 baseDirection,
-     int multipleLevel, float angleDifference)
+    public static List<GameObject> MutiInstantiate(GameObject prefab, Vector3 position, Vector3 baseDirection)
     {
         List<GameObject> objs = new();
+        ArmConfigBase concreteConfig = prefab.GetComponent<ArmChildBase>().TheConfig;
+        IMultipleable multipleConfig = concreteConfig as IMultipleable;
+        int multipleLevel = multipleConfig.MultipleLevel;
+        float angleDifference = multipleConfig.AngleDifference;
+        float speed = concreteConfig.Speed;
         for (int i = 0; i < multipleLevel; i++)
         {
-            Vector3 bulletDirection = IMultipleable.CalDirectionDifference(baseDirection, i, multipleLevel, angleDifference);
+            Vector3 bulletDirection = CalDirectionDifference(baseDirection, i, multipleLevel, angleDifference);
             // 生成子弹，并根据发射方向设置旋转
-            GameObject newObj = GameObject.Instantiate(prefab, position, Quaternion.identity);
+            GameObject newObj = ObjectPoolManager.Instance.GetFromPool(prefab.GetComponent<ArmChildBase>().GetType().Name + "Pool", prefab);
+            newObj.transform.position = position;
             ArmChildBase newArmChild = newObj.GetComponent<ArmChildBase>();
-            newArmChild.CopyComponents<ArmChildBase>(prefab.GetComponent<ArmChildBase>());
+            
             // 子弹的方向和速度设置
             newArmChild.Direction = bulletDirection.normalized;
             newArmChild.Speed = speed;
-
             objs.Add(newObj);
         }
         return objs;

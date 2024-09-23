@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using MyBase;
 using UnityEngine;
 
 
 public interface IArmChild
 {
+    public ArmConfigBase TheConfig { get;}
     public Dictionary<string,Queue<GameObject>> CollideObjs { get; }
     public List<IComponent> InstalledComponents { get; set; }
     //第一次忽略的物体，用于衍生技能排除本体

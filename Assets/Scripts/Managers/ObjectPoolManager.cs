@@ -32,8 +32,9 @@ public class ObjectPoolManager : MonoBehaviour
     }
     
     // 创建对象池，并设置池的最大长度和父对象
-    public void CreatePool(string poolName, GameObject prefab, int initialPoolSize, int maxPoolSize, Transform parent)
+    public void CreatePool(string poolName,  GameObject prefab, int initialPoolSize, int maxPoolSize)
     {
+        Transform parent = GameObject.Find(poolName).GetComponent<Transform>();
         if (!poolDictionary.ContainsKey(poolName))
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
@@ -55,6 +56,7 @@ public class ObjectPoolManager : MonoBehaviour
     // 从对象池中获取对象，如果没有可用对象则创建一个新的
     public GameObject GetFromPool(string poolName, GameObject prefab)
     {
+        
         if (poolDictionary.ContainsKey(poolName))
         {
             // 如果对象池中有对象，取出一个对象

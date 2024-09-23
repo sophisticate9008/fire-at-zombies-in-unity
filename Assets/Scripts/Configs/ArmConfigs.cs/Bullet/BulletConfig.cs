@@ -1,8 +1,10 @@
 
 
+using MyBase;
+
 namespace ArmConfigs
 {
-    public class BulletConfig : ArmConfigBase
+    public class BulletConfig : ArmConfigBase, IMultipleable, IFissionable
     {
         // 新增属性
         public int BulletPenetrationLevel { get; set; } = 0;
@@ -11,6 +13,9 @@ namespace ArmConfigs
         public int BulletFissionCount { get; set; } = 2;
         public int MultipleLevel { get; set; } = 2;
         public int RepeatLevel { get; set; } = 2;
+        public float AngleDifference { get; set ; } = 5f;
+        public float RepeatCd { get; set; } = 0.1f;
+        public ArmConfigBase ChildConfig { get => BulletFissionConfig; set {} }
 
         // 构造函数
         public BulletConfig() : base()
@@ -30,11 +35,15 @@ namespace ArmConfigs
             Description = "bullet";
             Level = 1;
             RangeFire = 7;
-            Speed = 7f;
+            Speed = 10f;
             Tlc = 1f;
             Cd = 2f;
             CritRate = 0.1f;
             ComponentStrs.Add("穿透");
+            ComponentStrs.Add("反弹");
+            ComponentStrs.Add("分裂");
+            AttackCd = 1f;
+            AttackCount = 30;
         }
     }
 }

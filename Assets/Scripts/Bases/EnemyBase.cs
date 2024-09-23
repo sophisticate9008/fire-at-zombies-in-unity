@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MyBase
 {
-    public class EnemyBase : MonoBehaviour, IEnemy, IPrefabs
+    public class EnemyBase : MonoBehaviour, IEnemy, IClone
     {
         public AnimatorManager animatorManager;
         public Animator animator;
@@ -116,6 +116,16 @@ namespace MyBase
                 var buff = Buffs.Dequeue();
                 buff.EffectAndAutoRemove();
             }
+        }
+
+        public void ReturnToPool()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Create()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

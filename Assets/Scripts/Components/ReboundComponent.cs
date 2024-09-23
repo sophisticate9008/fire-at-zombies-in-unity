@@ -1,3 +1,4 @@
+using MyBase;
 using UnityEngine;
 
 public class ReboundComponent : ComponentBase, IReboundable
@@ -7,9 +8,13 @@ public class ReboundComponent : ComponentBase, IReboundable
 
     public ReboundComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
     {
+
+    }
+    public override void Init()
+    {
+        base.Init();
         ReboundCount = PlayerStateManager.Instance.bulletConfig.ReboundCount;
     }
-
     public void Rebound()
     {
         if (ReboundCount <= 0) return;  // 反弹次数用完则不再反弹

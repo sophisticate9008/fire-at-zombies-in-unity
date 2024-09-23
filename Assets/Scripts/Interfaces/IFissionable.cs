@@ -1,7 +1,5 @@
-public interface IFissionable
-{
-    public int FissionLevel
-    {
-        get; set;
-    }
+using MyBase;
+
+public interface IFissionable {
+    public ArmConfigBase ChildConfig { get; set; }
 }
