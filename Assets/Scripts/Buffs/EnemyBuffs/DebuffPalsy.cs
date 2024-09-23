@@ -8,7 +8,7 @@ namespace TheBuffs
 
         public DebuffPalsy(string buffName, float duration, GameObject obj) : base(buffName, duration, obj)
         {
-            enemyBase = obj.GetComponent<EnemyBase>();
+            EnemyBase = obj.GetComponent<EnemyBase>();
         }
         public new void Effect()
         {

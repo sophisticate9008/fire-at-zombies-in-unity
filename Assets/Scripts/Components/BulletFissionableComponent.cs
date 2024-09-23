@@ -1,47 +1,48 @@
 using System.Collections.Generic;
+using ArmConfigs;
 using Factorys;
 using UnityEngine;
 
 public class BulletFissionableComponent : ComponentBase, IFissionable
 {
+    public float AngleDifference { get; set; } = 15f;
+    private BulletFissionConfig concreteConfig;
+    public int FissionLevel { get; set; }
+    public int MultipleLevel { get; set; }
 
-    private float angleDifference = 15f;
-    public float AngleDifference
-    {
-        get => angleDifference; set => angleDifference = value;
-    }
+    private ArmChildBase prefab;
 
-    private int bulletFissionCount = PlayerStateManager.Instance.bulletFissionCount;
-
-
-    ArmChildBase bulletPrefab = Resources.Load<GameObject>("Prefabs/Self/BulletFission").GetComponent<ArmChildBase>();
     public BulletFissionableComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
     {
-        bulletPrefab.InstalledComponents.Add(ComponentFactory.Creat("穿透", bulletPrefab.gameObject));
-        
+        concreteConfig = PlayerStateManager.Instance.bulletConfig.BulletFissionConfig;
+        prefab = concreteConfig.Prefab.GetComponent<ArmChildBase>();
+        prefab.InstalledComponents.Add(ComponentFactory.Create("穿透", prefab.gameObject));
+        MultipleLevel = concreteConfig.FissionLevel;
     }
-
-    public int FissionLevel { get => bulletFissionCount; set => bulletFissionCount = value; }
-    public int MultipleLevel { get => bulletFissionCount; set => bulletFissionCount = value; }
 
     public override void TriggerExec(GameObject enemyObj)
     {
-        GameObject TargetEnemy = null;
-        IArmChild armChildPrefab = bulletPrefab.GetComponent<IArmChild>();
+        GameObject targetEnemy = null;
+        IArmChild armChildPrefab = prefab.GetComponent<IArmChild>();
         armChildPrefab.FindTarget(enemyObj);
+        
         if (armChildPrefab.TargetEnemy != null)
         {
-            TargetEnemy = armChildPrefab.TargetEnemy;
+            targetEnemy = armChildPrefab.TargetEnemy;
         }
         else
         {
             return;
         }
-        Vector3 baseDirection = (TargetEnemy.transform.position - SelfObj.transform.position).normalized;
-        var objs = IMultipleable.MutiInstantiate(bulletPrefab.gameObject, SelfObj.transform.position, SelfObj.GetComponent<ArmChildBase>().Speed, baseDirection, MultipleLevel, angleDifference);
-        foreach(var obj in objs) {
+
+        Vector3 baseDirection = (targetEnemy.transform.position - SelfObj.transform.position).normalized;
+        var objs = IMultipleable.MutiInstantiate(prefab.gameObject, SelfObj.transform.position, SelfObj.GetComponent<ArmChildBase>().Speed, baseDirection, MultipleLevel, AngleDifference);
+        
+        foreach (var obj in objs)
+        {
             obj.GetComponent<ArmChildBase>().FirstExceptQueue.Enqueue(enemyObj);
         }
+
         IMultipleable.InitObjs(objs);
     }
 }

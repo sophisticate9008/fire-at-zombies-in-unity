@@ -6,7 +6,7 @@ namespace MyComponents
 {
     public class FreezeComponent : ComponentBase
     {
-        public float Duration{get;set;}
+        public float Duration{get;set;} = 2f;
         public FreezeComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
         {
         }

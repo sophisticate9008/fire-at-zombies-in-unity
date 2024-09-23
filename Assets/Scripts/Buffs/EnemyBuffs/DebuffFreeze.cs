@@ -8,7 +8,7 @@ namespace TheBuffs
 
         public DebuffFreeze(string buffName, float duration, GameObject obj) : base(buffName, duration, obj)
         {
-            enemyBase = obj.GetComponent<EnemyBase>();
+            EnemyBase = obj.GetComponent<EnemyBase>();
         }
         public override void Effect()
         {

@@ -1,14 +1,12 @@
-public class DamageBase : IDamage
+public class DamageBase
 {
-    private string name;
-    private string type;
-    private float harm;
-    private string master;
-    public string Type { get => type; set => type = value; }
-    public float Harm { get => harm; set => harm = value; }
-    public string Name { get => name; set => name = value; }
-    public string Master{get => master; set => master = value;}
-    public DamageBase(string name, string type, float harm, string master) {
+    public string Name { get; set; }
+    public string Type { get; set; }
+    public float Harm { get; set; }
+    public string Master { get; set; }
+
+    public DamageBase(string name, string type, float harm, string master)
+    {
         Name = name;
         Type = type;
         Harm = harm;

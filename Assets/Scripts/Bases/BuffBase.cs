@@ -6,31 +6,20 @@ namespace MyBase
 {
     public class BuffBase : IBuff
     {
-        public EnemyBase enemyBase;
+        public EnemyBase EnemyBase { get; set; }
+
+        public GameObject TheObj { get; set; }
+
+        public float Duration { get; set; } = 5f;
+
+        public string BuffName { get; set; }
+
         public BuffBase(string buffName, float duration, GameObject obj)
         {
             BuffName = buffName;
             Duration = duration;
             TheObj = obj;
-            enemyBase = obj.GetComponent<EnemyBase>();
-        }
-        private GameObject obj;
-        public GameObject TheObj
-        {
-            get { return obj; }
-            set { obj = value; }
-        }
-        private float duration = 5f;
-        private string buffName;
-        public string BuffName
-        {
-            get { return buffName; }
-            set { buffName = value; }
-        }
-        public float Duration
-        {
-            get { return duration; }
-            set { duration = value; }
+            EnemyBase = obj.GetComponent<EnemyBase>();
         }
         public virtual void Effect()
         {
@@ -53,18 +42,18 @@ namespace MyBase
                 .Subscribe(_ =>
                 {
                     _elapsedTime += 1f / 60f;
-                    if (enemyBase.Config.controlImmunityList.IndexOf(BuffName) == -1)
+                    if (EnemyBase.Config.controlImmunityList.IndexOf(BuffName) == -1)
                     {
-                        enemyBase.CanAction = false;
-                        
+                        EnemyBase.CanAction = false;
+
                     }
                 });
         }
         public virtual void RemoveControl()
         {
-            
-            enemyBase.CanAction = true;
-            
+
+            EnemyBase.CanAction = true;
+
         }
     }
 }

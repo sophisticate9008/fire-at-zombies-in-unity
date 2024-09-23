@@ -7,24 +7,13 @@ namespace MyBase
 
     public class ArmBase : MonoBehaviour, IArms
     {
-        private int rangeFire = 10;
-        private float speed = 10;
-        private GameObject targetEnemy;
-        public int RangeFire
-        {
-            get { return rangeFire; }
-            set { rangeFire = value; }
-        }
-        public float Speed
-        {
-            get { return speed; }
-            set { speed = value; }
-        }
-        public GameObject TargetEnemy
-        {
-            get { return targetEnemy; }
-            set { targetEnemy = value; }
-        }
+        
+
+        public GameObject TargetEnemy{get;set;}
+        
+
+        public ArmConfigBase TheConfig{get; set;}
+
         public void FindTargetNearest()
         {
             EnemyBase[] enemies = FindObjectsOfType<EnemyBase>();
@@ -34,7 +23,7 @@ namespace MyBase
             foreach (EnemyBase enemy in enemies)
             {
                 float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
-                if (distanceToEnemy < shortestDistance && distanceToEnemy <= RangeFire)
+                if (distanceToEnemy < shortestDistance && distanceToEnemy <= TheConfig.RangeFire)
                 {
                     shortestDistance = distanceToEnemy;
                     nearestEnemy = enemy.gameObject;
@@ -50,7 +39,9 @@ namespace MyBase
                 TargetEnemy = null;
             }
         }
-
+        protected virtual void Start() {
+            TheConfig = PlayerStateManager.Instance.GetArmConfigByClassName(GetType().Name);
+        }
 
         
     }

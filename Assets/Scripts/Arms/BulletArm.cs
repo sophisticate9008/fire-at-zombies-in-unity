@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using ArmConfigs;
 using Factorys;
 using MyBase;
 using UnityEngine;
 using VContainer;
 
-public class Gun : ArmBase, IRepeatable, IMultipleable
+public class BulletArm : ArmBase, IRepeatable, IMultipleable
 {
 
 
-    public Bullet bulletPrefab;
-    private int multipleLevel = 2;
-    private int repeatLevel = 3;
-    private int fissionLevel;
+    public Bullet prefab;
+    public BulletConfig concreteConfig;
     //锁定的敌人
     private float fireCooldown = 1f; // 射击间隔时间
     private float lastFireTime = 0f;
@@ -22,38 +21,28 @@ public class Gun : ArmBase, IRepeatable, IMultipleable
         get => angleDifference;
         set => angleDifference = value;
     }
-    public int MultipleLevel
+    public int MultipleLevel{get;set;}
+    public int RepeatLevel{get;set;}
+    public int FissionLevel{get;set;}
+
+    protected override void Start()
     {
-        get { return multipleLevel; }
-        set { multipleLevel = value; }
-    }
-    public int RepeatLevel
-    {
-        get { return repeatLevel; }
-        set { repeatLevel = value; }
-    }
-    public int FissionLevel
-    {
-        get => fissionLevel;
-        set
-        {
-            fissionLevel = value;
-        }
-    }
-    private void Awake()
-    {
-        List<IComponent> installedComponents = bulletPrefab.GetComponent<Bullet>().InstalledComponents;
-        installedComponents.Add(ComponentFactory.Creat("穿透", gameObject));
-        installedComponents.Add(ComponentFactory.Creat("反弹", gameObject));
-        installedComponents.Add(ComponentFactory.Creat("子弹分裂", gameObject));
-        installedComponents.Add(ComponentFactory.Creat("冰冻", gameObject, 2.0f));
+        base.Start();
+        concreteConfig = TheConfig as BulletConfig;
+        prefab = concreteConfig.Prefab.GetComponent<Bullet>();
+        prefab.InstalledComponents.Add(ComponentFactory.Create("穿透", gameObject));
+        prefab.InstalledComponents.Add(ComponentFactory.Create("子弹分裂", gameObject));
+        prefab.InstalledComponents.Add(ComponentFactory.Create("反弹", gameObject));
+        MultipleLevel = concreteConfig.MultipleLevel;
+        RepeatLevel = concreteConfig.RepeatLevel;
+        FissionLevel = concreteConfig.BulletFissionCount;
     }
 
     // [Inject]
-    // public void Inject(Bullet bulletPrefab)
+    // public void Inject(Bullet prefab)
     // {
     //     Debug.Log("Inject Bullet");
-    //     this.bulletPrefab = bulletPrefab;
+    //     this.prefab = prefab;
     // }
 
 
@@ -84,7 +73,7 @@ public class Gun : ArmBase, IRepeatable, IMultipleable
         Vector3 baseDirection = (TargetEnemy.transform.position - transform.position).normalized;
 
         // 发射 MultipleLevel 数量的子弹
-        var objs = IMultipleable.MutiInstantiate(bulletPrefab.gameObject, transform.position, Speed, baseDirection, MultipleLevel, angleDifference);
+        var objs = IMultipleable.MutiInstantiate(prefab.gameObject, transform.position, concreteConfig.Speed, baseDirection, MultipleLevel, angleDifference);
         IMultipleable.InitObjs(objs);
     }
 

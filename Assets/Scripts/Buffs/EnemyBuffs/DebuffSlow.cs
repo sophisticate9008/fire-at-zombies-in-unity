@@ -10,17 +10,17 @@ namespace TheBuffs
 
         public DebuffSlow(string buffName, float duration, GameObject obj) : base(buffName, duration, obj)
         {
-            enemyBase = obj.GetComponent<EnemyBase>();
+            EnemyBase = obj.GetComponent<EnemyBase>();
         }
         public new void Effect()
         {
-            originSpeed = enemyBase.Config.speed;
-            enemyBase.Config.speed = originSpeed * slowRate;
+            originSpeed = EnemyBase.Config.speed;
+            EnemyBase.Config.speed = originSpeed * slowRate;
         }
 
         public new void Remove()
         {
-            enemyBase.Config.speed = originSpeed;
+            EnemyBase.Config.speed = originSpeed;
         }
     }
 }

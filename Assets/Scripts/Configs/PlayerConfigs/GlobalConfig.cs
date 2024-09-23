@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 
-[System.Serializable]
-public class StateStaticConfig
+public class GlobalConfig
 {
+    //暴击率
+    public float critRate;
+    //暴击伤害
+    public float critDamage;
     //攻击力
     public int attack;
     //生命值

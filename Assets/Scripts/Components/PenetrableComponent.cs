@@ -7,11 +7,11 @@ namespace MyComponents
     public class PenetrableComponent : ComponentBase, IPenetrable
     {
 
-        private readonly ReactiveProperty<int> _penetrationLevel = new(PlayerStateManager.Instance.allPenetrationLevel);
+        private readonly ReactiveProperty<int> _penetrationLevel = new(PlayerStateManager.Instance.globalConfig.allPenetrationLevel);
         public PenetrableComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
         {
             if(selfObj.GetComponent<Bullet>() != null) {
-                PenetrationLevel += PlayerStateManager.Instance.bulletPenetrationLevel;
+                PenetrationLevel += PlayerStateManager.Instance.bulletConfig.BulletPenetrationLevel;
             }
 
         }

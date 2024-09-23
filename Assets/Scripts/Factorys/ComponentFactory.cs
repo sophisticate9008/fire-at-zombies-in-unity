@@ -7,7 +7,7 @@ namespace Factorys
 {
     public class ComponentFactory
     {
-        public static ComponentBase Creat(string componentName, GameObject selfObj, params object[] args)
+        public static ComponentBase Create(string componentName, GameObject selfObj, params object[] args)
         {
 
             return componentName switch

@@ -6,15 +6,13 @@ using UnityEngine;
 
 public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
 {
-    private Queue<GameObject> firstExceptQueue = new();
     public GameObject TargetEnemy { get; set; }
-    private List<IComponent> installComponents = new();
     public bool IsInit { get; set; }
-    public List<IComponent> InstalledComponents { get => installComponents; set => installComponents = value; }
+    public List<IComponent> InstalledComponents { get; set; } = new();
     public float Speed { get; set; }
     public Vector3 Direction { get; set; }
     public Vector3 EulerAngle { get; set; }
-    public Queue<GameObject> FirstExceptQueue => firstExceptQueue;
+    public Queue<GameObject> FirstExceptQueue {get; set;} = new();
     private readonly Dictionary<string, Queue<GameObject>> collideObjs = new() {
         {"enter", new()},
         {"stay", new()},
@@ -148,7 +146,7 @@ public class ArmChildBase : MonoBehaviour, IPrefabs, IArmChild
             foreach (var component in prefabArmChild.InstalledComponents)
             {
                 // 假设有一个方式来复制组件，可以通过工厂或者直接实例化
-                var newComponent = ComponentFactory.Creat(component.ComponentName, gameObject.gameObject);
+                var newComponent = ComponentFactory.Create(component.ComponentName, gameObject);
                 newInstanceArmChild.InstalledComponents.Add(newComponent);
             }
         }
