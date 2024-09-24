@@ -12,13 +12,13 @@ namespace TheBuffs
         {
             EnemyBase = obj.GetComponent<EnemyBase>();
         }
-        public new void Effect()
+        public override void Effect()
         {
             originSpeed = EnemyBase.Config.speed;
             EnemyBase.Config.speed = originSpeed * slowRate;
         }
 
-        public new void Remove()
+        public override void Remove()
         {
             EnemyBase.Config.speed = originSpeed;
         }

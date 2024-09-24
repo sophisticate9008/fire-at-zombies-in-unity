@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IEnemy {
-
+    public Dictionary<string, float> BuffEndTimes{ get; set;}
+    public float HardControlEndTime { get; set; }
+    public float ControlEndTime { get; set; }
     public bool CanAction{get;set;}
     EnemyConfig Config { get; set;}
     void LoadConfig();
@@ -16,4 +18,5 @@ public interface IEnemy {
     //死亡火花，弹坑，追击，  
     void Die();
     void BuffEffect();
+    void AddBuff(string buffname, float duration);
 }

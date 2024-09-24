@@ -7,7 +7,7 @@ public interface IArmChild
 {
     public ArmConfigBase TheConfig { get;}
     public Dictionary<string,Queue<GameObject>> CollideObjs { get; }
-    public List<IComponent> InstalledComponents { get; set; }
+    public Dictionary<string, IComponent> InstalledComponents { get; set; }
     //第一次忽略的物体，用于衍生技能排除本体
     public Queue<GameObject> FirstExceptQueue { get; set;}
     public float Speed { get; set; }

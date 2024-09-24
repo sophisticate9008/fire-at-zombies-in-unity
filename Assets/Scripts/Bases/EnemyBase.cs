@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using Factorys;
 using UnityEngine;
 
 namespace MyBase
@@ -13,6 +14,10 @@ namespace MyBase
         public bool IsInit { get; set; }
         public Queue<IBuff> Buffs { get; } = new();
         public Dictionary<string, IComponent> InstalledComponents { get; } = new();
+        public float ControlEndTime { get; set; } = 0f;
+        public Dictionary<string, float> BuffEndTimes { get; set; } = new();
+        //硬控总结束时间
+        public float HardControlEndTime { get; set; }
 
         private readonly string pathPublic = "Configs/EnemyConfigs";
 
@@ -123,9 +128,35 @@ namespace MyBase
             throw new System.NotImplementedException();
         }
 
-        public void Create()
+        public void AddBuff(string buffName, float duration)
         {
-            throw new System.NotImplementedException();
+            //免疫指定控制buff
+            if (Config.controlImmunityList.IndexOf(buffName) != -1)
+            {
+                return;
+            }
+            if (!BuffEndTimes.ContainsKey(buffName))
+            {
+                Buffs.Enqueue(BuffFactory.Create(buffName, duration, gameObject));
+            }
+            else
+            {
+                float endTime = BuffEndTimes[buffName];
+                float now = Time.time;
+                //buff已经结束
+                if (now > endTime)
+                {
+                    Buffs.Enqueue(BuffFactory.Create(buffName, duration, gameObject));
+                }
+                else
+                {
+                    //当前+持续时间大于buff结束时间，设置新的结束时间，小于则不用管，被上个buff效果包含了
+                    if(now + duration > endTime) {
+                        BuffEndTimes[buffName] = now + duration;
+                    }
+                }
+                
+            }
         }
     }
 }

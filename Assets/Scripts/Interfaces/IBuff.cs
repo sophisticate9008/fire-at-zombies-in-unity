@@ -9,4 +9,6 @@ public interface IBuff {
     void EffectAndAutoRemove();
 
     void Remove();
+    void EffectControl();
+    void RemoveControl();
 }

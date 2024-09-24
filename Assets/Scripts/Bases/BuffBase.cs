@@ -1,10 +1,12 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using R3;
 using UnityEngine;
 
 namespace MyBase
 {
-    public class BuffBase : IBuff
+    public abstract class BuffBase : IBuff
     {
         public EnemyBase EnemyBase { get; set; }
 
@@ -20,39 +22,50 @@ namespace MyBase
             Duration = duration;
             TheObj = obj;
             EnemyBase = obj.GetComponent<EnemyBase>();
-        }
-        public virtual void Effect()
-        {
-        }
-        public virtual void Remove()
-        {
 
         }
+        public abstract void Effect();  // 留给子类实现具体效果
+        public abstract void Remove();  // 留给子类实现具体移除逻辑
         public void EffectAndAutoRemove()
         {
             Effect();
-            Observable.Timer(TimeSpan.FromSeconds(Duration))
-                .Subscribe(_ => Remove());
+            UpdateEndtimes();
+            TheObj.GetComponent<MonoBehaviour>().StartCoroutine(AutoRemove());
+        }
+        private void UpdateEndtimes()
+        {
+            float buffEndTime = Time.time + Duration;
+            EnemyBase.BuffEndTimes[BuffName] = buffEndTime;
         }
         public void EffectControl()
         {
-            float _elapsedTime = 0f;
-            var subscription = Observable.Interval(TimeSpan.FromSeconds(1f / 60f))
-                .TakeUntil(Observable.Timer(TimeSpan.FromSeconds(Duration)))
-                .Subscribe(_ =>
-                {
-                    _elapsedTime += 1f / 60f;
-                    if (EnemyBase.Config.controlImmunityList.IndexOf(BuffName) == -1)
-                    {
-                        EnemyBase.CanAction = false;
+            EnemyBase.CanAction = false;
+            float now = Time.time;
+            EnemyBase.HardControlEndTime = Mathf.Max(now + Duration, EnemyBase.HardControlEndTime);
 
-                    }
-                });
+
+        }
+        private IEnumerator AutoRemove()
+        {
+            while (true)
+            {
+                float now = Time.time;
+                yield return new WaitForSeconds(0.1f);
+                
+                if (now >= EnemyBase.BuffEndTimes[BuffName])
+                {
+                    Remove();
+                    break;
+                }
+            }
         }
         public virtual void RemoveControl()
         {
-
-            EnemyBase.CanAction = true;
+            float now = Time.time;
+            if(now >= EnemyBase.HardControlEndTime) {
+                EnemyBase.CanAction = true;
+            }
+            
 
         }
     }

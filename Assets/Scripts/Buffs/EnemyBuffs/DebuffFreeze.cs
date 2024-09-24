@@ -12,19 +12,12 @@ namespace TheBuffs
         }
         public override void Effect()
         {
-            
             EffectControl();
-
-            base.Effect();
         }
 
         public override void Remove()
         {
-            
             RemoveControl();
-
-            base.Remove();
-            
         }
     }
 }

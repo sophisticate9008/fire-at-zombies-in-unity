@@ -9,12 +9,11 @@ namespace MyBase
 
     public class ArmChildBase : MonoBehaviour, IClone, IArmChild
     {
-        //第一次初始化调用create()
-        private bool isFirstInit = true;
+
         public ArmConfigBase TheConfig => PlayerStateManager.Instance.GetArmConfigByClassName(GetType().Name);
         public GameObject TargetEnemy { get; set; }
         public bool IsInit { get; set; }
-        public List<IComponent> InstalledComponents { get; set; } = new();
+        public Dictionary<string, IComponent> InstalledComponents { get; set; } = new();
         public float Speed { get; set; }
         public Vector3 Direction { get; set; }
         public Vector3 EulerAngle { get; set; }
@@ -77,9 +76,9 @@ namespace MyBase
         {
             foreach (var component in InstalledComponents)
             {
-                if (component.Type == type)
+                if (component.Value.Type == type)
                 {
-                    component.TriggerExec(obj);
+                    component.Value.TriggerExec(obj);
                 }
             }
         }
@@ -136,14 +135,10 @@ namespace MyBase
 
         public virtual void Init()
         {
-            if (isFirstInit)
-            {
-                Create();
-                isFirstInit = false;
-            }
+            CreateComponents();
             foreach (var component in InstalledComponents)
             {
-                component.Init();
+                component.Value.Init();
             }
             IsInit = true;
 
@@ -185,12 +180,19 @@ namespace MyBase
             ObjectPoolManager.Instance.ReturnToPool(GetType().Name + "Pool", gameObject);
         }
 
-        public virtual void Create()
+        public virtual void CreateComponents()
         {
-            foreach (var componentName in TheConfig.ComponentStrs)
+            foreach (var componentStr in TheConfig.ComponentStrs)
             {
-                InstalledComponents.Add(ComponentFactory.Create(componentName, gameObject));
+                if (!InstalledComponents.ContainsKey(componentStr))
+                {
+                    var component = ComponentFactory.Create(componentStr, gameObject);
+                    InstalledComponents.Add(component.ComponentName, component);
+                }
+
+
             }
+
         }
     }
 }

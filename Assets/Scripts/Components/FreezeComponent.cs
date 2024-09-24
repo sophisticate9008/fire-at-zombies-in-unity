@@ -14,7 +14,7 @@ namespace MyComponents
         public override void TriggerExec(GameObject enemyObj)
         {
             EnemyBase enemyBase = enemyObj.GetComponent<EnemyBase>();
-            enemyBase.Buffs.Enqueue(BuffFactory.Create("冰冻", 2f, enemyObj));
+            enemyBase.AddBuff("冰冻", Duration);
         }
     }
 }
