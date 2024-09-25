@@ -1,44 +1,113 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+
 namespace MyBase
 {
-
-
-    public class ArmConfigBase
+    [System.Serializable] // 标记为可序列化
+    public class ArmConfigBase: ConfigBase
     {
         private GameObject prefab;
-        // Prefab 属性，允许重写
-        public virtual GameObject Prefab
+
+        // 使用私有字段来存储属性值
+        [SerializeField] private float critRate;
+        [SerializeField] private string name;
+        [SerializeField] private string description;
+        [SerializeField] private int level;
+        [SerializeField] private float tlc;
+        [SerializeField] private float speed;
+        [SerializeField] private int rangeFire;
+        [SerializeField] private float cd;
+        [SerializeField] private float attackCd;
+        [SerializeField] private int attackCount;
+        [SerializeField] private float lastTime;
+        [SerializeField] private List<string> componentStrs = new List<string>();
+
+        // Prefab 属性
+        public override GameObject Prefab
         {
             get
             {
                 if (prefab == null)
                 {
-                    prefab = Resources.Load<GameObject>("Prefabs/Self/" + GetType().Name.Replace("Config", ""));
-                    return prefab;
+                    prefab = Resources.Load<GameObject>(Constant.SelfPrefabResPath + GetType().Name.Replace("Config", ""));
                 }
-                else
-                {
-                    return prefab;
-                }
-
+                return prefab;
             }
         }
 
-        // 属性定义
-        public virtual float CritRate { get; set; }
-        public virtual string Name { get; set; }
-        public virtual string Description { get; set; }
-        public virtual int Level { get; set; }
-        public virtual float Tlc { get; set; }  // 倍率
-        public virtual float Speed { get; set; }
-        public virtual int RangeFire { get; set; }
-        public virtual float Cd { get; set; }
+        // 属性通过字段实现
+        public virtual float CritRate
+        {
+            get => critRate;
+            set => critRate = value;
+        }
 
-        public virtual float AttackCd { get; set; }
-        public virtual int AttackCount { get; set; }
-        public virtual float LastTime { get; set; }
-        public virtual List<string> ComponentStrs { get; set; } = new List<string>();
+        public virtual string Name
+        {
+            get => name;
+            set => name = value;
+        }
+
+        public virtual string Description
+        {
+            get => description;
+            set => description = value;
+        }
+
+        public virtual int Level
+        {
+            get => level;
+            set => level = value;
+        }
+
+        public virtual float Tlc
+        {
+            get => tlc;
+            set => tlc = value;
+        }
+
+        public virtual float Speed
+        {
+            get => speed;
+            set => speed = value;
+        }
+
+        public virtual int RangeFire
+        {
+            get => rangeFire;
+            set => rangeFire = value;
+        }
+
+        public virtual float Cd
+        {
+            get => cd;
+            set => cd = value;
+        }
+
+        public virtual float AttackCd
+        {
+            get => attackCd;
+            set => attackCd = value;
+        }
+
+        public virtual int AttackCount
+        {
+            get => attackCount;
+            set => attackCount = value;
+        }
+
+        public virtual float LastTime
+        {
+            get => lastTime;
+            set => lastTime = value;
+        }
+
+        public virtual List<string> ComponentStrs
+        {
+            get => componentStrs;
+            set => componentStrs = value;
+        }
 
         // 构造函数
         public ArmConfigBase()
@@ -46,11 +115,11 @@ namespace MyBase
             Init();
         }
 
-
-        // 初始化方法，可以在派生类中重写
+        // 初始化方法，允许子类重写
         public virtual void Init()
         {
             // 初始化逻辑可以在子类中进行扩展
         }
+
     }
 }

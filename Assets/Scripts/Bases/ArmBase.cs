@@ -13,7 +13,7 @@ namespace MyBase
         public GameObject TargetEnemy { get; set; }
 
 
-        public ArmConfigBase TheConfig { get; set; }
+        public ArmConfigBase Config  => ConfigManager.Instance.GetConfigByClassName(GetType().Name.Replace("Arm", "")) as ArmConfigBase;
 
         public void FindTargetNearestOrElite()
         {
@@ -24,7 +24,7 @@ namespace MyBase
             foreach (EnemyBase enemy in enemies)
             {
                 float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
-                if (distanceToEnemy < shortestDistance && distanceToEnemy <= TheConfig.RangeFire)
+                if (distanceToEnemy < shortestDistance && distanceToEnemy <= Config.RangeFire)
                 {
                     shortestDistance = distanceToEnemy;
                     nearestEnemy = enemy.gameObject;
@@ -42,7 +42,6 @@ namespace MyBase
         }
         protected virtual void Start()
         {
-            TheConfig = PlayerStateManager.Instance.GetArmConfigByClassName(GetType().Name.Replace("Arm", ""));
         }
         public virtual void Update()
         {
@@ -50,7 +49,7 @@ namespace MyBase
         }
         public virtual void AttackLogic() {
             FindTargetNearestOrElite();
-            if (TargetEnemy != null && Time.time - lastFireTime > TheConfig.Cd)
+            if (TargetEnemy != null && Time.time - lastFireTime > Config.Cd)
             {
                 StartCoroutine(AttackSequence()); // 发射子弹
                 lastFireTime = Time.time + 100000;
@@ -60,7 +59,7 @@ namespace MyBase
         
         public virtual IEnumerator AttackSequence() {
 
-            for(int i = 0; i < TheConfig.AttackCount; i++) {
+            for(int i = 0; i < Config.AttackCount; i++) {
                 if(i == 0) {
                     FisrtFindTarget();
                 }else {
@@ -68,7 +67,7 @@ namespace MyBase
                 }
                 Attack();
                 lastFireTime = Time.time;
-                yield return new WaitForSeconds(TheConfig.AttackCd);
+                yield return new WaitForSeconds(Config.AttackCd);
                 
             }
         }

@@ -23,7 +23,7 @@ public interface IMultipleable
     public static List<GameObject> MutiInstantiate(GameObject prefab, Vector3 position, Vector3 baseDirection)
     {
         List<GameObject> objs = new();
-        ArmConfigBase concreteConfig = prefab.GetComponent<ArmChildBase>().TheConfig;
+        ArmConfigBase concreteConfig = prefab.GetComponent<ArmChildBase>().Config;
         IMultipleable multipleConfig = concreteConfig as IMultipleable;
         int multipleLevel = multipleConfig.MultipleLevel;
         float angleDifference = multipleConfig.AngleDifference;

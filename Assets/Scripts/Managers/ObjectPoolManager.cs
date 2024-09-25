@@ -20,7 +20,6 @@ public class ObjectPoolManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             poolDictionary = new Dictionary<string, Queue<GameObject>>();
             poolMaxSizeDictionary = new Dictionary<string, int>();
             poolParentDictionary = new Dictionary<string, Transform>();
@@ -34,7 +33,9 @@ public class ObjectPoolManager : MonoBehaviour
     // 创建对象池，并设置池的最大长度和父对象
     public void CreatePool(string poolName,  GameObject prefab, int initialPoolSize, int maxPoolSize)
     {
-        Transform parent = GameObject.Find(poolName).GetComponent<Transform>();
+        GameObject grandParent = GameObject.Find("ObjectPools");
+        GameObject poolObject = new GameObject(poolName);
+        poolObject.transform.parent = grandParent.transform;
         if (!poolDictionary.ContainsKey(poolName))
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
@@ -42,14 +43,14 @@ public class ObjectPoolManager : MonoBehaviour
             // 初始化时创建指定数量的对象，并加入池中
             for (int i = 0; i < initialPoolSize; i++)
             {
-                GameObject obj = Instantiate(prefab, parent);
+                GameObject obj = Instantiate(prefab, poolObject.transform);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }
 
             poolDictionary.Add(poolName, objectPool);
             poolMaxSizeDictionary.Add(poolName, maxPoolSize); // 保存每个池的最大长度
-            poolParentDictionary.Add(poolName, parent);       // 保存父对象
+            poolParentDictionary.Add(poolName, poolObject.transform);       // 保存父对象
         }
     }
 

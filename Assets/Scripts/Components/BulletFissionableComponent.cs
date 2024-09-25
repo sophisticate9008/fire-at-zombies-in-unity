@@ -11,7 +11,7 @@ public class FissionableComponent : ComponentBase
     readonly GameObject prefab;
     public FissionableComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
     {
-        Config = selfObj.GetComponent<ArmChildBase>().TheConfig;
+        Config = selfObj.GetComponent<ArmChildBase>().Config;
         IFissionable FissionableConfig = Config as IFissionable;
         prefab = FissionableConfig.ChildConfig.Prefab;
     }

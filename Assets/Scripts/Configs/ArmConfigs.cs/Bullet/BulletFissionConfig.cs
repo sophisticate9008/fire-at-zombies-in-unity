@@ -4,7 +4,7 @@ namespace ArmConfigs
 {
     public class BulletFissionConfig : ArmConfigBase, IMultipleable
     {
-        public BulletConfig BulletConfig { get; set; }
+        public BulletConfig BulletConfig => ConfigManager.Instance.GetConfigByClassName("Bullet") as BulletConfig;
 
         // 使用 override 重写属性，保持多态性
         public override float Tlc

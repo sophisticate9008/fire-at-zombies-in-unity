@@ -1,5 +1,6 @@
 using System;
 using ArmChild;
+using ArmConfigs;
 using MyBase;
 using R3;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace MyComponents
     public class PenetrableComponent : ComponentBase, IPenetrable
     {
 
-        private readonly ReactiveProperty<int> _penetrationLevel = new(PlayerStateManager.Instance.globalConfig.allPenetrationLevel);
+        private readonly ReactiveProperty<int> _penetrationLevel = new();
         public PenetrableComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
         {
 
@@ -16,10 +17,10 @@ namespace MyComponents
         public override void Init()
         {
             base.Init();
-            PenetrationLevel = PlayerStateManager.Instance.globalConfig.allPenetrationLevel;
+            PenetrationLevel = (ConfigManager.Instance.GetConfigByClassName("Global") as GlobalConfig).AllPenetrationLevel;
             if (SelfObj.GetComponent<Bullet>() != null)
             {
-                PenetrationLevel += PlayerStateManager.Instance.bulletConfig.BulletPenetrationLevel;
+                PenetrationLevel += (ConfigManager.Instance.GetConfigByClassName("Bullet") as BulletConfig).BulletPenetrationLevel;
             }
         }
         public int PenetrationLevel
@@ -37,7 +38,7 @@ namespace MyComponents
 
         public override void TriggerExec(GameObject enemyObj)
         {
-            PenetrationLevel -= enemyObj.GetComponent<EnemyBase>().Config.blocks;
+            // PenetrationLevel -= enemyObj.GetComponent<EnemyBase>().Config.blocks;
             if (PenetrationLevel <= 0)
             {
                 HandleDestruction();

@@ -18,7 +18,7 @@ namespace Arms
         protected override void Start()
         {
             base.Start();
-            concreteConfig = TheConfig as BulletConfig;
+            concreteConfig = Config as BulletConfig;
             prefab = concreteConfig.Prefab;
             RepeatLevel = concreteConfig.RepeatLevel;
         }

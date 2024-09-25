@@ -1,3 +1,4 @@
+using ArmConfigs;
 using MyBase;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class ReboundComponent : ComponentBase, IReboundable
     public override void Init()
     {
         base.Init();
-        ReboundCount = PlayerStateManager.Instance.bulletConfig.ReboundCount;
+        ReboundCount = (ConfigManager.Instance.GetConfigByClassName("Bullet") as BulletConfig).ReboundCount;
     }
     public void Rebound()
     {

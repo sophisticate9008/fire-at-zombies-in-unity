@@ -1,19 +1,20 @@
 using System.Collections.Generic;
+using System.IO;
 using ArmConfigs;
+using Factorys;
 using MyBase;
 using UnityEngine;
 
 public class PlayerStateManager : MonoBehaviour
 {
-    public GlobalConfig globalConfig = new GlobalConfig();
-    public BulletConfig bulletConfig = new BulletConfig();
+
     // 静态实例
     public static PlayerStateManager Instance { get; private set; }
-
+    public GlobalConfig globalConfig;
     // Unity Awake 方法，确保在所有其他组件之前初始化
     private void Awake()
     {
-        
+
         // 检查是否已经有实例存在
         if (Instance != null && Instance != this)
         {
@@ -28,16 +29,7 @@ public class PlayerStateManager : MonoBehaviour
     // 其他管理逻辑可以在此添加
     void Start()
     {
-        ObjectPoolManager.Instance.CreatePool("BulletPool", bulletConfig.Prefab, 50, 100);
-        ObjectPoolManager.Instance.CreatePool("BulletFissionPool", bulletConfig.BulletFissionConfig.Prefab, 100, 200);
+        globalConfig = ConfigManager.Instance.GetConfigByClassName("Global") as GlobalConfig;
     }
-    public ArmConfigBase GetArmConfigByClassName(string armName)
-    {
-        return armName switch
-        {
-            "Bullet" => bulletConfig,
-            "BulletFission" => bulletConfig.BulletFissionConfig,
-            _ => throw new System.NotImplementedException(),
-        };
-    }
+
 }

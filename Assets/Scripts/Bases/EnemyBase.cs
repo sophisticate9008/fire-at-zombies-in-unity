@@ -10,7 +10,7 @@ namespace MyBase
         public AnimatorManager animatorManager;
         public Animator animator;
         public bool CanAction { get; set; } = true;
-        public EnemyConfig Config { get; set; }
+        public EnemyConfigBase Config => ConfigManager.Instance.GetConfigByClassName(GetType().Name) as EnemyConfigBase;
         public bool IsInit { get; set; }
         public Queue<IBuff> Buffs { get; } = new();
         public Dictionary<string, IComponent> InstalledComponents { get; } = new();
@@ -19,17 +19,14 @@ namespace MyBase
         //硬控总结束时间
         public float HardControlEndTime { get; set; }
 
-        private readonly string pathPublic = "Configs/EnemyConfigs";
+
 
         public virtual void Init()
         {
-            LoadConfig();
             IsInit = true;
         }
-
         protected virtual void Start()
         {
-            LoadConfig();
             animatorManager = AnimatorManager.Instance;
             animator = GetComponent<Animator>();
         }
@@ -45,7 +42,6 @@ namespace MyBase
                 animatorManager.PlayAnim(animator, 1f);
             }
         }
-
         public void Update()
         {
             BuffEffect();
@@ -55,31 +51,15 @@ namespace MyBase
             }
         }
 
-        public void LoadConfig()
-        {
-            string className = GetType().Name;
-            string configFileName = Path.Combine(pathPublic, className);
-            TextAsset json = Resources.Load<TextAsset>(configFileName);
-
-            if (json != null)
-            {
-                EnemyConfig theConfig = JsonUtility.FromJson<EnemyConfig>(json.text);
-                Config = theConfig;
-            }
-            else
-            {
-                Debug.LogError($"Config file not found: {configFileName}");
-            }
-        }
 
         public virtual void Move()
         {
             Vector3 position = transform.position;
             float bottomEdge = -Camera.main.orthographicSize;
 
-            if (position.y > bottomEdge + Config.rangeFire)
+            if (position.y > bottomEdge + Config.RangeFire)
             {
-                transform.Translate(Config.speed * Time.deltaTime * Vector3.down);
+                transform.Translate(Config.Speed * Time.deltaTime * Vector3.down);
             }
         }
 
@@ -131,7 +111,7 @@ namespace MyBase
         public void AddBuff(string buffName, float duration)
         {
             //免疫指定控制buff
-            if (Config.controlImmunityList.IndexOf(buffName) != -1)
+            if (Config.ControlImmunityList.IndexOf(buffName) != -1)
             {
                 return;
             }

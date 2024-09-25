@@ -1,5 +1,5 @@
 using MyBase;
 
 public interface IFissionable {
-    public ArmConfigBase ChildConfig { get; set; }
+    public ArmConfigBase ChildConfig { get; }
 }

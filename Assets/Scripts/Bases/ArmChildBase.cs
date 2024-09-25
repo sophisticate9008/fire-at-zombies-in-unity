@@ -10,7 +10,7 @@ namespace MyBase
     public class ArmChildBase : MonoBehaviour, IClone, IArmChild
     {
 
-        public ArmConfigBase TheConfig => PlayerStateManager.Instance.GetArmConfigByClassName(GetType().Name);
+        public ArmConfigBase Config => ConfigManager.Instance.GetConfigByClassName(GetType().Name) as ArmConfigBase;
         public GameObject TargetEnemy { get; set; }
         public bool IsInit { get; set; }
         public Dictionary<string, IComponent> InstalledComponents { get; set; } = new();
@@ -24,7 +24,8 @@ namespace MyBase
         {"exit", new()}
     };
         public Dictionary<string, Queue<GameObject>> CollideObjs => collideObjs;
-
+        private void Start() {
+        }
         public bool IsOutOfBounds()
         {
             // 获取子弹在屏幕上的位置
@@ -182,7 +183,7 @@ namespace MyBase
 
         public virtual void CreateComponents()
         {
-            foreach (var componentStr in TheConfig.ComponentStrs)
+            foreach (var componentStr in Config.ComponentStrs)
             {
                 if (!InstalledComponents.ContainsKey(componentStr))
                 {
