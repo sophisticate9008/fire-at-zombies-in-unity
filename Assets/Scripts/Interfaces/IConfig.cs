@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IConfig{
     void SaveConfig();
-    GameObject Prefab { get; }
+    GameObject Prefab { get;set; }
 }

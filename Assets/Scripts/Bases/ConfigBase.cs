@@ -5,7 +5,7 @@ namespace MyBase
 {
     public class ConfigBase : IConfig
     {
-        public virtual GameObject Prefab { get;}
+        public virtual GameObject Prefab { get;set;}
 
         public void SaveConfig()
         {

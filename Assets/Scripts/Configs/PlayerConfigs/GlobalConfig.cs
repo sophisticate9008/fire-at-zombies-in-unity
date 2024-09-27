@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MyBase;
 using UnityEngine;
 
 public class GlobalConfig : IConfig
@@ -17,7 +18,6 @@ public class GlobalConfig : IConfig
     [SerializeField] private float allAddition;
     [SerializeField] private float boomAddition;
     [SerializeField] private float adAddition;
-
     // 构造函数
     public GlobalConfig()
     {
@@ -108,6 +108,7 @@ public class GlobalConfig : IConfig
         get => adAddition;
         set => adAddition = value;
     }
+
     public GameObject Prefab { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     // 获取伤害加成的字典
@@ -130,4 +131,6 @@ public class GlobalConfig : IConfig
     {
         throw new System.NotImplementedException();
     }
+
+
 }
