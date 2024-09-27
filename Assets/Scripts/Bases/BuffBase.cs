@@ -8,21 +8,22 @@ namespace MyBase
 {
     public abstract class BuffBase : IBuff
     {
-        public EnemyBase EnemyBase { get; set; }
+        public EnemyBase EnemyBase => EnemyObj.GetComponent<EnemyBase>();
+        public ArmChildBase ArmChildBase => SelfObj.GetComponent<ArmChildBase>();
 
-        public GameObject TheObj { get; set; }
+        public GameObject EnemyObj { get; set; }
 
         public float Duration { get; set; } = 5f;
 
         public string BuffName { get; set; }
 
-        public BuffBase(string buffName, float duration, GameObject obj)
+        public GameObject SelfObj { get ; set ; }
+
+        public BuffBase(string buffName, float duration,GameObject selfObj, GameObject enemyObj)
         {
             BuffName = buffName;
             Duration = duration;
-            TheObj = obj;
-            EnemyBase = obj.GetComponent<EnemyBase>();
-
+            EnemyObj = enemyObj;
         }
         public abstract void Effect();  // 留给子类实现具体效果
         public abstract void Remove();  // 留给子类实现具体移除逻辑
@@ -30,7 +31,7 @@ namespace MyBase
         {
             Effect();
             UpdateEndtimes();
-            TheObj.GetComponent<MonoBehaviour>().StartCoroutine(AutoRemove());
+            EnemyObj.GetComponent<MonoBehaviour>().StartCoroutine(AutoRemove());
         }
         private void UpdateEndtimes()
         {

@@ -19,11 +19,18 @@ namespace MyBase
         //硬控总结束时间
         public float HardControlEndTime { get; set; }
 
-
+        public int ImmunityCount { get; set; }
+        public int MaxLife { get; set; }
+        public int NowLife { get; set; }
+        public float EasyHurt { get; set; }
 
         public virtual void Init()
         {
+            NowLife = Config.Life;
+            MaxLife = Config.Life;
+            ImmunityCount = Config.ImmunityCount;
             IsInit = true;
+
         }
         protected virtual void Start()
         {
@@ -108,16 +115,20 @@ namespace MyBase
             throw new System.NotImplementedException();
         }
 
-        public void AddBuff(string buffName, float duration)
+        public void AddBuff(string buffName, GameObject selfObj, float duration)
         {
             //免疫指定控制buff
             if (Config.ControlImmunityList.IndexOf(buffName) != -1)
             {
                 return;
             }
+            //伤害位置对不上不能上buff
+            if(Config.ActionType != "land" && selfObj.GetComponent<ArmChildBase>().Config.DamageType != "all") {
+                return;
+            }
             if (!BuffEndTimes.ContainsKey(buffName))
             {
-                Buffs.Enqueue(BuffFactory.Create(buffName, duration, gameObject));
+                Buffs.Enqueue(BuffFactory.Create(buffName, duration,selfObj, gameObject));
             }
             else
             {
@@ -126,7 +137,7 @@ namespace MyBase
                 //buff已经结束
                 if (now > endTime)
                 {
-                    Buffs.Enqueue(BuffFactory.Create(buffName, duration, gameObject));
+                    Buffs.Enqueue(BuffFactory.Create(buffName, duration, selfObj, gameObject));
                 }
                 else
                 {

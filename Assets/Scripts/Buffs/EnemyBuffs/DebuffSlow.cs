@@ -8,9 +8,9 @@ namespace TheBuffs
         private float slowRate = 0.3f;
         private float originSpeed;
 
-        public DebuffSlow(string buffName, float duration, GameObject obj) : base(buffName, duration, obj)
+        public DebuffSlow(string buffName, float duration,GameObject selfObj, GameObject enemyObj) : base(buffName, duration,selfObj, enemyObj)
         {
-            EnemyBase = obj.GetComponent<EnemyBase>();
+
         }
         public override void Effect()
         {

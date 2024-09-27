@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using MyBase;
 using UnityEngine;
 
-public class GlobalConfig : IConfig
+public class GlobalConfig : ConfigBase
 {
     // 私有字段
     [SerializeField] private float critRate;
     [SerializeField] private float critDamage;
-    [SerializeField] private int attack;
+    [SerializeField] private int attackValue;
     [SerializeField] private int life;
     [SerializeField] private int allPenetrationLevel;
     [SerializeField] private float fireAddition;
@@ -18,9 +18,11 @@ public class GlobalConfig : IConfig
     [SerializeField] private float allAddition;
     [SerializeField] private float boomAddition;
     [SerializeField] private float adAddition;
+    
     // 构造函数
     public GlobalConfig()
     {
+
         Init();
     }
 
@@ -28,8 +30,11 @@ public class GlobalConfig : IConfig
     protected virtual void Init()
     {
         // 可以在这里添加初始化逻辑
+        AttackValue = 100;
+        CritRate = 0.1f;
+        CritDamage = 0;
     }
-
+    public float TransmitRate {get; set;}
     // 公共属性
     public virtual float CritRate
     {
@@ -43,10 +48,10 @@ public class GlobalConfig : IConfig
         set => critDamage = value;
     }
 
-    public virtual int Attack
+    public virtual int AttackValue
     {
-        get => attack;
-        set => attack = value;
+        get => attackValue;
+        set => attackValue = value;
     }
 
     public virtual int Life
@@ -108,9 +113,12 @@ public class GlobalConfig : IConfig
         get => adAddition;
         set => adAddition = value;
     }
+    public virtual float RandomAdditonMin {get;set;} = 0;
+    public virtual float RandomAdditonMax {get; set;} = 0;
+    public virtual float AdditionToEliteOrBoss {get; set;} = 0;
 
-    public GameObject Prefab { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
+    public virtual float[] CritWithPersentageAndMax {get; set;} = new float[2] {0, 0};
+    public virtual float[] DamageWithPersentageAndMax {get; set;} = new float[2] {0, 0};
     // 获取伤害加成的字典
     public virtual Dictionary<string, float> GetDamageAddition()
     {
@@ -121,16 +129,8 @@ public class GlobalConfig : IConfig
             { "elec", ElecAddition },
             { "energy", EnergyAddition },
             { "wind", WindAddition },
-            { "all", AllAddition },
             { "boom", BoomAddition },
             { "ad", AdAddition }
         };
     }
-
-    public void SaveConfig()
-    {
-        throw new System.NotImplementedException();
-    }
-
-
 }

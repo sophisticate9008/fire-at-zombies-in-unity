@@ -28,12 +28,13 @@ namespace MyBase
         [SerializeField] private int life;
         [SerializeField] private float speed;
         [SerializeField] private int damage;
+        //免疫数
         [SerializeField] private int immunityCount;
+        // 格挡数
         [SerializeField] private int blocks;
         [SerializeField] private float rangeFire;
         [SerializeField] private float atkSpeed;
         [SerializeField] private float weight;
-        [SerializeField] private float derateAll;
         [SerializeField] private float derateAd;
         [SerializeField] private float derateIce;
         [SerializeField] private float derateFire;
@@ -41,19 +42,23 @@ namespace MyBase
         [SerializeField] private float derateWind;
         [SerializeField] private float derateEnergy;
         [SerializeField] private List<string> controlImmunityList = new();
-        [SerializeField] private float easyHurt;
+        [SerializeField] private List<string> damageTypeImmunityList = new();
         [SerializeField] private string attackType;
         [SerializeField] private string actionType;
         [SerializeField] private string characterType;
         [SerializeField] private int attackCount;
 
+
         // 公共属性，允许重写
-        public virtual int Life
+        public int Life
         {
             get => life;
             set => life = value;
         }
-
+        public virtual List<string> DamageTypeImmunityList {
+            get { return damageTypeImmunityList;}
+            set {damageTypeImmunityList = value;}
+        }
         public virtual float Speed
         {
             get => speed;
@@ -96,11 +101,6 @@ namespace MyBase
             set => weight = value;
         }
 
-        public virtual float DerateAll
-        {
-            get => derateAll;
-            set => derateAll = value;
-        }
 
         public virtual float DerateAd
         {
@@ -144,12 +144,6 @@ namespace MyBase
             set => controlImmunityList = value ?? new List<string>();
         }
 
-        public virtual float EasyHurt
-        {
-            get => easyHurt;
-            set => easyHurt = value;
-        }
-
         public virtual string AttackType
         {
             get => attackType;
@@ -179,7 +173,6 @@ namespace MyBase
         {
             return new Dictionary<string, float>
             {
-                { "all", DerateAll },
                 { "ad", DerateAd },
                 { "ice", DerateIce },
                 { "fire", DerateFire },

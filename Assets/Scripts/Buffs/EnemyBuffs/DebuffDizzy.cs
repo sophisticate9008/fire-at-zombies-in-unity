@@ -5,9 +5,9 @@ namespace TheBuffs
 {
     public class DebuffDizzy : BuffBase
     {
-        public DebuffDizzy(string buffName, float duration, GameObject obj) : base(buffName, duration, obj)
+        public DebuffDizzy(string buffName, float duration,GameObject selfObj, GameObject enemyObj) : base(buffName, duration,selfObj, enemyObj)
         {
-            EnemyBase = obj.GetComponent<EnemyBase>();
+
         }
         public override void Effect()
         {

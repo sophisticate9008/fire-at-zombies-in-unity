@@ -2,7 +2,8 @@ using System;
 using UnityEngine;
 
 public interface IBuff {
-    GameObject TheObj { get; set; }
+    GameObject EnemyObj { get; set; }
+    GameObject SelfObj { get; set; }
     float Duration { get; set; }
     string BuffName { get; set;}
     void Effect();

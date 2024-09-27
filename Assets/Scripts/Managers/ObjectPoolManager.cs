@@ -31,9 +31,14 @@ public class ObjectPoolManager : MonoBehaviour
     }
     
     // 创建对象池，并设置池的最大长度和父对象
-    public void CreatePool(string poolName,  GameObject prefab, int initialPoolSize, int maxPoolSize)
+    public GameObject CreatePool(string poolName,  GameObject prefab, int initialPoolSize, int maxPoolSize)
     {
-        GameObject grandParent = GameObject.Find("ObjectPools");
+        GameObject grandParent;
+        if(poolName.Contains("UI")) {
+            grandParent = GameObject.Find("UIPools");
+        }else {
+            grandParent = GameObject.Find("ObjectPools");
+        }
         GameObject poolObject = new GameObject(poolName);
         poolObject.transform.parent = grandParent.transform;
         if (!poolDictionary.ContainsKey(poolName))
@@ -52,6 +57,7 @@ public class ObjectPoolManager : MonoBehaviour
             poolMaxSizeDictionary.Add(poolName, maxPoolSize); // 保存每个池的最大长度
             poolParentDictionary.Add(poolName, poolObject.transform);       // 保存父对象
         }
+        return poolObject;
     }
 
     // 从对象池中获取对象，如果没有可用对象则创建一个新的

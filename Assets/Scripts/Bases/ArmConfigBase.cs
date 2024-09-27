@@ -22,6 +22,7 @@ namespace MyBase
         [SerializeField] private int attackCount;
         [SerializeField] private float lastTime;
         [SerializeField] private List<string> componentStrs = new List<string>();
+        [SerializeField] private float buffDamageTlc;
 
         // Prefab 属性
         public override GameObject Prefab
@@ -35,7 +36,10 @@ namespace MyBase
                 return prefab;
             }
         }
-
+        public virtual float BuffDamageTlc {
+            get { return buffDamageTlc; }
+            set { buffDamageTlc = value; }
+        }
         // 属性通过字段实现
         public virtual float CritRate
         {
@@ -108,7 +112,16 @@ namespace MyBase
             get => componentStrs;
             set => componentStrs = value;
         }
+        public virtual string Owner {get; set;}
+        //伤害类型 
+        public virtual string DamageType {get; set;}
 
+        //伤害位置 all / land
+        public virtual string DamagePos {get; set;}
+        // 触发类型
+        public virtual string TriggerType{get; set;}
+
+        public virtual string DamageExtraType {get => ""; set{}}
         // 构造函数
         public ArmConfigBase()
         {

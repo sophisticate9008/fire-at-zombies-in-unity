@@ -11,6 +11,8 @@ namespace MyBase
     {
 
         public ArmConfigBase Config => ConfigManager.Instance.GetConfigByClassName(GetType().Name) as ArmConfigBase;
+        // public GlobalConfig GlobalConfig => ConfigManager.Instance.GetConfigByClassName("Global") as GlobalConfig;
+        // public Dictionary<string, float> DamageAddition => GlobalConfig.GetDamageAddition();
         public GameObject TargetEnemy { get; set; }
         public bool IsInit { get; set; }
         public Dictionary<string, IComponent> InstalledComponents { get; set; } = new();
@@ -89,10 +91,14 @@ namespace MyBase
             TriggerByType("update", null);
             foreach (var temp in collideObjs)
             {
+                
                 Queue<GameObject> queue = temp.Value;
                 if (queue.Count > 0)
                 {
                     var obj = queue.Dequeue();
+                    if(temp.Key == Config.TriggerType) {
+                        CreateDamage(obj);
+                    }
                     TriggerByType(temp.Key, obj);
                 }
             }
@@ -105,8 +111,10 @@ namespace MyBase
                 OnTriggerByQueue();
             }
         }
-
-        public void Move()
+        public virtual void CreateDamage(GameObject enemyObj) {
+            FighteManager.Instance.DamageFilter(enemyObj, gameObject);
+        }
+        public virtual void Move()
         {
             float z;
             if (Direction.x > 0)
