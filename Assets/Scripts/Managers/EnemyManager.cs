@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour
     private List<GameObject> monsterPrefabs = new(); // 怪物预制体
     private int maxCount = 1000; // 最大生成数量
     private int currentCount = 0; // 当前生成数量
-    public float fixInterval = 3f; // 固定时间间隔
+    public float fixInterval = 6f; // 固定时间间隔
     public float noiseScale = 0.8f; // 噪声比例
     [SerializeField]
     private float viewportYCoordinate = 0.8f; // 视口生成的y坐标

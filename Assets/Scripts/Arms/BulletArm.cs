@@ -9,8 +9,7 @@ namespace Arms
     {
 
 
-        public GameObject prefab;
-        public BulletConfig concreteConfig;
+        public BulletConfig ConcreteConfig => Config as BulletConfig;
         //锁定的敌人
 
         public int RepeatLevel { get; set; }
@@ -18,9 +17,7 @@ namespace Arms
         protected override void Start()
         {
             base.Start();
-            concreteConfig = Config as BulletConfig;
-            prefab = concreteConfig.Prefab;
-            RepeatLevel = concreteConfig.RepeatLevel;
+            RepeatLevel = ConcreteConfig.RepeatLevel;
         }
 
         // [Inject]
@@ -48,7 +45,7 @@ namespace Arms
             for (int i = 0; i < RepeatLevel; i++) // 连发逻辑
             {
                 ShootMultipleBullets(); // 多条弹道发射
-                yield return new WaitForSeconds(concreteConfig.RepeatCd); // 每次连发之间的间隔
+                yield return new WaitForSeconds(ConcreteConfig.RepeatCd); // 每次连发之间的间隔
             }
         }
 
@@ -59,7 +56,7 @@ namespace Arms
             // 计算从枪口指向敌人的方向向量
             Vector3 baseDirection = (TargetEnemy.transform.position - transform.position).normalized;
             // 发射 MultipleLevel 数量的子弹
-            var objs = IMultipleable.MutiInstantiate(prefab, transform.position, baseDirection);
+            var objs = IMultipleable.MutiInstantiate(Config.Prefab, transform.position, baseDirection);
             IMultipleable.InitObjs(objs);
         }
 

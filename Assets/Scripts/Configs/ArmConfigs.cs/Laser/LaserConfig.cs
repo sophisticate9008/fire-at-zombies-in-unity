@@ -1,0 +1,20 @@
+using MyBase;
+
+namespace ArmConfigs
+{
+    public class LaserConfig : ArmConfigBase
+    {
+
+        public override void Init()
+        {
+            base.Init();
+            Name = "Laser";
+            Description = "激光";
+            RangeFire = 7;
+            Speed = 10f;
+            Cd = 10f;
+            AttackCd = 0.2f;
+            AttackCount = 20;
+        }
+    }
+}

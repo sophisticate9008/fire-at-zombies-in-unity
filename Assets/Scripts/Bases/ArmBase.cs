@@ -51,7 +51,7 @@ namespace MyBase
             FindTargetNearestOrElite();
             if (TargetEnemy != null && Time.time - lastFireTime > Config.Cd)
             {
-                StartCoroutine(AttackSequence()); // 发射子弹
+                StartCoroutine(AttackSequence()); // 发射
                 lastFireTime = Time.time + 100000;
                 //设为较大值，避免再次进入
             }

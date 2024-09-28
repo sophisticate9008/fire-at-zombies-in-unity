@@ -27,7 +27,7 @@ public interface IMultipleable
         IMultipleable multipleConfig = concreteConfig as IMultipleable;
         int multipleLevel = multipleConfig.MultipleLevel;
         float angleDifference = multipleConfig.AngleDifference;
-        float speed = concreteConfig.Speed;
+
         for (int i = 0; i < multipleLevel; i++)
         {
             Vector3 bulletDirection = CalDirectionDifference(baseDirection, i, multipleLevel, angleDifference);
@@ -38,7 +38,6 @@ public interface IMultipleable
             
             // 子弹的方向和速度设置
             newArmChild.Direction = bulletDirection.normalized;
-            newArmChild.Speed = speed;
             objs.Add(newObj);
         }
         return objs;

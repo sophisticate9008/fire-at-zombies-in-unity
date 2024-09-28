@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using Factorys;
 using MyBase;
@@ -16,9 +17,16 @@ namespace MyBase
         public GameObject TargetEnemy { get; set; }
         public bool IsInit { get; set; }
         public Dictionary<string, IComponent> InstalledComponents { get; set; } = new();
-        public float Speed { get; set; }
-        public Vector3 Direction { get; set; }
-        public Vector3 EulerAngle { get; set; }
+        private Vector3 direction;
+        public Vector3 Direction
+        {
+            get { return direction; } 
+            set
+            {
+                direction = value;
+                ChangeRotation();
+            }
+        }
         public Queue<GameObject> FirstExceptQueue { get; set; } = new();
         private readonly Dictionary<string, Queue<GameObject>> collideObjs = new() {
         {"enter", new()},
@@ -26,7 +34,8 @@ namespace MyBase
         {"exit", new()}
     };
         public Dictionary<string, Queue<GameObject>> CollideObjs => collideObjs;
-        private void Start() {
+        private void Start()
+        {
         }
         public bool IsOutOfBounds()
         {
@@ -91,12 +100,13 @@ namespace MyBase
             TriggerByType("update", null);
             foreach (var temp in collideObjs)
             {
-                
+
                 Queue<GameObject> queue = temp.Value;
                 if (queue.Count > 0)
                 {
                     var obj = queue.Dequeue();
-                    if(temp.Key == Config.TriggerType) {
+                    if (temp.Key == Config.TriggerType)
+                    {
                         CreateDamage(obj);
                     }
                     TriggerByType(temp.Key, obj);
@@ -107,32 +117,19 @@ namespace MyBase
         {
             if (IsInit)
             {
+
                 Move();
                 OnTriggerByQueue();
             }
         }
-        public virtual void CreateDamage(GameObject enemyObj) {
+        public virtual void CreateDamage(GameObject enemyObj)
+        {
             FighteManager.Instance.SelfDamageFilter(enemyObj, gameObject);
         }
         public virtual void Move()
         {
-            float z;
-            if (Direction.x > 0)
-            {
-                //以Z轴为坐标 使用向量计算出来角度  
-                z = -Vector3.Angle(Vector3.up, Direction);
-            }
-            else
-            {
-                z = Vector3.Angle(Vector3.up, Direction);
-            }
-            transform.eulerAngles = new Vector3(0, 0, z);
-            float baseAngle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
-            float finalAngle = baseAngle - z;
-            Vector3 newDirection = new Vector3(Mathf.Cos(finalAngle * Mathf.Deg2Rad), Mathf.Sin(finalAngle * Mathf.Deg2Rad), 0);
-            // Rotate();
-            // 更新Direction使其符合旋转后的方向
-            transform.Translate(Speed * Time.deltaTime * newDirection);
+
+            transform.Translate(Config.Speed * Time.deltaTime, 0, 0);
 
             // 超出屏幕范围时销毁
             if (IsOutOfBounds())
@@ -141,7 +138,12 @@ namespace MyBase
             }
 
         }
+        public void ChangeRotation()
+        {
+            float rotateZ = Mathf.Atan2(Direction.y, Direction.x);
+            transform.rotation = Quaternion.Euler(0, 0, rotateZ * Mathf.Rad2Deg);
 
+        }
         public virtual void Init()
         {
             CreateComponents();

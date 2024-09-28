@@ -10,9 +10,7 @@ public interface IArmChild
     public Dictionary<string, IComponent> InstalledComponents { get; set; }
     //第一次忽略的物体，用于衍生技能排除本体
     public Queue<GameObject> FirstExceptQueue { get; set;}
-    public float Speed { get; set; }
     public Vector3 Direction { get; set; }
-    public Vector3 EulerAngle { get; set; }
     public void CopyComponents<T>(T prefab) where T : MonoBehaviour
     {
 
