@@ -13,11 +13,11 @@ namespace ArmConfigs
         }
         public override float Speed => BulletConfig.Speed;
         public int MultipleLevel { get; set; } = 2;
-        public float AngleDifference { get ; set ; } = 15f;
+        public float AngleDifference { get; set; } = 15f;
         public override float CritRate => BulletConfig.CritRate;
         public override string Owner => BulletConfig.Name;
         // 构造函数
-        public BulletFissionConfig():base()
+        public BulletFissionConfig() : base()
         {
             Name = "bulletFission";
             Description = "次级子弹,造成本体的25%伤害";
@@ -25,6 +25,7 @@ namespace ArmConfigs
             DamagePos = "all";
             DamageExtraType = "penetrable";
             TriggerType = "enter";
+            ComponentStrs.Add("穿透");
         }
     }
 }

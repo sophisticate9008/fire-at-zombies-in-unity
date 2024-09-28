@@ -29,13 +29,47 @@ namespace MyBase
             NowLife = Config.Life;
             MaxLife = Config.Life;
             ImmunityCount = Config.ImmunityCount;
+            TransmitBack(y: 0, returnSpawn: true);
             IsInit = true;
 
+        }
+        public virtual void TransmitBack(float y, bool returnSpawn = false)
+        {
+            if (returnSpawn)
+            {
+                // 获取主摄像机
+                Camera mainCamera = Camera.main;
+
+                if (mainCamera != null)
+                {
+                    // 获取物体当前的视口位置
+                    Vector3 viewportPos = mainCamera.WorldToViewportPoint(transform.position);
+
+                    // 修改 y 为 1，使物体回到视口顶部
+                    viewportPos.y = 1.0f;
+
+                    // 将视口位置转换回世界坐标
+                    Vector3 worldPos = mainCamera.ViewportToWorldPoint(viewportPos);
+
+                    // 更新物体的位置
+                    Vector3 newPosition = transform.position;
+                    newPosition.y = worldPos.y;  // 将物体的 y 坐标设为视口顶部
+                    transform.position = newPosition;
+                }
+            }
+            else
+            {
+                // 正常情况下，只减少 y 坐标
+                Vector3 newPosition = transform.position;
+                newPosition.y += y;
+                transform.position = newPosition;
+            }
         }
         protected virtual void Start()
         {
             animatorManager = AnimatorManager.Instance;
             animator = GetComponent<Animator>();
+            Init();
         }
 
         public void FixedUpdate()
@@ -51,6 +85,9 @@ namespace MyBase
         }
         public void Update()
         {
+            if(!IsInit) {
+                return;
+            }
             BuffEffect();
             if (CanAction)
             {
@@ -80,14 +117,20 @@ namespace MyBase
             throw new System.NotImplementedException();
         }
 
-        public virtual void CalLife()
+        public virtual void CalLife(int damage)
         {
-            throw new System.NotImplementedException();
+
+            NowLife -= damage;
+            if (NowLife <= 0)
+            {
+                // Die();
+            }
         }
 
         public virtual void Die()
         {
             TriggerByType("die", gameObject);
+            ReturnToPool();
         }
 
         void TriggerByType(string type, GameObject obj)
@@ -112,7 +155,7 @@ namespace MyBase
 
         public void ReturnToPool()
         {
-            throw new System.NotImplementedException();
+            ObjectPoolManager.Instance.ReturnToPool(GetType().Name + "Pool", gameObject);
         }
 
         public void AddBuff(string buffName, GameObject selfObj, float duration)
@@ -123,12 +166,13 @@ namespace MyBase
                 return;
             }
             //伤害位置对不上不能上buff
-            if(Config.ActionType != "land" && selfObj.GetComponent<ArmChildBase>().Config.DamageType != "all") {
+            if (Config.ActionType == "land" && selfObj.GetComponent<ArmChildBase>().Config.DamageType != "all")
+            {
                 return;
             }
             if (!BuffEndTimes.ContainsKey(buffName))
             {
-                Buffs.Enqueue(BuffFactory.Create(buffName, duration,selfObj, gameObject));
+                Buffs.Enqueue(BuffFactory.Create(buffName, duration, selfObj, gameObject));
             }
             else
             {
@@ -142,11 +186,12 @@ namespace MyBase
                 else
                 {
                     //当前+持续时间大于buff结束时间，设置新的结束时间，小于则不用管，被上个buff效果包含了
-                    if(now + duration > endTime) {
+                    if (now + duration > endTime)
+                    {
                         BuffEndTimes[buffName] = now + duration;
                     }
                 }
-                
+
             }
         }
     }

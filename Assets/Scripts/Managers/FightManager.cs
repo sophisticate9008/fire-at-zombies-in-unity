@@ -6,8 +6,10 @@ using MyBase;
 using TMPro;
 using UnityEngine;
 
+//管理战斗逻辑，伤害等
 public class FighteManager : MonoBehaviour
 {
+    public AnimationCurve spawnRateCurve;
     private readonly GameObject damageTextPrefab;
     GameObject DamageTextPrefab
     {
@@ -67,14 +69,17 @@ public class FighteManager : MonoBehaviour
         // 设置 UI 元素的位置为圆周范围内的随机位置
         textClone.transform.position = offsetPosition;
 
+        // 伤害值格式转换
+        string formattedDamage = FormatDamage(damage);
 
         // 生成彩色字符串
         string color = colorDict.ContainsKey(type) ? colorDict[type] : "white";
-        string damageText = isCritical ? $"<color=#ED1523>{damage}</color>" : $"<color={color}>{damage}</color>";
+        string damageText = isCritical ? $"<color=#ED1523>{formattedDamage}</color>" : $"<color={color}>{formattedDamage}</color>";
         Transform critText = textClone.transform.Find("Critical");
         Transform normalText = textClone.transform.Find("Normal");
+
         // 设置 TextMeshPro 组件的文本
-        Transform[] textTransforms = new Transform[] { critText, normalText }; ;
+        Transform[] textTransforms = new Transform[] { critText, normalText };
         int activeIndex = isCritical ? 0 : 1;
         int inactiveIndex = isCritical ? 1 : 0;
 
@@ -87,8 +92,26 @@ public class FighteManager : MonoBehaviour
         {
             activeText.text = damageText;
         }
-        // 启动协程，1秒后禁用
+
+        // 启动协程，0.3秒后禁用
         StartCoroutine(DisableDamageText(textClone, 0.3f));
+    }
+
+    // 格式化伤害值方法
+    private string FormatDamage(float damage)
+    {
+        if (damage >= 1000000)
+        {
+            return (damage / 1000000f).ToString("0.0") + "M";
+        }
+        else if (damage >= 1000)
+        {
+            return (damage / 1000f).ToString("0.0") + "K";
+        }
+        else
+        {
+            return damage.ToString("0");
+        }
     }
 
     private IEnumerator DisableDamageText(GameObject textObject, float delay)
@@ -99,7 +122,7 @@ public class FighteManager : MonoBehaviour
         ObjectPoolManager.Instance.ReturnToPool("DamageTextUIPool", textObject);
     }
 
-    public void DamageFilter(GameObject enemyObj, GameObject selfObj, bool isBuffDamage = false, float persentage = 0)
+    public void SelfDamageFilter(GameObject enemyObj, GameObject selfObj, bool isBuffDamage = false, float persentage = 0)
     {
         EnemyBase enemyBase = enemyObj.GetComponent<EnemyBase>();
         EnemyConfigBase enemyConfig = enemyBase.Config;
@@ -130,7 +153,7 @@ public class FighteManager : MonoBehaviour
         Dictionary<string, float> damageAddition = GlobalConfig.GetDamageAddition();
         foreach (var item in damageAddition)
         {
-            if (item.Key == armConfig.DamageType)
+            if (item.Key == armConfig.DamageType || item.Key == armConfig.DamageExtraType)
             {
                 addtion += item.Value;
             }
@@ -150,7 +173,7 @@ public class FighteManager : MonoBehaviour
         float reduction = 0;
         foreach (var item in damageReduction)
         {
-            if (item.Key == armConfig.DamageType)
+            if (item.Key == armConfig.DamageType || item.Key == armConfig.DamageExtraType)
             {
                 reduction += item.Value;
             }
@@ -183,6 +206,8 @@ public class FighteManager : MonoBehaviour
         baseDamage *= 1 + enemyBase.EasyHurt;
 
         CreateDamageText(enemyObj, baseDamage, armConfig.DamageType, isCritical);
+
+        enemyBase.CalLife((int)baseDamage);
     }
 
 

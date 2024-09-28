@@ -112,7 +112,7 @@ namespace MyBase
             }
         }
         public virtual void CreateDamage(GameObject enemyObj) {
-            FighteManager.Instance.DamageFilter(enemyObj, gameObject);
+            FighteManager.Instance.SelfDamageFilter(enemyObj, gameObject);
         }
         public virtual void Move()
         {

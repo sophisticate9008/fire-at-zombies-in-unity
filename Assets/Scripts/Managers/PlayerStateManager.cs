@@ -5,12 +5,13 @@ using Factorys;
 using MyBase;
 using UnityEngine;
 
+//管理玩家选择，buff等
 public class PlayerStateManager : MonoBehaviour
 {
 
     // 静态实例
     public static PlayerStateManager Instance { get; private set; }
-    public GlobalConfig globalConfig;
+    public GlobalConfig globalConfig => ConfigManager.Instance.GetConfigByClassName("Global") as GlobalConfig;
     // Unity Awake 方法，确保在所有其他组件之前初始化
     private void Awake()
     {
@@ -29,7 +30,6 @@ public class PlayerStateManager : MonoBehaviour
     // 其他管理逻辑可以在此添加
     void Start()
     {
-        globalConfig = ConfigManager.Instance.GetConfigByClassName("Global") as GlobalConfig;
     }
 
 }

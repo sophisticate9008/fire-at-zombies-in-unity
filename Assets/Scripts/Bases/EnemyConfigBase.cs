@@ -5,7 +5,7 @@ using UnityEngine;
 namespace MyBase
 {
     [System.Serializable]
-    public class EnemyConfigBase: ConfigBase
+    public class EnemyConfigBase : ConfigBase
     {
         // 私有字段
         private GameObject prefab;
@@ -41,6 +41,7 @@ namespace MyBase
         [SerializeField] private float derateElec;
         [SerializeField] private float derateWind;
         [SerializeField] private float derateEnergy;
+        [SerializeField] private float deratePenetrate;
         [SerializeField] private List<string> controlImmunityList = new();
         [SerializeField] private List<string> damageTypeImmunityList = new();
         [SerializeField] private string attackType;
@@ -55,9 +56,10 @@ namespace MyBase
             get => life;
             set => life = value;
         }
-        public virtual List<string> DamageTypeImmunityList {
-            get { return damageTypeImmunityList;}
-            set {damageTypeImmunityList = value;}
+        public virtual List<string> DamageTypeImmunityList
+        {
+            get { return damageTypeImmunityList; }
+            set { damageTypeImmunityList = value; }
         }
         public virtual float Speed
         {
@@ -167,6 +169,11 @@ namespace MyBase
             get => attackCount;
             set => attackCount = value;
         }
+        public virtual float DeratePenetrate
+        {
+            get => deratePenetrate;
+            set => deratePenetrate = value;
+        }
 
         // 获取伤害减免的字典
         public virtual Dictionary<string, float> GetDamageReduction()
@@ -178,7 +185,8 @@ namespace MyBase
                 { "fire", DerateFire },
                 { "electric", DerateElec },
                 { "wind", DerateWind },
-                { "energy", DerateEnergy }
+                { "energy", DerateEnergy }, 
+                { "penetrate", DeratePenetrate }
             };
         }
 

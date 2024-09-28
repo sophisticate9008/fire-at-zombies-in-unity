@@ -13,7 +13,7 @@ public interface IEnemy {
     void Move();
     void Attack();
     void Skill();
-    void CalLife();
+    void CalLife(int damage);
 
     //死亡火花，弹坑，追击，  
     void Die();
