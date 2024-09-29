@@ -57,7 +57,6 @@ namespace ArmsChild
         public override void TriggerByTypeCallBack(string type)
         {
             if(type == Config.TriggerType) {
-                Debug.Log("触发回调");
                 LaserFissionConfig laserFissionConfig = ConfigManager.Instance.GetConfigByClassName("LaserFission") as LaserFissionConfig;
                 List<GameObject> enemys = FindTargetInScope(laserFissionConfig.FissionLevel, expectEnemy);
                 if(enemys == null) {
@@ -66,6 +65,7 @@ namespace ArmsChild
                 foreach(var temp in enemys) { 
                     ArmChildBase armChildBase = ObjectPoolManager.Instance.GetFromPool("LaserFissionPool", laserFissionConfig.Prefab).GetComponent<ArmChildBase>();
                     armChildBase.gameObject.transform.position = expectEnemy.transform.position;
+                    (armChildBase as LaserFission).TargetEnemyByArm = temp;
                     armChildBase.Init();
                 }
             }

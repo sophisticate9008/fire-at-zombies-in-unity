@@ -116,7 +116,7 @@ public class GlobalConfig : ConfigBase
     public virtual float RandomAdditonMin {get;set;} = 0;
     public virtual float RandomAdditonMax {get; set;} = 0;
     public virtual float AdditionToEliteOrBoss {get; set;} = 0;
-
+    
     public virtual float[] CritWithPersentageAndMax {get; set;} = new float[2] {0, 0};
     public virtual float[] DamageWithPersentageAndMax {get; set;} = new float[2] {0, 0};
     // 获取伤害加成的字典

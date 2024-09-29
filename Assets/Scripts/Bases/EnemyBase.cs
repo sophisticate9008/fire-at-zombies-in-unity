@@ -1,5 +1,6 @@
+
+using System;
 using System.Collections.Generic;
-using System.IO;
 using Factorys;
 using UnityEngine;
 
@@ -86,7 +87,8 @@ namespace MyBase
         }
         public void Update()
         {
-            if(!IsInit) {
+            if (!IsInit)
+            {
                 return;
             }
             BuffEffect();
@@ -94,11 +96,17 @@ namespace MyBase
             {
                 Move();
             }
+            else
+            {
+                //防止休眠
+                PreventSleep();
+            }
         }
 
 
         public virtual void Move()
         {
+
             Vector3 position = transform.position;
             float bottomEdge = -Camera.main.orthographicSize;
 
@@ -106,8 +114,22 @@ namespace MyBase
             {
                 transform.Translate(Config.Speed * Time.deltaTime * Vector3.down);
             }
-        }
+            else
+            {
+                PreventSleep();
+            }
 
+        }
+        private void PreventSleep()
+        {
+            Vector3 originalPosition = transform.position;
+
+            // 施加微小的移动
+            transform.position = originalPosition + new Vector3(0.001f, 0, 0); // 在X轴上施加微小的移动
+
+            // 立即恢复到原始位置
+            transform.position = originalPosition;
+        }
         public virtual void Attack()
         {
             throw new System.NotImplementedException();

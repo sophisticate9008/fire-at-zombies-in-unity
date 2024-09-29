@@ -18,7 +18,7 @@ namespace ArmConfigs
             DamageType = "energy";
             DamagePos = "all";
             Duration = 0.2f;
-            AttackCd = 0.15f;
+            AttackCd = 0.2f;
         }
     }
 }

@@ -1,4 +1,5 @@
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Factorys;
@@ -78,7 +79,9 @@ namespace MyBase
         }
         private void OnTriggerStay2D(Collider2D collision)
         {
-
+            if(Config.TriggerType != "stay") {
+                return;
+            }
             if (IsNotSelf(collision))
             {
                 if (Time.time - stayTriggerTime > Config.AttackCd)
@@ -109,20 +112,36 @@ namespace MyBase
         private void OnTriggerByQueue()
         {
             TriggerByType("update", null);
-            foreach (var temp in collideObjs)
+            foreach (var kvp in collideObjs)
             {
-
-                Queue<GameObject> queue = temp.Value;
-                if (queue.Count > 0)
-                {
-                    var obj = queue.Dequeue();
-                    if (Config.TriggerType == temp.Key)
-                    {
-                        CreateDamage(obj);
-                    }
-
-                    TriggerByType(temp.Key, obj);
+                if(gameObject.activeSelf) {
+                    StartCoroutine(ProcessQueueByKey(kvp.Key, kvp.Value));
                 }
+                // 为每个 key 单独启动一个协程来处理队列
+                
+            }
+        }
+        private IEnumerator ProcessQueueByKey(string key, Queue<GameObject> queue)
+        {
+            // 获取当前触发类型
+            var triggerType = Config.TriggerType;
+
+            // 当队列中有对象时，逐个处理
+            while (queue.Count > 0)
+            {
+                var obj = queue.Dequeue();
+
+                // 如果当前 key 匹配触发类型，则创建伤害
+                if (triggerType == key)
+                {
+                    CreateDamage(obj);
+                }
+
+                // 调用触发处理
+                TriggerByType(key, obj);
+
+                // 可以选择在每次处理后等待一帧，以免阻塞主线程
+                yield return null;
             }
         }
         public virtual void Update()
@@ -202,7 +221,8 @@ namespace MyBase
         }
         public List<GameObject> FindTargetInScope(int num = 1, GameObject expectObj = null)
         {
-            if(num == 0) {
+            if (num == 0)
+            {
                 return null;
             }
             Vector3 detectionCenter;
