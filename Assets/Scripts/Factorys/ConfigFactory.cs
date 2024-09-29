@@ -18,6 +18,7 @@ namespace Factorys
                 "NormalZombie" => typeof(NormalZombieConfig),
                 "Global" => typeof(GlobalConfig),
                 "Laser" => typeof(LaserConfig),
+                "LaserFission" => typeof(LaserFissionConfig),
                 _ => throw new System.NotImplementedException()
             };
         }

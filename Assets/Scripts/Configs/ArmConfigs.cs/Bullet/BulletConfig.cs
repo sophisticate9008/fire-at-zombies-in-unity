@@ -18,6 +18,8 @@ namespace ArmConfigs
         public float RepeatCd { get; set; } = 0.1f;
         public ArmConfigBase ChildConfig => BulletFissionConfig;
 
+        public string FindType { get ; set ; } = "random";
+
         // 构造函数
         public BulletConfig() : base()
         {

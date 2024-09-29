@@ -134,7 +134,7 @@ namespace MyBase
 
         public virtual string DamageExtraType {get => ""; set{}}
         //自身索敌半径
-        public virtual float ScopeRadius {get; set;}
+        public virtual float ScopeRadius {get; set;} = 3f;
         // 构造函数
         public ArmConfigBase()
         {

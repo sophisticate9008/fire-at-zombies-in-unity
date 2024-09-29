@@ -7,20 +7,28 @@ using UnityEngine;
 public class FissionableComponent : ComponentBase
 {
 
-
     readonly GameObject prefab;
+    readonly string findType;
     public FissionableComponent(string componentName, string type, GameObject selfObj) : base(componentName, type, selfObj)
     {
         Config = selfObj.GetComponent<ArmChildBase>().Config;
         IFissionable FissionableConfig = Config as IFissionable;
         prefab = FissionableConfig.ChildConfig.Prefab;
+        findType = FissionableConfig.FindType;
     }
 
     public override void TriggerExec(GameObject enemyObj)
     {
         GameObject targetEnemy;
-        IArmChild armChildPrefab = prefab.GetComponent<IArmChild>();
-        armChildPrefab.FindTargetRandom(enemyObj);
+        ArmChildBase armChildPrefab = prefab.GetComponent<ArmChildBase>();
+        Collider2D collider = SelfObj.GetComponent<Collider2D>();
+        Vector3 detectionCenter = collider.bounds.center;
+        if(findType == "scope") {
+            armChildPrefab.FindTargetInScope(1,enemyObj);
+        }else {
+            armChildPrefab.FindTargetRandom(enemyObj);
+        }
+        
         if (armChildPrefab.TargetEnemy != null)
         {
             targetEnemy = armChildPrefab.TargetEnemy;
@@ -31,8 +39,8 @@ public class FissionableComponent : ComponentBase
         }
 
         Vector3 baseDirection = (targetEnemy.transform.position - SelfObj.transform.position).normalized;
-        var objs = IMultipleable.MutiInstantiate(prefab, SelfObj.transform.position,  baseDirection);
-        
+        var objs = IMultipleable.MutiInstantiate(prefab, detectionCenter, baseDirection);
+
         foreach (var obj in objs)
         {
             obj.GetComponent<ArmChildBase>().FirstExceptQueue.Enqueue(enemyObj);
