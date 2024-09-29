@@ -10,17 +10,18 @@ namespace MyBase
 
     public class ArmChildBase : MonoBehaviour, IClone, IArmChild
     {
-
+        public float stayTriggerTime;
         public ArmConfigBase Config => ConfigManager.Instance.GetConfigByClassName(GetType().Name) as ArmConfigBase;
         // public GlobalConfig GlobalConfig => ConfigManager.Instance.GetConfigByClassName("Global") as GlobalConfig;
         // public Dictionary<string, float> DamageAddition => GlobalConfig.GetDamageAddition();
-        public GameObject TargetEnemy { get; set; }
+        public virtual GameObject TargetEnemyByArm { get; set; }
+        public virtual GameObject TargetEnemy { get; set; }
         public bool IsInit { get; set; }
         public Dictionary<string, IComponent> InstalledComponents { get; set; } = new();
         private Vector3 direction;
         public Vector3 Direction
         {
-            get { return direction; } 
+            get { return direction; }
             set
             {
                 direction = value;
@@ -34,9 +35,6 @@ namespace MyBase
         {"exit", new()}
     };
         public Dictionary<string, Queue<GameObject>> CollideObjs => collideObjs;
-        private void Start()
-        {
-        }
         public bool IsOutOfBounds()
         {
             // 获取子弹在屏幕上的位置
@@ -48,7 +46,7 @@ namespace MyBase
 
         public void OnTriggerEnter2D(Collider2D collision)
         {
-            if (IsNotSelf(collision))
+            if (Config.TriggerType == "enter" && IsNotSelf(collision))
             {
                 while (FirstExceptQueue.Count > 0)
                 {
@@ -71,7 +69,7 @@ namespace MyBase
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (IsNotSelf(collision))
+            if (Config.TriggerType == "exit" && IsNotSelf(collision))
             {
                 CollideObjs["exit"].Enqueue(collision.gameObject);
 
@@ -79,9 +77,15 @@ namespace MyBase
         }
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (IsNotSelf(collision))
+
+            if (Config.TriggerType == "stay" && IsNotSelf(collision))
             {
-                CollideObjs["stay"].Enqueue(collision.gameObject);
+                if (Time.time - stayTriggerTime > Config.AttackCd)
+                {
+                    stayTriggerTime = Time.time;
+                    CollideObjs["stay"].Enqueue(collision.gameObject);
+                }
+
             }
         }
         public void TriggerByType(string type, GameObject obj)
@@ -105,10 +109,7 @@ namespace MyBase
                 if (queue.Count > 0)
                 {
                     var obj = queue.Dequeue();
-                    if (temp.Key == Config.TriggerType)
-                    {
-                        CreateDamage(obj);
-                    }
+                    CreateDamage(obj);
                     TriggerByType(temp.Key, obj);
                 }
             }
@@ -188,6 +189,7 @@ namespace MyBase
 
         public void ReturnToPool()
         {
+
             ObjectPoolManager.Instance.ReturnToPool(GetType().Name + "Pool", gameObject);
         }
 
@@ -204,6 +206,15 @@ namespace MyBase
 
             }
 
+        }
+        private void OnDisable()
+        {
+            CancelInvoke();
+        }
+        private void OnEnable()
+        {
+            stayTriggerTime = -10;
+            Invoke(nameof(ReturnToPool), Config.Duration);
         }
     }
 }

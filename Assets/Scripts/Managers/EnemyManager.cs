@@ -16,7 +16,7 @@ public class EnemyManager : MonoBehaviour
     public float fixInterval = 6f; // 固定时间间隔
     public float noiseScale = 0.8f; // 噪声比例
     [SerializeField]
-    private float viewportYCoordinate = 0.8f; // 视口生成的y坐标
+    private float ViewportXCoordinate = 0.8f; // 视口生成的y坐标
 
     private Camera mainCamera;
 
@@ -72,11 +72,11 @@ public class EnemyManager : MonoBehaviour
     {
         currentCount++; // 增加共享数量
 
-        // 随机生成视口坐标中的x坐标（0到1之间）
-        float viewportXCoordinate = Random.Range(0f, 1f);
+        // 随机生成视口坐标中的x坐标（0到设置之间）
+        float viewportXCoordinate = Random.Range(0f, ViewportXCoordinate);
 
         // 将视口坐标转换为世界坐标
-        Vector3 worldPosition = mainCamera.ViewportToWorldPoint(new Vector3(viewportXCoordinate, viewportYCoordinate, mainCamera.nearClipPlane));
+        Vector3 worldPosition = mainCamera.ViewportToWorldPoint(new Vector3(viewportXCoordinate, 1f, mainCamera.nearClipPlane));
 
         // 设置生成位置
         Vector2 spawnPosition = new Vector2(worldPosition.x, worldPosition.y);

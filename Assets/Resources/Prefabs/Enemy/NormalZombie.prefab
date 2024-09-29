@@ -13,13 +13,13 @@ GameObject:
   - component: {fileID: 173871443722100689}
   - component: {fileID: 2511309703175904796}
   - component: {fileID: 6149008448608647862}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NormalZombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &198762743838678835
 Transform:
   m_ObjectHideFlags: 0

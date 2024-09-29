@@ -48,12 +48,16 @@ namespace MyBase
             AttackLogic();
         }
         public virtual void AttackLogic() {
-            FindTargetNearestOrElite();
+            if(TargetEnemy == null) {
+                FindTargetNearestOrElite();
+            }
+            
             if (TargetEnemy != null && Time.time - lastFireTime > Config.Cd)
             {
+                lastFireTime = Time.time + 100000;//设为较大值，避免再次进入
                 StartCoroutine(AttackSequence()); // 发射
-                lastFireTime = Time.time + 100000;
-                //设为较大值，避免再次进入
+                
+                
             }
         }
         
@@ -65,11 +69,13 @@ namespace MyBase
                 }else {
                     OtherFindTarget();
                 }
-                Attack();
                 lastFireTime = Time.time;
+                Attack();
+                
                 yield return new WaitForSeconds(Config.AttackCd);
                 
             }
+            TargetEnemy = null;
         }
         public virtual void Attack() {
 

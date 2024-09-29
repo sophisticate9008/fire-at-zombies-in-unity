@@ -10,6 +10,7 @@ using UnityEngine;
 public class FighteManager : MonoBehaviour
 {
     public AnimationCurve spawnRateCurve;
+    public float radius = 25f;
     private readonly GameObject damageTextPrefab;
     GameObject DamageTextPrefab
     {
@@ -30,7 +31,8 @@ public class FighteManager : MonoBehaviour
     private Dictionary<string, string> colorDict = new() {
         {"ice", "blue"},
         {"fire", "red"},
-        {"ad", "white"}
+        {"ad", "white"},
+        {"energy", "#B0D3B5"}
     };
     public Dictionary<string, float> statistics = new();
     private void Awake()
@@ -42,6 +44,7 @@ public class FighteManager : MonoBehaviour
     }
     private void Start()
     {
+
         ObjectPoolManager.Instance.CreatePool("DamageTextUIPool", DamageTextPrefab, 20, 500);
 
     }
@@ -56,7 +59,6 @@ public class FighteManager : MonoBehaviour
         Vector3 screenPosition = mainCamera.WorldToScreenPoint(enemyObj.transform.position);
 
         // 设置圆周波动范围
-        float radius = 50f; // 圆形波动的半径，可以根据需要调整
         float randomAngle = UnityEngine.Random.Range(0f, 2f * Mathf.PI); // 随机角度
 
         // 计算圆周上的偏移量
@@ -100,7 +102,13 @@ public class FighteManager : MonoBehaviour
     // 格式化伤害值方法
     private string FormatDamage(float damage)
     {
-        if (damage >= 1000000)
+        if (damage < 0)
+        {
+            return "Miss";
+        }else if(damage == 0) {
+            return "Immunity";
+        }
+        else if (damage >= 1000000)
         {
             return (damage / 1000000f).ToString("0.0") + "M";
         }
@@ -129,12 +137,23 @@ public class FighteManager : MonoBehaviour
         ArmChildBase armChildBase = selfObj.GetComponent<ArmChildBase>();
         ArmConfigBase armConfig = armChildBase.Config;
         //首先过滤位置不匹配
-        if (armConfig.DamagePos != "all" && enemyConfig.ActionType != "land") return;
+        if (armConfig.DamagePos != "all" && enemyConfig.ActionType != "land")
+        {
+            CreateDamageText(enemyObj, -1, "", false);
+            return;
+        }
+
         //过滤掉元素免疫
-        if (enemyConfig.DamageTypeImmunityList.IndexOf(armConfig.DamageType) != -1) return;
+        if (enemyConfig.DamageTypeImmunityList.IndexOf(armConfig.DamageType) != -1)
+        {
+            CreateDamageText(enemyObj, 0, "", false);
+            return;
+        };
+
         //消耗怪物免疫次数
         if (enemyBase.ImmunityCount > 0)
         {
+            CreateDamageText(enemyObj, 0, "", false);
             enemyBase.ImmunityCount--;
             return;
         }
