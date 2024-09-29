@@ -157,7 +157,7 @@ namespace MyBase
         }
 
 
-        public void FindTarget(GameObject nowEnemy)
+        public void FindTargetRandom(GameObject nowEnemy)
         {
             EnemyBase[] enemies = FindObjectsOfType<EnemyBase>();
 
@@ -165,8 +165,10 @@ namespace MyBase
             {
                 // 将所有敌人添加到列表中，并移除当前敌人
                 List<EnemyBase> enemyList = new List<EnemyBase>(enemies);
-                enemyList.Remove(nowEnemy.GetComponent<EnemyBase>());  // 移除当前敌人
-
+                if (nowEnemy != null && nowEnemy.activeSelf)
+                {
+                    enemyList.Remove(nowEnemy.GetComponent<EnemyBase>());  // 移除当前敌人
+                }
                 if (enemyList.Count > 0)
                 {
                     // 随机选择一个敌人
@@ -184,6 +186,47 @@ namespace MyBase
             {
                 // 如果没有找到敌人，设置为null
                 TargetEnemy = null;
+            }
+        }
+        public void FindTargetInScope()
+        {
+            // 定义检测范围，假设使用 Config 中的范围配置
+            float scopeRadius = Config.ScopeRadius;
+            Collider2D collider = GetComponent<Collider2D>();
+            Vector3 detectionCenter = collider.bounds.center;
+            // 获取范围内的所有敌人，假设敌人都有 EnemyBase 组件
+            Collider2D[] collidersInRange = Physics2D.OverlapCircleAll(detectionCenter, scopeRadius);
+
+            EnemyBase closestEnemy = null;
+            float closestDistance = float.MaxValue;
+            foreach (var item in collidersInRange)
+            {
+                EnemyBase enemy = item.GetComponent<EnemyBase>();
+
+                if (enemy != null)
+                {
+                    float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                    if (distance < closestDistance)
+                    {
+                        closestEnemy = enemy;
+                        closestDistance = distance;
+                    }
+                }
+            }
+
+            if (closestEnemy != null)
+            {
+                // 找到最近的敌人，设置为目标
+                TargetEnemy = closestEnemy.gameObject;
+            }
+            else
+            {
+
+                // 如果没有敌人，调用随机选择逻辑
+                FindTargetRandom(TargetEnemyByArm); // 将当前敌人传入随机选择逻辑
+
+
+
             }
         }
 

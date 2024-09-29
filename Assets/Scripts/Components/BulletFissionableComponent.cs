@@ -20,7 +20,7 @@ public class FissionableComponent : ComponentBase
     {
         GameObject targetEnemy;
         IArmChild armChildPrefab = prefab.GetComponent<IArmChild>();
-        armChildPrefab.FindTarget(enemyObj);
+        armChildPrefab.FindTargetRandom(enemyObj);
         if (armChildPrefab.TargetEnemy != null)
         {
             targetEnemy = armChildPrefab.TargetEnemy;

@@ -56,8 +56,6 @@ namespace MyBase
             {
                 lastFireTime = Time.time + 100000;//设为较大值，避免再次进入
                 StartCoroutine(AttackSequence()); // 发射
-                
-                
             }
         }
         
@@ -70,7 +68,10 @@ namespace MyBase
                     OtherFindTarget();
                 }
                 lastFireTime = Time.time;
-                Attack();
+                if(TargetEnemy != null) {
+                    Attack();
+                }
+                
                 
                 yield return new WaitForSeconds(Config.AttackCd);
                 

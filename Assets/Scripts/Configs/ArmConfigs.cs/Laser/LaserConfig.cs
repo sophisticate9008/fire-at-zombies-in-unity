@@ -8,12 +8,12 @@ namespace ArmConfigs
         public override void Init()
         {
             base.Init();
-            Tlc = 0.5f;
+            Tlc = 5f;
             Name = "Laser";
             Description = "激光";
-            RangeFire = 8;
+            RangeFire = 10;
             Speed = 10f;
-            Cd = 10f;
+            Cd = 4f;
             AttackCd = 0.2f;
             AttackCount = 1;
             Duration = 3f;
@@ -21,6 +21,7 @@ namespace ArmConfigs
             DamageType = "energy";
             CritRate = 0.5f;
             DamagePos = "all";
+            ScopeRadius = 3f;
         }
     }
 }

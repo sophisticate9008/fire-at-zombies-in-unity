@@ -17,5 +17,5 @@ public interface IArmChild
     }
     public GameObject TargetEnemy { get; set; }
     //发出后自身的索敌,排除传入的enemy
-    public void FindTarget(GameObject nowEnemy);
+    public void FindTargetRandom(GameObject nowEnemy);
 }

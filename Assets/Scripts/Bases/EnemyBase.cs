@@ -30,6 +30,7 @@ namespace MyBase
             MaxLife = Config.Life;
             ImmunityCount = Config.ImmunityCount;
             TransmitBack(y: 0, returnSpawn: true);
+            CanAction = true;
             IsInit = true;
 
         }
@@ -123,7 +124,7 @@ namespace MyBase
             NowLife -= damage;
             if (NowLife <= 0)
             {
-                // Die();
+                Die();
             }
         }
 
