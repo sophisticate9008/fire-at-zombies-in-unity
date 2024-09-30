@@ -22,7 +22,6 @@ namespace ArmConfigs
             Name = "bulletFission";
             Description = "次级子弹,造成本体的25%伤害";
             DamageType = "ad";
-            DamagePos = "all";
             DamageExtraType = "penetrable";
             TriggerType = "enter";
             ComponentStrs.Add("穿透");

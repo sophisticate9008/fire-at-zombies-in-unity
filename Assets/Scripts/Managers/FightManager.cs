@@ -130,7 +130,7 @@ public class FighteManager : MonoBehaviour
         ObjectPoolManager.Instance.ReturnToPool("DamageTextUIPool", textObject);
     }
 
-    public void SelfDamageFilter(GameObject enemyObj, GameObject selfObj, bool isBuffDamage = false, float persentage = 0)
+    public void SelfDamageFilter(GameObject enemyObj, GameObject selfObj, bool isBuffDamage = false, float persentage = 0, float tlc = 0)
     {
         EnemyBase enemyBase = enemyObj.GetComponent<EnemyBase>();
         EnemyConfigBase enemyConfig = enemyBase.Config;
@@ -165,7 +165,12 @@ public class FighteManager : MonoBehaviour
         }
         else
         {
-            baseDamage = GlobalConfig.AttackValue * armConfig.Tlc;
+            if(tlc == 0) {
+                baseDamage = GlobalConfig.AttackValue * armConfig.Tlc;
+            }else {
+                 baseDamage = GlobalConfig.AttackValue * tlc;
+            }
+            
         }
         //基础伤害通过伤害加成
         float addtion = GlobalConfig.AllAddition;

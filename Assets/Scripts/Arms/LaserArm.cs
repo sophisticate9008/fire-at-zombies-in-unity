@@ -16,7 +16,7 @@ public class LaserArm : ArmBase
     public override void Attack()
     {
         Vector3 baseDirection = (TargetEnemy.transform.position - transform.position).normalized;
-        ArmChildBase obj = ObjectPoolManager.Instance.GetFromPool(GetType().Name.Replace("Arm", "") + "Pool", Config.Prefab).GetComponent<ArmChildBase>();
+        ArmChildBase obj = GetOneFromPool();
         obj.transform.position = transform.position;
         obj.Direction = baseDirection;
         obj.TargetEnemyByArm = TargetEnemy;

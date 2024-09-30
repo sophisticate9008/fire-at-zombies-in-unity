@@ -79,9 +79,7 @@ namespace MyBase
         }
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if(Config.TriggerType != "stay") {
-                return;
-            }
+
             if (IsNotSelf(collision))
             {
                 if (Time.time - stayTriggerTime > Config.AttackCd)
@@ -97,11 +95,12 @@ namespace MyBase
             TriggerByTypeCallBack(type);
             foreach (var component in InstalledComponents)
             {
-
-                if (component.Value.Type == type)
+                foreach (var _ in component.Value.Type)
                 {
-                    component.Value.TriggerExec(obj);
-
+                    if (_ == type)
+                    {
+                        component.Value.TriggerExec(obj);
+                    }
                 }
             }
         }
@@ -114,11 +113,12 @@ namespace MyBase
             TriggerByType("update", null);
             foreach (var kvp in collideObjs)
             {
-                if(gameObject.activeSelf) {
+                if (gameObject.activeSelf)
+                {
                     StartCoroutine(ProcessQueueByKey(kvp.Key, kvp.Value));
                 }
                 // 为每个 key 单独启动一个协程来处理队列
-                
+
             }
         }
         private IEnumerator ProcessQueueByKey(string key, Queue<GameObject> queue)
@@ -153,9 +153,14 @@ namespace MyBase
                 OnTriggerByQueue();
             }
         }
+        //重写自定义传入tlc，比如说区域中心伤害翻倍之类的
         public virtual void CreateDamage(GameObject enemyObj)
         {
             FighteManager.Instance.SelfDamageFilter(enemyObj, gameObject);
+        }
+        public virtual void CreateDamage(GameObject enemyObj, float tlc)
+        {
+            FighteManager.Instance.SelfDamageFilter(enemyObj, gameObject, tlc: tlc);
         }
         public virtual void Move()
         {
@@ -292,6 +297,24 @@ namespace MyBase
             }
 
         }
+        public List<GameObject> LineCastAll(Vector3 startPoint, Vector3 endPoint)
+        {
+            List<GameObject> list = new();
+            if (Config.IsLineCast)
+            {
+                RaycastHit2D[] hits = Physics2D.LinecastAll(startPoint, endPoint);
+                foreach (RaycastHit2D hit in hits)
+                {
+                    var enemy = hit.collider.GetComponent<EnemyBase>();
+                    if (enemy != null)
+                    {
+                        list.Add(enemy.gameObject);
+                    }
+                }
+            }
+            return list;
+
+        }
         public virtual void OnDisable()
         {
             foreach (var temp in collideObjs)
@@ -306,5 +329,7 @@ namespace MyBase
             stayTriggerTime = -10;
             Invoke(nameof(ReturnToPool), Config.Duration);
         }
+        //路径伤害
+
     }
 }

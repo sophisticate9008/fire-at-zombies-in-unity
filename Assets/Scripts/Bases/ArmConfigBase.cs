@@ -23,7 +23,6 @@ namespace MyBase
         [SerializeField] private float lastTime;
         [SerializeField] private List<string> componentStrs = new List<string>();
         [SerializeField] private float buffDamageTlc;
-        [SerializeField] private float duration;
 
         // Prefab 属性
         public override GameObject Prefab
@@ -113,28 +112,21 @@ namespace MyBase
             get => componentStrs;
             set => componentStrs = value;
         }
-        public virtual float Duration {
-            get{
-                if(TriggerType == "enter") {
-                    return 20f;
-                }else {
-                    return duration;
-                }
-            }
-            set => duration = value;
-        }
+        public virtual float Duration {get;set;} = 20f;
         public virtual string Owner {get; set;}
         //伤害类型 
         public virtual string DamageType {get; set;}
 
         //伤害位置 all / land
-        public virtual string DamagePos {get; set;}
+        public virtual string DamagePos {get; set;} = "all";
         // 触发类型
         public virtual string TriggerType{get; set;}
 
         public virtual string DamageExtraType {get => ""; set{}}
         //自身索敌半径
         public virtual float ScopeRadius {get; set;} = 3f;
+        public virtual bool IsLineCast {get;set;} = false;
+        public virtual bool IsRayCast {get;set;} = false;
         // 构造函数
         public ArmConfigBase()
         {

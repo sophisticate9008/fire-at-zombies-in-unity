@@ -7,6 +7,7 @@ namespace ArmsChild
 {
     public class Laser : ArmChildBase
     {
+        public LaserConfig ConcreteConfig => Config as LaserConfig;
         private GameObject expectEnemy;
         public override void Move()
         {
@@ -16,7 +17,9 @@ namespace ArmsChild
             {
                 transform.localScale = new Vector3(0, 1, 1);
                 return;
-            }else {
+            }
+            else
+            {
                 expectEnemy = indeedEnemy;
             }
             float distance = Vector3.Distance(transform.position, indeedEnemy.transform.position);
@@ -34,7 +37,8 @@ namespace ArmsChild
             if (TargetEnemyByArm != null)
             {
                 indeedEnemy = TargetEnemyByArm;
-                if(!TargetEnemyByArm.activeSelf) {
+                if (!TargetEnemyByArm.activeSelf)
+                {
                     TargetEnemyByArm = null;
                     indeedEnemy = null;
                 }
@@ -43,11 +47,12 @@ namespace ArmsChild
             {
                 if (TargetEnemy == null)
                 {
-                    
+
                     FindTargetInScope();
                 }
                 indeedEnemy = TargetEnemy;
-                if(indeedEnemy == null) {
+                if (indeedEnemy == null)
+                {
                     FindTargetRandom(null);
                 }
                 indeedEnemy = TargetEnemy;
@@ -56,13 +61,24 @@ namespace ArmsChild
         }
         public override void TriggerByTypeCallBack(string type)
         {
-            if(type == Config.TriggerType) {
+            if (type != Config.TriggerType) { return; }
+            LaserFission();
+            PathDamage();
+            PathFlame();
+        }
+        public void LaserFission()
+        {
+            if (GetType().Name == "Laser")
+            {
                 LaserFissionConfig laserFissionConfig = ConfigManager.Instance.GetConfigByClassName("LaserFission") as LaserFissionConfig;
                 List<GameObject> enemys = FindTargetInScope(laserFissionConfig.FissionLevel, expectEnemy);
-                if(enemys == null) {
+                if (enemys == null)
+                {
                     return;
                 }
-                foreach(var temp in enemys) { 
+
+                foreach (var temp in enemys)
+                {
                     ArmChildBase armChildBase = ObjectPoolManager.Instance.GetFromPool("LaserFissionPool", laserFissionConfig.Prefab).GetComponent<ArmChildBase>();
                     armChildBase.gameObject.transform.position = expectEnemy.transform.position;
                     (armChildBase as LaserFission).TargetEnemyByArm = temp;
@@ -70,6 +86,39 @@ namespace ArmsChild
                 }
             }
         }
+        public void PathDamage()
+        {
+            List<GameObject> hitEnemys = LineCastAll(transform.position, expectEnemy.transform.position);
+            foreach (var hit in hitEnemys)
+            {
+                //排除第一个接触的也就是次级产生的敌人或者首次的目标敌人
+                if(hit == hitEnemys[0]) {
+                    continue;
+                }
+                if (hit != expectEnemy)
+                {
+                    Debug.Log("造成了路径伤害");
+                    CreateDamage(hit);
+                }
+
+            }
+        }
+        public void PathFlame()
+        {
+            if (ConcreteConfig.IsFlame)
+            {
+
+            }
+        }
+        public override sealed void CreateDamage(GameObject enemyObj)
+        {
+            float tlc = Config.Tlc;
+            // if(ConcrateConfig.IsMainDamageUp) {
+            //     tlc *= 3;
+            // }
+            CreateDamage(enemyObj, tlc);
+        }
+
     }
-    
+
 }

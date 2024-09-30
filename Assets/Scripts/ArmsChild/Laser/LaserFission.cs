@@ -4,12 +4,10 @@ using UnityEngine;
 
 namespace ArmsChild
 {
+    
     public class LaserFission : Laser
     {
-        public override void TriggerByTypeCallBack(string type)
-        {
-
-        }
+        
     }
 }
 

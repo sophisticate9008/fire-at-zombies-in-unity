@@ -47,7 +47,6 @@ namespace ArmConfigs
             AttackCd = 1f;
             AttackCount = 30;
             DamageType = "ad";
-            DamagePos = "all";
             DamageExtraType = "penetrable";
             TriggerType = "enter";
             BuffDamageTlc = 0.1f;

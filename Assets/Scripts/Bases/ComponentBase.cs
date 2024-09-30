@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MyBase
@@ -10,7 +11,7 @@ namespace MyBase
 
         public ComponentBase(string componentName, string type, GameObject selfObj)
         {
-            Type = type;
+            Type = type.Split('|');
             ComponentName = componentName;
             SelfObj = selfObj;
 
@@ -18,7 +19,7 @@ namespace MyBase
 
         public GameObject SelfObj { get; set; }
         public string ComponentName { get; set; }
-        public string Type { get; set; }
+        public string[] Type { get; set; }
 
         public virtual void Init()
         {

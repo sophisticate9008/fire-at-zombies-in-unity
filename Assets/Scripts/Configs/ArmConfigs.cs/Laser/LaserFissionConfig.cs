@@ -2,11 +2,11 @@ using MyBase;
 
 namespace ArmConfigs
 {
-    public class LaserFissionConfig : ArmConfigBase
+    public class LaserFissionConfig : LaserConfig
     {
         public LaserConfig LaserConfig => ConfigManager.Instance.GetConfigByClassName("Laser") as LaserConfig;
         public override float Tlc { get => LaserConfig.Tlc * 0.1f; }
-        public override float Speed => LaserConfig.Speed;
+        public override bool IsFlame => LaserConfig.IsFlame;
         public override float CritRate => LaserConfig.CritRate;
         public  int FissionLevel = 4;
         public override void Init()
@@ -16,8 +16,7 @@ namespace ArmConfigs
             ScopeRadius = 3f;
             TriggerType = "stay";
             DamageType = "energy";
-            DamagePos = "all";
-            Duration = 0.2f;
+            Duration = 0.21f;
             AttackCd = 0.2f;
         }
     }

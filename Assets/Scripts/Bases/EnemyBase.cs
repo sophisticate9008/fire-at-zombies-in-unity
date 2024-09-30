@@ -160,9 +160,10 @@ namespace MyBase
         {
             foreach (var component in InstalledComponents)
             {
-                if (component.Value.Type == type)
-                {
-                    component.Value.TriggerExec(null);
+                foreach(var _ in component.Value.Type) {
+                    if(_ == type) {
+                        component.Value.TriggerExec(obj);
+                    }
                 }
             }
         }

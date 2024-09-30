@@ -19,6 +19,7 @@ namespace Factorys
                 "Global" => typeof(GlobalConfig),
                 "Laser" => typeof(LaserConfig),
                 "LaserFission" => typeof(LaserFissionConfig),
+                "ElectroPenetrate" => typeof(ElectroPenetrateConfig),
                 _ => throw new System.NotImplementedException()
             };
         }

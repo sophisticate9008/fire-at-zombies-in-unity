@@ -32,6 +32,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6057976143127554493, guid: 1fcd0b991132ffc49ad0b4ca3989a72f, type: 3}
+      propertyPath: m_CameraType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6379037970307316721, guid: 1fcd0b991132ffc49ad0b4ca3989a72f, type: 3}
       propertyPath: ShapeModule.angle
       value: 0
