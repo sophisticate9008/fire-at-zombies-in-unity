@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 2787080696
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e145b1e05f50905c0ba8314e700313c0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: e145b1e05f50905c0ba8314e700313c0
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetPackage/UI/ItemBackground/grayBorder.png
+- Assets/AssetPackage/UI/ItemBackground/greenBorder.png
+- Assets/AssetPackage/UI/ItemBackground/blue.png
+- Assets/AssetPackage/UI/ItemBackground/gray.png
+- Assets/AssetPackage/UI/ItemBackground/red.png
+- Assets/AssetPackage/UI/ItemBackground/gold.png
+- Assets/AssetPackage/UI/ItemBackground/purpleBorder.png
+- Assets/AssetPackage/UI/ItemBackground/green.png
+- Assets/AssetPackage/UI/ItemBackground/blueBorder.png
+- Assets/AssetPackage/UI/ItemBackground/goldBorder.png
+- Assets/AssetPackage/UI/ItemBackground/multicolourBorder.png
+- Assets/AssetPackage/UI/ItemBackground/purple.png
+- Assets/AssetPackage/UI/ItemBackground/muticolour.png
+- Assets/AssetPackage/UI/ItemBackground/redBorder.png
+Dependencies: []

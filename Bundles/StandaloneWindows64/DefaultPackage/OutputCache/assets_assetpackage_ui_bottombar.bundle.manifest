@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 3377685060
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f09486ef2d43a83b3ac151831202172c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 845e084524dae759a30e448723ebc8a1
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: f09486ef2d43a83b3ac151831202172c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetPackage/UI/BottomBar/Shop.controller
+- "Assets/AssetPackage/UI/BottomBar/\u9009\u4E2D\u5546\u57CE.png"
+- "Assets/AssetPackage/UI/BottomBar/\u6838\u5FC3.png"
+- Assets/AssetPackage/UI/BottomBar/shop.anim
+- "Assets/AssetPackage/UI/BottomBar/\u9009\u4E2D\u89D2\u8272.png"
+- "Assets/AssetPackage/UI/BottomBar/\u6218\u6597.png"
+- "Assets/AssetPackage/UI/BottomBar/\u89D2\u8272.png"
+- "Assets/AssetPackage/UI/BottomBar/\u5546\u57CE.png"
+- "Assets/AssetPackage/UI/BottomBar/\u9009\u4E2D\u6218\u6597.png"
+- "Assets/AssetPackage/UI/BottomBar/\u9009\u4E2D\u6838\u5FC3.png"
+- Assets/AssetPackage/UI/BottomBar/background.png
+Dependencies: []
