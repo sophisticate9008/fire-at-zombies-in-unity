@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1886944840
+CRC: 719052947
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8688013ca45d3a90121392021eaf4c41
+    Hash: da8b5c1e2eae6ff0bfe6dc7afe1cfb2b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0df1dec30b5d061d422d3e6493d27647
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 8688013ca45d3a90121392021eaf4c41
+    Hash: da8b5c1e2eae6ff0bfe6dc7afe1cfb2b
 HashAppended: 0
 ClassTypes:
 - Class: 48
@@ -17,4 +17,6 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/TextMesh Pro/Shaders/TMP_SDF.shader
+- Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
+- Assets/AssetPackage/Effects/UIGradientWithAlpha.shader
 Dependencies: []

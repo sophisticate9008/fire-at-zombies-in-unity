@@ -1,30 +1,46 @@
 ManifestFileVersion: 0
-CRC: 3137343243
+CRC: 2057336220
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e5a3bdc9399fc78c94dcf7cdb4b3e744
+    Hash: 0591f96b29c12dc790e85a763a573bcf
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e1353f8083ca191d7db11a9b96e5c339
+    Hash: 26ac24561f718510999d163be34b87d6
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: e5a3bdc9399fc78c94dcf7cdb4b3e744
+    Hash: 0591f96b29c12dc790e85a763a573bcf
 HashAppended: 0
 ClassTypes:
 - Class: 1
   Script: {instanceID: 0}
 - Class: 21
   Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 186f5cbcf177a7347a7627d089e42947, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9b8bdc3f0bc759c449cc358bd2af4fb8, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
   Script: {instanceID: 0}
 - Class: 222
   Script: {instanceID: 0}
@@ -42,6 +58,14 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.ColorBlock
 - AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.InputField/EndEditEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.InputField/OnChangeEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.InputField/SubmitEvent
+- AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.Navigation
@@ -49,5 +73,10 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.UI.SpriteState
 Assets:
 - Assets/AssetPackage/UI/Prefabs/ItemBase.prefab
+- Assets/AssetPackage/UI/Prefabs/Mask.prefab
+- Assets/AssetPackage/UI/Prefabs/Message.prefab
+- Assets/AssetPackage/UI/Prefabs/ExchangeBase.prefab
 Dependencies:
+- D:/05.code/10.unity_code/fire at zombies/Bundles/StandaloneWindows64/DefaultPackage/OutputCache/share_assets_assetpackage_effects.bundle
 - D:/05.code/10.unity_code/fire at zombies/Bundles/StandaloneWindows64/DefaultPackage/OutputCache/share_assets_textmesh_pro_examples_&_extras_resources_fonts_&_materials.bundle
+- D:/05.code/10.unity_code/fire at zombies/Bundles/StandaloneWindows64/DefaultPackage/OutputCache/share_assets_textmesh_pro_resources_fonts_&_materials.bundle
