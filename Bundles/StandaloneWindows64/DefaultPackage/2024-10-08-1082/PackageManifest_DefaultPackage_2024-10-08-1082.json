@@ -6,12 +6,54 @@
     "OutputNameStyle": 0,
     "BuildPipeline": "BuiltinBuildPipeline",
     "PackageName": "DefaultPackage",
-    "PackageVersion": "2024-10-08-642",
+    "PackageVersion": "2024-10-08-1082",
     "AssetList": [
         {
             "Address": "diamond",
             "AssetPath": "Assets/AssetPackage/Characters/diamond.png",
             "AssetGUID": "2ef318895c22a2f41b3fdfc77bce7573",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "flagArm",
+            "AssetPath": "Assets/AssetPackage/Characters/flagArm.png",
+            "AssetGUID": "27551d2e2d7c16447955ed2d647b8774",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "flagArmour",
+            "AssetPath": "Assets/AssetPackage/Characters/flagArmour.png",
+            "AssetGUID": "9c9cdaa6d37ea494b86d0ffb9e5c969b",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "flagGlove",
+            "AssetPath": "Assets/AssetPackage/Characters/flagGlove.png",
+            "AssetGUID": "ed363920e12c6134785e489a1a004e9f",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "flagHelmet",
+            "AssetPath": "Assets/AssetPackage/Characters/flagHelmet.png",
+            "AssetGUID": "3f72b8b617a2f694380a19c90174f1c1",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "flagPants",
+            "AssetPath": "Assets/AssetPackage/Characters/flagPants.png",
+            "AssetGUID": "669385d0e29e78f43bca60875a7e58dd",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "flagShoes",
+            "AssetPath": "Assets/AssetPackage/Characters/flagShoes.png",
+            "AssetGUID": "5011663c02cba144ca18ef3f059e949a",
             "AssetTags": [],
             "BundleID": 0
         },
@@ -383,30 +425,30 @@
     "BundleList": [
         {
             "BundleName": "assets_assetpackage_characters.bundle",
-            "UnityCRC": 255493680,
-            "FileHash": "80cde4541e2802e13ccf3ac90d407572",
-            "FileCRC": "f1c35689",
-            "FileSize": 328873,
+            "UnityCRC": 2337141791,
+            "FileHash": "4f7d92ae33f1512044fb0ea0c792c8a9",
+            "FileCRC": "b57a856f",
+            "FileSize": 348843,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
         },
         {
             "BundleName": "assets_assetpackage_ui_itembackground.bundle",
-            "UnityCRC": 13536352,
-            "FileHash": "8a5a88a5070ff8f3566ba1f2da707b2f",
-            "FileCRC": "7e5a07f1",
-            "FileSize": 54589,
+            "UnityCRC": 4248958427,
+            "FileHash": "053672b1ad41967c400c1d59b0d71bec",
+            "FileCRC": "9d69ca6e",
+            "FileSize": 54578,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
         },
         {
             "BundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "UnityCRC": 2057336220,
-            "FileHash": "cd1fb54d5cd4708c7091babec7c850ce",
-            "FileCRC": "4a5fe332",
-            "FileSize": 17921,
+            "UnityCRC": 3918369854,
+            "FileHash": "5966b51d70292569e04a58d104943653",
+            "FileCRC": "7044d2c0",
+            "FileSize": 18210,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": [
