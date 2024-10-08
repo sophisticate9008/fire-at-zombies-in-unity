@@ -6,7 +6,7 @@
     "OutputNameStyle": 0,
     "BuildPipeline": "BuiltinBuildPipeline",
     "PackageName": "DefaultPackage",
-    "PackageVersion": "2024-10-08-1082",
+    "PackageVersion": "2024-10-08-1162",
     "AssetList": [
         {
             "Address": "diamond",
@@ -317,6 +317,13 @@
             "BundleID": 1
         },
         {
+            "Address": "Des",
+            "AssetPath": "Assets/AssetPackage/UI/Prefabs/Des.prefab",
+            "AssetGUID": "bbf4630816d40a647b49c41615db0538",
+            "AssetTags": [],
+            "BundleID": 2
+        },
+        {
             "Address": "ExchangeBase",
             "AssetPath": "Assets/AssetPackage/UI/Prefabs/ExchangeBase.prefab",
             "AssetGUID": "ac15b1367ec84d047ad486a185c52c36",
@@ -425,10 +432,10 @@
     "BundleList": [
         {
             "BundleName": "assets_assetpackage_characters.bundle",
-            "UnityCRC": 2337141791,
-            "FileHash": "4f7d92ae33f1512044fb0ea0c792c8a9",
-            "FileCRC": "b57a856f",
-            "FileSize": 348843,
+            "UnityCRC": 2054681469,
+            "FileHash": "9cbc7d98587bb86cf97010b2ebb50855",
+            "FileCRC": "332ca513",
+            "FileSize": 348904,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
@@ -445,52 +452,53 @@
         },
         {
             "BundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "UnityCRC": 3918369854,
-            "FileHash": "5966b51d70292569e04a58d104943653",
-            "FileCRC": "7044d2c0",
-            "FileSize": 18210,
+            "UnityCRC": 3592844578,
+            "FileHash": "31e00d73afb365e94f1ec1bb32c6c92c",
+            "FileCRC": "b107d6cb",
+            "FileSize": 19155,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": [
-                5,
+                0,
+                4,
                 6,
                 8,
                 10,
                 9,
-                4
+                5
             ]
         },
         {
             "BundleName": "assets_assetpackage_ui_bottombar.bundle",
-            "UnityCRC": 3377685060,
-            "FileHash": "d82d86a9149e672df490f46559249af0",
-            "FileCRC": "47778c8b",
-            "FileSize": 385861,
-            "Encrypted": false,
-            "Tags": [],
-            "DependIDs": []
-        },
-        {
-            "BundleName": "unityshaders.bundle",
-            "UnityCRC": 719052947,
-            "FileHash": "4648d42d2f5ef150e2772e98b650b9c6",
-            "FileCRC": "ee65fbd0",
-            "FileSize": 24589,
+            "UnityCRC": 3175732583,
+            "FileHash": "f15919b9eef48d1c9b08e8aaf04895ae",
+            "FileCRC": "740efaed",
+            "FileSize": 385867,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
         },
         {
             "BundleName": "share_assets_assetpackage_effects.bundle",
-            "UnityCRC": 1419907511,
-            "FileHash": "9f93240747d1d8b136a50d6832633225",
-            "FileCRC": "f3b068a2",
-            "FileSize": 2510,
+            "UnityCRC": 2984841751,
+            "FileHash": "758c811507b03a218ab77622c45332e9",
+            "FileCRC": "025c11f1",
+            "FileSize": 2525,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": [
-                4
+                5
             ]
+        },
+        {
+            "BundleName": "unityshaders.bundle",
+            "UnityCRC": 3337445555,
+            "FileHash": "f16aa7befe5cc3b2272a3676a56bf02c",
+            "FileCRC": "a80b9def",
+            "FileSize": 24597,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
         },
         {
             "BundleName": "share_assets_textmesh_pro_examples_&_extras_fonts.bundle",
@@ -522,7 +530,7 @@
             "Tags": [],
             "DependIDs": [
                 6,
-                4
+                5
             ]
         },
         {
@@ -535,7 +543,7 @@
             "Tags": [],
             "DependIDs": [
                 10,
-                4
+                5
             ]
         },
         {
