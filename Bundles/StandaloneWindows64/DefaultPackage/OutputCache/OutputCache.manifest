@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2521397497
+CRC: 254863779
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -12,9 +12,10 @@ AssetBundleManifest:
       Name: assets_assetpackage_ui_prefabs.bundle
       Dependencies:
         Dependency_0: assets_assetpackage_characters.bundle
-        Dependency_1: share_assets_assetpackage_effects.bundle
-        Dependency_2: share_assets_textmesh_pro_examples_&_extras_resources_fonts_&_materials.bundle
-        Dependency_3: share_assets_textmesh_pro_resources_fonts_&_materials.bundle
+        Dependency_1: assets_assetpackage_ui_itembackground.bundle
+        Dependency_2: share_assets_assetpackage_effects.bundle
+        Dependency_3: share_assets_textmesh_pro_examples_&_extras_resources_fonts_&_materials.bundle
+        Dependency_4: share_assets_textmesh_pro_resources_fonts_&_materials.bundle
     Info_3:
       Name: assets_assetpackage_ui_bottombar.bundle
       Dependencies: {}
