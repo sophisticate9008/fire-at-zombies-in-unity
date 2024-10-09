@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 787775454
+CRC: 1535350822
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f6cae66cc1b76e9cac355a51ee91602d
+    Hash: 72adc2e7fd615bc694ea30119caebd9d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2d8df09e698f722ada1caa03d3413830
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: f6cae66cc1b76e9cac355a51ee91602d
+    Hash: 72adc2e7fd615bc694ea30119caebd9d
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -27,6 +27,7 @@ Assets:
 - Assets/AssetPackage/Characters/icon_baoshi_1.png
 - Assets/AssetPackage/Characters/icon_daoju_goldpack1_D.png
 - Assets/AssetPackage/Characters/Place3.png
+- Assets/AssetPackage/Characters/zmzg_sc_img_bx01 #325512.png
 - Assets/AssetPackage/Characters/keyBlue.png
 - Assets/AssetPackage/Characters/Place1.png
 - Assets/AssetPackage/Characters/icon_baoshi_suijibaoshi #201739.png
@@ -45,6 +46,7 @@ Assets:
 - Assets/AssetPackage/Characters/icon_daoju_goldpack2_D.png
 - Assets/AssetPackage/Characters/Place4.png
 - Assets/AssetPackage/Characters/diamond.png
+- Assets/AssetPackage/Characters/zmzg_sc_img_bx02 #325514.png
 - Assets/AssetPackage/Characters/keyPurple.png
 - Assets/AssetPackage/Characters/icon_baoshi_4.png
 - Assets/AssetPackage/Characters/icon_baoshi_7.png

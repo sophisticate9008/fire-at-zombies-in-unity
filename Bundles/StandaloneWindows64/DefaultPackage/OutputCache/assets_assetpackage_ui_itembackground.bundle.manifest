@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 13536352
+CRC: 3555730989
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8674246b8375538f8d40d4b4e6222f1a
+    Hash: b02f68b6ba99545b0eb36d797e538082
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2d8df09e698f722ada1caa03d3413830
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 8674246b8375538f8d40d4b4e6222f1a
+    Hash: b02f68b6ba99545b0eb36d797e538082
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -20,11 +20,14 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/AssetPackage/UI/ItemBackground/grayBorder.png
 - Assets/AssetPackage/UI/ItemBackground/greenBorder.png
+- Assets/AssetPackage/UI/ItemBackground/zmzg_lldq2_yhkjz_zise.png
 - Assets/AssetPackage/UI/ItemBackground/blue.png
 - Assets/AssetPackage/UI/ItemBackground/gray.png
 - Assets/AssetPackage/UI/ItemBackground/red.png
 - Assets/AssetPackage/UI/ItemBackground/orange.png
 - Assets/AssetPackage/UI/ItemBackground/purpleBorder.png
+- Assets/AssetPackage/UI/ItemBackground/zmzg_lldq2_yhkjz_chengse.png
+- Assets/AssetPackage/UI/ItemBackground/zmzg_lldq2_yhkjz_lanse.png
 - Assets/AssetPackage/UI/ItemBackground/green.png
 - Assets/AssetPackage/UI/ItemBackground/blueBorder.png
 - Assets/AssetPackage/UI/ItemBackground/multicolourBorder.png
@@ -32,4 +35,6 @@ Assets:
 - Assets/AssetPackage/UI/ItemBackground/purple.png
 - Assets/AssetPackage/UI/ItemBackground/muticolour.png
 - Assets/AssetPackage/UI/ItemBackground/redBorder.png
+- Assets/AssetPackage/UI/ItemBackground/zmzg_lldq2_yhkjz_hongse.png
+- Assets/AssetPackage/UI/ItemBackground/zmzg_loading_lldq_bg.png
 Dependencies: []
