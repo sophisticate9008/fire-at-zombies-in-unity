@@ -6,7 +6,7 @@
     "OutputNameStyle": 0,
     "BuildPipeline": "BuiltinBuildPipeline",
     "PackageName": "DefaultPackage",
-    "PackageVersion": "2024-10-09-1350",
+    "PackageVersion": "2024-10-10-814",
     "AssetList": [
         {
             "Address": "diamond",
@@ -415,6 +415,13 @@
             "BundleID": 2
         },
         {
+            "Address": "UpgradeJewel",
+            "AssetPath": "Assets/AssetPackage/UI/Prefabs/UpgradeJewel.prefab",
+            "AssetGUID": "78aa8806c39fa274fab54e8494f0a143",
+            "AssetTags": [],
+            "BundleID": 2
+        },
+        {
             "Address": "background",
             "AssetPath": "Assets/AssetPackage/UI/BottomBar/background.png",
             "AssetGUID": "d9b6cdbd0c267e949a3479b5e0808e31",
@@ -495,30 +502,30 @@
     "BundleList": [
         {
             "BundleName": "assets_assetpackage_characters.bundle",
-            "UnityCRC": 1535350822,
-            "FileHash": "c37b06941682717857aefe69e6cffdfd",
-            "FileCRC": "4ac15995",
-            "FileSize": 603159,
+            "UnityCRC": 1070408936,
+            "FileHash": "582c4b5bd7d0b9a9e5dd61b7f15a328a",
+            "FileCRC": "691b1a01",
+            "FileSize": 602714,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
         },
         {
             "BundleName": "assets_assetpackage_ui_itembackground.bundle",
-            "UnityCRC": 3555730989,
-            "FileHash": "d1062ab5ab13f5cc99fd4e630b5ad3c2",
-            "FileCRC": "a14faf40",
-            "FileSize": 452444,
+            "UnityCRC": 1250011434,
+            "FileHash": "ca3502dd55b4825749dd2eed7bf1b506",
+            "FileCRC": "fc886f63",
+            "FileSize": 452301,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
         },
         {
             "BundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "UnityCRC": 3609709724,
-            "FileHash": "c2a7de18b3cf9f224e15ef51093a1da1",
-            "FileCRC": "4a503a06",
-            "FileSize": 22538,
+            "UnityCRC": 1205416149,
+            "FileHash": "18cec2d175f3942197b9ea25f67c1ba2",
+            "FileCRC": "a1adc489",
+            "FileSize": 23958,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": [
@@ -584,10 +591,10 @@
         },
         {
             "BundleName": "share_assets_textmesh_pro_examples_&_extras_resources_fonts_&_materials.bundle",
-            "UnityCRC": 3451843458,
-            "FileHash": "30f904da8ca0f219fb7ad962ff9a8111",
-            "FileCRC": "de41d99d",
-            "FileSize": 65202,
+            "UnityCRC": 3921226676,
+            "FileHash": "bba289652f9b52a94ba55ae19fa05730",
+            "FileCRC": "60723fd0",
+            "FileSize": 76737,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": [

@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 3609709724
+CRC: 1205416149
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5d7937b858809f2c8171243e1719448a
+    Hash: c993e940ff2b6d368faebbf3f5d6c3b4
   TypeTreeHash:
     serializedVersion: 2
-    Hash: b758fb3b37c8392e80d6a555eed7b95c
+    Hash: 3c825c0d0d986c04fe7e010fe831e83e
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 5d7937b858809f2c8171243e1719448a
+    Hash: c993e940ff2b6d368faebbf3f5d6c3b4
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -31,6 +31,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 186f5cbcf177a7347a7627d089e42947, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
@@ -38,6 +40,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
 - Class: 114
@@ -87,6 +91,7 @@ Assets:
 - Assets/AssetPackage/UI/Prefabs/ItemBase.prefab
 - Assets/AssetPackage/UI/Prefabs/Mask.prefab
 - Assets/AssetPackage/UI/Prefabs/Message.prefab
+- Assets/AssetPackage/UI/Prefabs/UpgradeJewel.prefab
 - Assets/AssetPackage/UI/Prefabs/Des.prefab
 - Assets/AssetPackage/UI/Prefabs/DrawPanel.prefab
 - Assets/AssetPackage/UI/Prefabs/CommonUI.prefab
