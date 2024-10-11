@@ -6,8 +6,29 @@
     "OutputNameStyle": 0,
     "BuildPipeline": "BuiltinBuildPipeline",
     "PackageName": "DefaultPackage",
-    "PackageVersion": "2024-10-10-814",
+    "PackageVersion": "2024-10-11-1028",
     "AssetList": [
+        {
+            "Address": "com_lock",
+            "AssetPath": "Assets/AssetPackage/Characters/com_lock.png",
+            "AssetGUID": "beb2b132afa497d4cbed26dc7f89eb68",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "com_new",
+            "AssetPath": "Assets/AssetPackage/Characters/com_new.png",
+            "AssetGUID": "a73f1c309d22df5458f8b982a7e9dc82",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "com_unlock",
+            "AssetPath": "Assets/AssetPackage/Characters/com_unlock.png",
+            "AssetGUID": "0c065002b5bbafe46a1ce7e176ec3ba5",
+            "AssetTags": [],
+            "BundleID": 0
+        },
         {
             "Address": "diamond",
             "AssetPath": "Assets/AssetPackage/Characters/diamond.png",
@@ -215,6 +236,13 @@
             "Address": "Place6",
             "AssetPath": "Assets/AssetPackage/Characters/Place6.png",
             "AssetGUID": "ed363920e12c6134785e489a1a004e9f",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "zmzg_com_hongdian",
+            "AssetPath": "Assets/AssetPackage/Characters/zmzg_com_hongdian.png",
+            "AssetGUID": "3203812db7b0f2c409ae4028372e72c2",
             "AssetTags": [],
             "BundleID": 0
         },
@@ -502,10 +530,10 @@
     "BundleList": [
         {
             "BundleName": "assets_assetpackage_characters.bundle",
-            "UnityCRC": 1070408936,
-            "FileHash": "582c4b5bd7d0b9a9e5dd61b7f15a328a",
-            "FileCRC": "691b1a01",
-            "FileSize": 602714,
+            "UnityCRC": 73507473,
+            "FileHash": "3af2b83503e56cbc931e47e30eef244c",
+            "FileCRC": "0f289224",
+            "FileSize": 612720,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
@@ -522,10 +550,10 @@
         },
         {
             "BundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "UnityCRC": 1205416149,
-            "FileHash": "18cec2d175f3942197b9ea25f67c1ba2",
-            "FileCRC": "a1adc489",
-            "FileSize": 23958,
+            "UnityCRC": 1645286918,
+            "FileHash": "4ffb79d417bad0a266287993faf4124e",
+            "FileCRC": "0878bab6",
+            "FileSize": 24499,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": [
