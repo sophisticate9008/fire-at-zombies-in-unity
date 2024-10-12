@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1645286918
+CRC: 121848429
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 85299e1aab55f10de688135192e1e2d0
+    Hash: 134877301c35f077efd0ba872277a85c
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 07dee23b89331129db0a3a127963c9c0
+    Hash: 1c43dcabfedbfe63e56a4bc5f047a7e1
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 85299e1aab55f10de688135192e1e2d0
+    Hash: 134877301c35f077efd0ba872277a85c
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -38,6 +38,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
@@ -92,6 +94,7 @@ Assets:
 - Assets/AssetPackage/UI/Prefabs/Mask.prefab
 - Assets/AssetPackage/UI/Prefabs/Message.prefab
 - Assets/AssetPackage/UI/Prefabs/UpgradeJewel.prefab
+- Assets/AssetPackage/UI/Prefabs/Wash.prefab
 - Assets/AssetPackage/UI/Prefabs/Des.prefab
 - Assets/AssetPackage/UI/Prefabs/DrawPanel.prefab
 - Assets/AssetPackage/UI/Prefabs/CommonUI.prefab

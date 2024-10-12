@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 73507473
+CRC: 2901718395
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 492ae87c5043cb6bf51f67bbf297c780
+    Hash: 43252158f92e486f5a34201425f64270
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2d8df09e698f722ada1caa03d3413830
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 492ae87c5043cb6bf51f67bbf297c780
+    Hash: 43252158f92e486f5a34201425f64270
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -18,40 +18,49 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/AssetPackage/Characters/keyPurple.png
-- Assets/AssetPackage/Characters/icon_baoshi_5.png
-- Assets/AssetPackage/Characters/icon_daoju_9_D.png
-- Assets/AssetPackage/Characters/icon_daoju_goldpack3_D.png
-- Assets/AssetPackage/Characters/icon_baoshi_2.png
 - Assets/AssetPackage/Characters/Place5.png
-- Assets/AssetPackage/Characters/Place2.png
-- Assets/AssetPackage/Characters/icon_baoshi_1.png
-- Assets/AssetPackage/Characters/icon_daoju_goldpack1_D.png
+- Assets/AssetPackage/Characters/icon_daoju_goldpack3_D.png
+- Assets/AssetPackage/Characters/com_lock.png
+- Assets/AssetPackage/Characters/icon_baoshi_2.png
 - Assets/AssetPackage/Characters/Place3.png
 - Assets/AssetPackage/Characters/zmzg_sc_img_bx01 #325512.png
+- Assets/AssetPackage/Characters/icon_baoshi_6.png
+- Assets/AssetPackage/Characters/icon_baoshi_suijibaoshi.png
+- Assets/AssetPackage/Characters/icon_baoshi_3.png
+- Assets/AssetPackage/Characters/icon_daoju_8_D.png
+- Assets/AssetPackage/Characters/icon_baoshi_yaoshi_2_big1.png
+- Assets/AssetPackage/Characters/icon_zhuangbei_yifu_10.png
+- Assets/AssetPackage/Characters/com_figure02.png
+- Assets/AssetPackage/Characters/icon_zhuangbei_kuzi_10.png
+- Assets/AssetPackage/Characters/icon_common_exp_1.png
+- Assets/AssetPackage/Characters/icon_daoju_goldpack2_D.png
+- Assets/AssetPackage/Characters/Place4.png
+- Assets/AssetPackage/Characters/icon_zhuangbei_toukui_10.png
+- Assets/AssetPackage/Characters/diamond.png
+- Assets/AssetPackage/Characters/Place2.png
+- Assets/AssetPackage/Characters/icon_baoshi_4.png
+- Assets/AssetPackage/Characters/icon_baoshi_5.png
+- Assets/AssetPackage/Characters/icon_daoju_9_D.png
+- Assets/AssetPackage/Characters/icon_baoshi_1.png
+- Assets/AssetPackage/Characters/icon_daoju_goldpack1_D.png
 - Assets/AssetPackage/Characters/com_unlock.png
 - Assets/AssetPackage/Characters/keyBlue.png
 - Assets/AssetPackage/Characters/icon_baoshi_suijibaoshi #201739.png
 - Assets/AssetPackage/Characters/icon_baoshi_huanxinshiji.png
-- Assets/AssetPackage/Characters/icon_baoshi_6.png
-- Assets/AssetPackage/Characters/icon_daoju_7_D.png
-- Assets/AssetPackage/Characters/icon_baoshi_suijibaoshi.png
-- Assets/AssetPackage/Characters/icon_common_tili_1_big1.png
-- Assets/AssetPackage/Characters/icon_baoshi_3.png
-- Assets/AssetPackage/Characters/icon_daoju_8_D.png
-- Assets/AssetPackage/Characters/icon_baoshi_yaoshi_2_big1.png
-- Assets/AssetPackage/Characters/money.png
 - Assets/AssetPackage/Characters/Place1.png
+- Assets/AssetPackage/Characters/icon_daoju_7_D.png
+- Assets/AssetPackage/Characters/icon_common_tili_1_big1.png
+- Assets/AssetPackage/Characters/money.png
+- Assets/AssetPackage/Characters/icon_zhuangbei_hubi_10.png
 - Assets/AssetPackage/Characters/icon_baoshi_yaoshi_1_big1.png
 - Assets/AssetPackage/Characters/com_new.png
 - Assets/AssetPackage/Characters/Place6.png
-- Assets/AssetPackage/Characters/icon_common_exp_1.png
-- Assets/AssetPackage/Characters/icon_daoju_goldpack2_D.png
-- Assets/AssetPackage/Characters/Place4.png
-- Assets/AssetPackage/Characters/diamond.png
+- Assets/AssetPackage/Characters/icon_zhuangbei_xiezi_10.png
+- Assets/AssetPackage/Characters/icon_zhuangbei_shoutao_10.png
+- Assets/AssetPackage/Characters/lozenge.png
 - Assets/AssetPackage/Characters/zmzg_sc_img_bx02 #325514.png
 - Assets/AssetPackage/Characters/zmzg_com_hongdian.png
-- Assets/AssetPackage/Characters/com_lock.png
-- Assets/AssetPackage/Characters/icon_baoshi_4.png
+- Assets/AssetPackage/Characters/keyPurple.png
+- Assets/AssetPackage/Characters/com_figure01.png
 - Assets/AssetPackage/Characters/icon_baoshi_7.png
 Dependencies: []

@@ -2,13 +2,13 @@
     "Summary": {
         "YooVersion": "2.2.4-preview",
         "UnityVersion": "2022.3.41f1c1",
-        "BuildDate": "2024/10/11 17:08:54",
+        "BuildDate": "2024/10/12 17:02:46",
         "BuildSeconds": 3,
         "BuildTarget": 19,
         "BuildMode": 0,
         "BuildPipeline": "BuiltinBuildPipeline",
         "BuildPackageName": "DefaultPackage",
-        "BuildPackageVersion": "2024-10-11-1028",
+        "BuildPackageVersion": "2024-10-12-1022",
         "UniqueBundleName": false,
         "EnableAddressable": true,
         "LocationToLower": false,
@@ -21,21 +21,39 @@
         "CompressOption": 2,
         "DisableWriteTypeTree": false,
         "IgnoreTypeTreeChanges": true,
-        "AssetFileTotalCount": 82,
-        "MainAssetTotalCount": 74,
+        "AssetFileTotalCount": 92,
+        "MainAssetTotalCount": 84,
         "AllBundleTotalCount": 9,
-        "AllBundleTotalSize": 1617259,
+        "AllBundleTotalSize": 1714780,
         "EncryptedBundleTotalCount": 0,
         "EncryptedBundleTotalSize": 0
     },
     "AssetInfos": [
+        {
+            "Address": "com_figure01",
+            "AssetPath": "Assets/AssetPackage/Characters/com_figure01.png",
+            "AssetGUID": "0b323ffb49df79342ba9bf7d67e8403d",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetpackage_characters.bundle",
+            "MainBundleSize": 708116,
+            "DependAssets": []
+        },
+        {
+            "Address": "com_figure02",
+            "AssetPath": "Assets/AssetPackage/Characters/com_figure02.png",
+            "AssetGUID": "92d20649067e1b4459a315e7dbe94289",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetpackage_characters.bundle",
+            "MainBundleSize": 708116,
+            "DependAssets": []
+        },
         {
             "Address": "com_lock",
             "AssetPath": "Assets/AssetPackage/Characters/com_lock.png",
             "AssetGUID": "beb2b132afa497d4cbed26dc7f89eb68",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -44,7 +62,7 @@
             "AssetGUID": "a73f1c309d22df5458f8b982a7e9dc82",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -53,7 +71,7 @@
             "AssetGUID": "0c065002b5bbafe46a1ce7e176ec3ba5",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -62,7 +80,7 @@
             "AssetGUID": "2ef318895c22a2f41b3fdfc77bce7573",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -71,7 +89,7 @@
             "AssetGUID": "41cb8c5e6ea1ad54bb5540e387ba182a",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -80,7 +98,7 @@
             "AssetGUID": "81caa860cadb1934ea17e85bdfb827ee",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -89,7 +107,7 @@
             "AssetGUID": "45ca0b44469b922478f17be9ee215a24",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -98,7 +116,7 @@
             "AssetGUID": "780e2ac4dcaedca4f9d4fd31036eb439",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -107,7 +125,7 @@
             "AssetGUID": "c6fbb294f7ea3244cae110845ba1e067",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -116,7 +134,7 @@
             "AssetGUID": "00a469f0de62acd44a234cd85e80ada4",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -125,7 +143,7 @@
             "AssetGUID": "1b6993105375d8543ba7a251dfc0fa03",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -134,7 +152,7 @@
             "AssetGUID": "366436c58b51a1b499361d6cd0983bc5",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -143,7 +161,7 @@
             "AssetGUID": "013c8153630ce47448bf754a116d5c99",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -152,7 +170,7 @@
             "AssetGUID": "86e7c3f710279714c8fe6aae143d1f22",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -161,7 +179,7 @@
             "AssetGUID": "ef3457404c454fc45bd7b453bbc0399b",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -170,7 +188,7 @@
             "AssetGUID": "5ae29904a50c2d742bbb9c234d86d6ba",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -179,7 +197,7 @@
             "AssetGUID": "adc04952e7668694d84e673d406b240d",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -188,7 +206,7 @@
             "AssetGUID": "cb32196dffb3c9342a6a91469aa7baca",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -197,7 +215,7 @@
             "AssetGUID": "0dbd4b5c0bec80047b7adcb049f51632",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -206,7 +224,7 @@
             "AssetGUID": "4475ff6740d1277418c665d3afbaa06c",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -215,7 +233,7 @@
             "AssetGUID": "18c4b24321333934e824e426ef425a4c",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -224,7 +242,7 @@
             "AssetGUID": "4aec755fcbf471d4ab7ed3eeeaa7a25f",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -233,7 +251,7 @@
             "AssetGUID": "56c4cfba44df18049a08ed932b402b63",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -242,7 +260,61 @@
             "AssetGUID": "3d6ed2e18c21e87458bf966bd23471ff",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
+            "DependAssets": []
+        },
+        {
+            "Address": "icon_zhuangbei_hubi_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_hubi_10.png",
+            "AssetGUID": "1b323b26b8f468e48baee418748a3e03",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetpackage_characters.bundle",
+            "MainBundleSize": 708116,
+            "DependAssets": []
+        },
+        {
+            "Address": "icon_zhuangbei_kuzi_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_kuzi_10.png",
+            "AssetGUID": "213cecb75aa3b034ab2d0006500d77c3",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetpackage_characters.bundle",
+            "MainBundleSize": 708116,
+            "DependAssets": []
+        },
+        {
+            "Address": "icon_zhuangbei_shoutao_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_shoutao_10.png",
+            "AssetGUID": "20404d450cfb3ca4693208621335e75e",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetpackage_characters.bundle",
+            "MainBundleSize": 708116,
+            "DependAssets": []
+        },
+        {
+            "Address": "icon_zhuangbei_toukui_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_toukui_10.png",
+            "AssetGUID": "eefa2ae61e9a84d48b54a46b3d4137db",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetpackage_characters.bundle",
+            "MainBundleSize": 708116,
+            "DependAssets": []
+        },
+        {
+            "Address": "icon_zhuangbei_xiezi_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_xiezi_10.png",
+            "AssetGUID": "83a3cc58e457b40438128a902a666388",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetpackage_characters.bundle",
+            "MainBundleSize": 708116,
+            "DependAssets": []
+        },
+        {
+            "Address": "icon_zhuangbei_yifu_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_yifu_10.png",
+            "AssetGUID": "a1f61c179b5c8fd46b8545b3651a670d",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetpackage_characters.bundle",
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -251,7 +323,7 @@
             "AssetGUID": "6e12c336cf55fd44482a9519834f0d21",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -260,7 +332,16 @@
             "AssetGUID": "b4f80d9622e1b7e4c9660f34d9d58533",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
+            "DependAssets": []
+        },
+        {
+            "Address": "lozenge",
+            "AssetPath": "Assets/AssetPackage/Characters/lozenge.png",
+            "AssetGUID": "c5d7de7883ebeb64ca736c7ae142d34a",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetpackage_characters.bundle",
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -269,7 +350,7 @@
             "AssetGUID": "cfcb3c9bb66cb8247875338e22df6f00",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -278,7 +359,7 @@
             "AssetGUID": "3f72b8b617a2f694380a19c90174f1c1",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -287,7 +368,7 @@
             "AssetGUID": "27551d2e2d7c16447955ed2d647b8774",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -296,7 +377,7 @@
             "AssetGUID": "669385d0e29e78f43bca60875a7e58dd",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -305,7 +386,7 @@
             "AssetGUID": "9c9cdaa6d37ea494b86d0ffb9e5c969b",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -314,7 +395,7 @@
             "AssetGUID": "5011663c02cba144ca18ef3f059e949a",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -323,7 +404,7 @@
             "AssetGUID": "ed363920e12c6134785e489a1a004e9f",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -332,7 +413,7 @@
             "AssetGUID": "3203812db7b0f2c409ae4028372e72c2",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -341,7 +422,7 @@
             "AssetGUID": "33659f2ba56eab847a34380863c99b2c",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -350,7 +431,7 @@
             "AssetGUID": "d20b3ed61a8b5fc4fba33b42405a33f5",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_characters.bundle",
-            "MainBundleSize": 612720,
+            "MainBundleSize": 708116,
             "DependAssets": []
         },
         {
@@ -530,7 +611,7 @@
             "AssetGUID": "f689b9e71d0cd174ab7bb434569c552c",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "MainBundleSize": 24499,
+            "MainBundleSize": 26563,
             "DependAssets": [
                 "Assets/AssetPackage/Effects/Custom_UIGradientWithAlpha.mat",
                 "Assets/AssetPackage/Effects/UIGradientWithAlpha.shader"
@@ -542,7 +623,7 @@
             "AssetGUID": "bbf4630816d40a647b49c41615db0538",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "MainBundleSize": 24499,
+            "MainBundleSize": 26563,
             "DependAssets": [
                 "Assets/AssetPackage/Characters/icon_baoshi_huanxinshiji.png",
                 "Assets/AssetPackage/Effects/Custom_UIGradientWithAxisSelection.mat",
@@ -555,7 +636,7 @@
             "AssetGUID": "1ca525b989d44844caccd0fea6712d7f",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "MainBundleSize": 24499,
+            "MainBundleSize": 26563,
             "DependAssets": [
                 "Assets/AssetPackage/Effects/Custom_UIGradientWithAxisSelection.mat",
                 "Assets/AssetPackage/Effects/UIGradientWithAlpha.shader"
@@ -567,7 +648,7 @@
             "AssetGUID": "ac15b1367ec84d047ad486a185c52c36",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "MainBundleSize": 24499,
+            "MainBundleSize": 26563,
             "DependAssets": [
                 "Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
                 "Assets/AssetPackage/Effects/Custom_UIGradientWithAlpha.mat",
@@ -591,7 +672,7 @@
             "AssetGUID": "74e153d23ef03204b8870fa366e8d470",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "MainBundleSize": 24499,
+            "MainBundleSize": 26563,
             "DependAssets": [
                 "Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
                 "Assets/AssetPackage/Characters/Place1.png",
@@ -611,7 +692,7 @@
             "AssetGUID": "c95d52ad9659e5848b469d0cafacc65f",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "MainBundleSize": 24499,
+            "MainBundleSize": 26563,
             "DependAssets": []
         },
         {
@@ -620,7 +701,7 @@
             "AssetGUID": "5fb27f7c3d5bd5345844c0b6dc536225",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "MainBundleSize": 24499,
+            "MainBundleSize": 26563,
             "DependAssets": []
         },
         {
@@ -629,8 +710,31 @@
             "AssetGUID": "78aa8806c39fa274fab54e8494f0a143",
             "AssetTags": [],
             "MainBundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "MainBundleSize": 24499,
+            "MainBundleSize": 26563,
             "DependAssets": []
+        },
+        {
+            "Address": "Wash",
+            "AssetPath": "Assets/AssetPackage/UI/Prefabs/Wash.prefab",
+            "AssetGUID": "ced77f9ab2e30584e9942ec99e43ccf4",
+            "AssetTags": [],
+            "MainBundleName": "assets_assetpackage_ui_prefabs.bundle",
+            "MainBundleSize": 26563,
+            "DependAssets": [
+                "Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
+                "Assets/AssetPackage/Characters/Place1.png",
+                "Assets/AssetPackage/Characters/icon_baoshi_huanxinshiji.png",
+                "Assets/AssetPackage/Characters/icon_baoshi_6.png",
+                "Assets/AssetPackage/UI/ItemBackground/blue.png",
+                "Assets/AssetPackage/UI/Prefabs/ItemBase.prefab",
+                "Assets/TextMesh Pro/Examples & Extras/Fonts/Oswald-Bold.ttf",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Font Asset Icon.psd",
+                "Packages/com.unity.textmeshpro/Editor Resources/Gizmos/TMP - Text Component Icon.psd",
+                "Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Oswald Bold SDF.asset",
+                "Assets/AssetPackage/Characters/zmzg_com_hongdian.png",
+                "Assets/AssetPackage/Characters/com_lock.png",
+                "Assets/AssetPackage/Characters/com_figure01.png"
+            ]
         },
         {
             "Address": "background",
@@ -737,14 +841,16 @@
     "BundleInfos": [
         {
             "BundleName": "assets_assetpackage_characters.bundle",
-            "FileName": "3af2b83503e56cbc931e47e30eef244c.bundle",
-            "FileHash": "3af2b83503e56cbc931e47e30eef244c",
-            "FileCRC": "0f289224",
-            "FileSize": 612720,
+            "FileName": "bc01be141e180c908616b680009ff325.bundle",
+            "FileHash": "bc01be141e180c908616b680009ff325",
+            "FileCRC": "f0e47730",
+            "FileSize": 708116,
             "Encrypted": false,
             "Tags": [],
             "DependBundles": [],
             "AllBuiltinAssets": [
+                "Assets/AssetPackage/Characters/com_figure01.png",
+                "Assets/AssetPackage/Characters/com_figure02.png",
                 "Assets/AssetPackage/Characters/com_lock.png",
                 "Assets/AssetPackage/Characters/com_new.png",
                 "Assets/AssetPackage/Characters/com_unlock.png",
@@ -769,8 +875,15 @@
                 "Assets/AssetPackage/Characters/icon_daoju_goldpack1_D.png",
                 "Assets/AssetPackage/Characters/icon_daoju_goldpack2_D.png",
                 "Assets/AssetPackage/Characters/icon_daoju_goldpack3_D.png",
+                "Assets/AssetPackage/Characters/icon_zhuangbei_hubi_10.png",
+                "Assets/AssetPackage/Characters/icon_zhuangbei_kuzi_10.png",
+                "Assets/AssetPackage/Characters/icon_zhuangbei_shoutao_10.png",
+                "Assets/AssetPackage/Characters/icon_zhuangbei_toukui_10.png",
+                "Assets/AssetPackage/Characters/icon_zhuangbei_xiezi_10.png",
+                "Assets/AssetPackage/Characters/icon_zhuangbei_yifu_10.png",
                 "Assets/AssetPackage/Characters/keyBlue.png",
                 "Assets/AssetPackage/Characters/keyPurple.png",
+                "Assets/AssetPackage/Characters/lozenge.png",
                 "Assets/AssetPackage/Characters/money.png",
                 "Assets/AssetPackage/Characters/Place1.png",
                 "Assets/AssetPackage/Characters/Place2.png",
@@ -816,10 +929,10 @@
         },
         {
             "BundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "FileName": "4ffb79d417bad0a266287993faf4124e.bundle",
-            "FileHash": "4ffb79d417bad0a266287993faf4124e",
-            "FileCRC": "0878bab6",
-            "FileSize": 24499,
+            "FileName": "1520f43b7bc6eed781caa55d56f02ce7.bundle",
+            "FileHash": "1520f43b7bc6eed781caa55d56f02ce7",
+            "FileCRC": "89d0f7d3",
+            "FileSize": 26563,
             "Encrypted": false,
             "Tags": [],
             "DependBundles": [
@@ -838,7 +951,8 @@
                 "Assets/AssetPackage/UI/Prefabs/ItemBase.prefab",
                 "Assets/AssetPackage/UI/Prefabs/Mask.prefab",
                 "Assets/AssetPackage/UI/Prefabs/Message.prefab",
-                "Assets/AssetPackage/UI/Prefabs/UpgradeJewel.prefab"
+                "Assets/AssetPackage/UI/Prefabs/UpgradeJewel.prefab",
+                "Assets/AssetPackage/UI/Prefabs/Wash.prefab"
             ]
         },
         {
@@ -866,10 +980,10 @@
         },
         {
             "BundleName": "share_assets_assetpackage_effects.bundle",
-            "FileName": "758c811507b03a218ab77622c45332e9.bundle",
-            "FileHash": "758c811507b03a218ab77622c45332e9",
-            "FileCRC": "025c11f1",
-            "FileSize": 2525,
+            "FileName": "b91dc1a5e126fe13ec5b5c9dd2c81d85.bundle",
+            "FileHash": "b91dc1a5e126fe13ec5b5c9dd2c81d85",
+            "FileCRC": "e8f630df",
+            "FileSize": 2603,
             "Encrypted": false,
             "Tags": [],
             "DependBundles": [
@@ -882,10 +996,10 @@
         },
         {
             "BundleName": "unityshaders.bundle",
-            "FileName": "66fba4cb0f8fd1e74fc326a5d5195952.bundle",
-            "FileHash": "66fba4cb0f8fd1e74fc326a5d5195952",
-            "FileCRC": "84bd9c11",
-            "FileSize": 24575,
+            "FileName": "fbd5e4f09433bb25edb9e57eacede638.bundle",
+            "FileHash": "fbd5e4f09433bb25edb9e57eacede638",
+            "FileCRC": "f09ee407",
+            "FileSize": 24558,
             "Encrypted": false,
             "Tags": [],
             "DependBundles": [],

@@ -6,8 +6,22 @@
     "OutputNameStyle": 0,
     "BuildPipeline": "BuiltinBuildPipeline",
     "PackageName": "DefaultPackage",
-    "PackageVersion": "2024-10-11-1028",
+    "PackageVersion": "2024-10-12-1022",
     "AssetList": [
+        {
+            "Address": "com_figure01",
+            "AssetPath": "Assets/AssetPackage/Characters/com_figure01.png",
+            "AssetGUID": "0b323ffb49df79342ba9bf7d67e8403d",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "com_figure02",
+            "AssetPath": "Assets/AssetPackage/Characters/com_figure02.png",
+            "AssetGUID": "92d20649067e1b4459a315e7dbe94289",
+            "AssetTags": [],
+            "BundleID": 0
+        },
         {
             "Address": "com_lock",
             "AssetPath": "Assets/AssetPackage/Characters/com_lock.png",
@@ -177,6 +191,48 @@
             "BundleID": 0
         },
         {
+            "Address": "icon_zhuangbei_hubi_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_hubi_10.png",
+            "AssetGUID": "1b323b26b8f468e48baee418748a3e03",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "icon_zhuangbei_kuzi_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_kuzi_10.png",
+            "AssetGUID": "213cecb75aa3b034ab2d0006500d77c3",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "icon_zhuangbei_shoutao_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_shoutao_10.png",
+            "AssetGUID": "20404d450cfb3ca4693208621335e75e",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "icon_zhuangbei_toukui_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_toukui_10.png",
+            "AssetGUID": "eefa2ae61e9a84d48b54a46b3d4137db",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "icon_zhuangbei_xiezi_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_xiezi_10.png",
+            "AssetGUID": "83a3cc58e457b40438128a902a666388",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "icon_zhuangbei_yifu_10",
+            "AssetPath": "Assets/AssetPackage/Characters/icon_zhuangbei_yifu_10.png",
+            "AssetGUID": "a1f61c179b5c8fd46b8545b3651a670d",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
             "Address": "keyBlue",
             "AssetPath": "Assets/AssetPackage/Characters/keyBlue.png",
             "AssetGUID": "6e12c336cf55fd44482a9519834f0d21",
@@ -187,6 +243,13 @@
             "Address": "keyPurple",
             "AssetPath": "Assets/AssetPackage/Characters/keyPurple.png",
             "AssetGUID": "b4f80d9622e1b7e4c9660f34d9d58533",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "lozenge",
+            "AssetPath": "Assets/AssetPackage/Characters/lozenge.png",
+            "AssetGUID": "c5d7de7883ebeb64ca736c7ae142d34a",
             "AssetTags": [],
             "BundleID": 0
         },
@@ -450,6 +513,13 @@
             "BundleID": 2
         },
         {
+            "Address": "Wash",
+            "AssetPath": "Assets/AssetPackage/UI/Prefabs/Wash.prefab",
+            "AssetGUID": "ced77f9ab2e30584e9942ec99e43ccf4",
+            "AssetTags": [],
+            "BundleID": 2
+        },
+        {
             "Address": "background",
             "AssetPath": "Assets/AssetPackage/UI/BottomBar/background.png",
             "AssetGUID": "d9b6cdbd0c267e949a3479b5e0808e31",
@@ -530,10 +600,10 @@
     "BundleList": [
         {
             "BundleName": "assets_assetpackage_characters.bundle",
-            "UnityCRC": 73507473,
-            "FileHash": "3af2b83503e56cbc931e47e30eef244c",
-            "FileCRC": "0f289224",
-            "FileSize": 612720,
+            "UnityCRC": 2901718395,
+            "FileHash": "bc01be141e180c908616b680009ff325",
+            "FileCRC": "f0e47730",
+            "FileSize": 708116,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
@@ -550,10 +620,10 @@
         },
         {
             "BundleName": "assets_assetpackage_ui_prefabs.bundle",
-            "UnityCRC": 1645286918,
-            "FileHash": "4ffb79d417bad0a266287993faf4124e",
-            "FileCRC": "0878bab6",
-            "FileSize": 24499,
+            "UnityCRC": 121848429,
+            "FileHash": "1520f43b7bc6eed781caa55d56f02ce7",
+            "FileCRC": "89d0f7d3",
+            "FileSize": 26563,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": [
@@ -577,10 +647,10 @@
         },
         {
             "BundleName": "share_assets_assetpackage_effects.bundle",
-            "UnityCRC": 2984841751,
-            "FileHash": "758c811507b03a218ab77622c45332e9",
-            "FileCRC": "025c11f1",
-            "FileSize": 2525,
+            "UnityCRC": 2936000743,
+            "FileHash": "b91dc1a5e126fe13ec5b5c9dd2c81d85",
+            "FileCRC": "e8f630df",
+            "FileSize": 2603,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": [
@@ -589,10 +659,10 @@
         },
         {
             "BundleName": "unityshaders.bundle",
-            "UnityCRC": 3475483414,
-            "FileHash": "66fba4cb0f8fd1e74fc326a5d5195952",
-            "FileCRC": "84bd9c11",
-            "FileSize": 24575,
+            "UnityCRC": 4271214067,
+            "FileHash": "fbd5e4f09433bb25edb9e57eacede638",
+            "FileCRC": "f09ee407",
+            "FileSize": 24558,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
