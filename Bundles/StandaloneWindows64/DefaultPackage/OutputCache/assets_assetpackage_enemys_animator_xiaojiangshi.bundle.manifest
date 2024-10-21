@@ -1,0 +1,60 @@
+ManifestFileVersion: 0
+CRC: 2266933400
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 331afa3f3a43578e4157105245219e12
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f1997500b689d27a0d48e20b2d184a06
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 331afa3f3a43578e4157105245219e12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-idle_01.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-run_02.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-death1_0.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-run_08.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/Run.anim
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-skill1_1.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-skill1_4.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-idle_04.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-run_06.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-run_09.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-skill1_7.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/xiaojiangshi.controller
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-run_01.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-idle_03.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-skill1_0.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-skill1_3.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/Idle.anim
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-death1_1.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/Skill.anim
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-idle_00.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-death1_2.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-run_07.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-run_00.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-skill1_2.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-run_04.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-death1_4.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-run_03.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/Die.anim
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-idle_02.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-run_05.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-idle_05.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-skill1_8.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-death1_3.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-skill1_6.png
+- Assets/AssetPackage/Enemys/Animator/xiaojiangshi/m_001_xiaojiangshi1-skill1_5.png
+Dependencies: []

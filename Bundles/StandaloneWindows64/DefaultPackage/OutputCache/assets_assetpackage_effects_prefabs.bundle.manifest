@@ -1,0 +1,40 @@
+ManifestFileVersion: 0
+CRC: 3603508860
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 98bd496730385176d0ee281bb81ea68a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b23185643538151f52b04ebc006966d6
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 98bd496730385176d0ee281bb81ea68a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fef496cdea779794cb79ffbcd6db63c8, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 210
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 331
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetPackage/Effects/Prefabs/FreezenEffect.prefab
+Dependencies:
+- D:/05.code/10.unity_code/fire at zombies/Bundles/StandaloneWindows64/DefaultPackage/OutputCache/assets_assetpackage_effects_effectres.bundle
+- D:/05.code/10.unity_code/fire at zombies/Bundles/StandaloneWindows64/DefaultPackage/OutputCache/assets_assetpackage_enemys_animator_xiaojiangshi.bundle

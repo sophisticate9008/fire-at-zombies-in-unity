@@ -1,0 +1,32 @@
+ManifestFileVersion: 0
+CRC: 2145016477
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9dc63a8e79b0b372b3ef5395c11a156d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b90360021f95c293bf3f1bef88434a62
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 9dc63a8e79b0b372b3ef5395c11a156d
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetPackage/Effects/EffectRes/Custom_UIGradientWithAlpha.mat
+- Assets/AssetPackage/Effects/EffectRes/icebulk.png
+- Assets/AssetPackage/Effects/EffectRes/ice1.png
+- Assets/AssetPackage/Effects/EffectRes/Custom_UIGradientWithAxisSelection.mat
+- Assets/AssetPackage/Effects/EffectRes/ice3.png
+- Assets/AssetPackage/Effects/EffectRes/ice2.png
+Dependencies:
+- D:/05.code/10.unity_code/fire at zombies/Bundles/StandaloneWindows64/DefaultPackage/OutputCache/unityshaders.bundle
